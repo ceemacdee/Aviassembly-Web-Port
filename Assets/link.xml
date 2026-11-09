@@ -6,4 +6,7 @@
   <assembly fullname="Unity.Postprocessing.Runtime" preserve="all"/>
   <assembly fullname="Unity.TextMeshPro" preserve="all"/>
   <assembly fullname="UnityEngine.UI" preserve="all"/>
+  <assembly fullname="Unity.InputSystem.ForUI" preserve="all"/>
+  <assembly fullname="UnityEngine.InputModule" preserve="all"/>
+  <assembly fullname="UnityEngine.InputForUIModule" preserve="all"/>
 </linker>

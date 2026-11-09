@@ -28,7 +28,7 @@ public static class AviassemblyWebGLBuild
 		PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
 		PlayerSettings.WebGL.decompressionFallback = true;
 		PlayerSettings.WebGL.dataCaching = true;
-		PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
+		PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.FullWithStacktrace; // full stack traces while the port is being debugged
 		PlayerSettings.WebGL.linkerTarget = WebGLLinkerTarget.Wasm;
 		PlayerSettings.WebGL.threadsSupport = false;
 		PlayerSettings.WebGL.nameFilesAsHashes = false;
