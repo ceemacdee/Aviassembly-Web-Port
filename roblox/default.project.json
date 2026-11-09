@@ -1,0 +1,57 @@
+{
+  "name": "Aviassembly",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "Shared": {
+        "$path": "src/shared"
+      },
+      "AviassemblyMeshes": {
+        "$className": "Folder"
+      }
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "SaveService": {
+        "$path": "src/server/SaveService.server.lua"
+      }
+    },
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "Aviassembly": {
+          "$className": "Folder",
+          "Main": {
+            "$path": "src/client/Main.client.lua"
+          },
+          "Game": {
+            "$path": "src/client/Game"
+          }
+        }
+      }
+    },
+    "Players": {
+      "$className": "Players",
+      "$properties": {
+        "CharacterAutoLoads": false
+      }
+    },
+    "Workspace": {
+      "$className": "Workspace",
+      "$properties": {
+        "Gravity": 25.5,
+        "StreamingEnabled": false
+      }
+    },
+    "Lighting": {
+      "$className": "Lighting",
+      "$properties": {
+        "FogEnd": 3500,
+        "FogStart": 300,
+        "ClockTime": 13
+      }
+    }
+  }
+}
