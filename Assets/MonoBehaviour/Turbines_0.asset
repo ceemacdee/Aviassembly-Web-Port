@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: Turbines
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: b66efa3a5fcaef54188a8cdb8c0568a3, type: 2}
+  airportName: The Wind Turbines
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: 63e6b8c824ee2b848adf545493eae34b, type: 2}
+  - {fileID: 11400000, guid: 5b742bdeb7f9d6948ac13969b42cf788, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 1
+  rotation: 35
+  footprint: {x: 200, y: 500}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 400
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: 100
+    y: -500
+    width: 315
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 99f99733d8a21da429b9718575ca251b, type: 2}
+  - {fileID: 11400000, guid: d677b7f6699feb14da76c0716fa4ab27, type: 2}
+  - {fileID: 11400000, guid: 5f5897187f91cf548b3a3d0a8e81f895, type: 2}
+  - {fileID: 11400000, guid: c6381766b4d820648967a1312f9d2504, type: 2}
+  - {fileID: 11400000, guid: 79c5942a3c458bc49bcf9ab5f96e0d5b, type: 2}
+  - {fileID: 11400000, guid: 18356578f85b1f34f986adaeabe3df3b, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 99f99733d8a21da429b9718575ca251b, type: 2}
+  - {fileID: 11400000, guid: d677b7f6699feb14da76c0716fa4ab27, type: 2}
+  - {fileID: 11400000, guid: 79c5942a3c458bc49bcf9ab5f96e0d5b, type: 2}
+  - {fileID: 11400000, guid: 18356578f85b1f34f986adaeabe3df3b, type: 2}
+  landingMessage:

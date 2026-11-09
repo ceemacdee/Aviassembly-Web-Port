@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f2f4bb9c431885425789cc9de331eb, type: 3}
+  m_Name: DefaultContinentType
+  m_EditorClassIdentifier:
+  continentName: Spawn
+  angleFromOrigin: 0
+  distanceFromOrigin: 0
+  radius: 6000
+  terrainMaterial: {fileID: 2100000, guid: 25897b16ecd9bb046b87c6694eb32ad5, type: 2}
+  minHeight: -82.5
+  maxHeight: 167.5
+  surfaceDecorations:
+  - {fileID: 11400000, guid: 6864d63bff0e24f408371bcd719e2ae6, type: 2}
+  - {fileID: 11400000, guid: 89aae3a057316ef40b2c4b69e47b1ea0, type: 2}
+  - {fileID: 11400000, guid: 2812e26ad793f3f489cc2d329aa91952, type: 2}
+  fogProfile: {fileID: 11400000, guid: 2a146ffe26ab61a479fdcd34e601fd02, type: 2}
+  backgroundMusic: {fileID: 8300000, guid: 9e6a0459acab20c479752c6e996a64dd, type: 3}
+  surfaceColor: {r: 0.5686275, g: 0.5686275, b: 0.3882353, a: 1}
+  temprature: 22
+  scrapAmount: 5
+  hintDistance: 10000
+  airports:
+  - {fileID: 11400000, guid: abed29dd4eca3644eb271746259a8797, type: 2}
+  - {fileID: 11400000, guid: 0b2c2f825937b134b900ceab182d4954, type: 2}
+  - {fileID: 11400000, guid: 530053669792384489142700168f10dc, type: 2}
+  - {fileID: 11400000, guid: 07fadebb749e49f42b1aa8364056300e, type: 2}
+  - {fileID: 11400000, guid: 3f207cd157614b64b8a8adedc64537e1, type: 2}
+  - {fileID: 11400000, guid: 74f056d8748bdb84a989175cb3b28394, type: 2}
+  - {fileID: 11400000, guid: 029ce2de1b70667489812f0356df9f77, type: 2}
+  - {fileID: 11400000, guid: b1f05c2216786bd4f86acd6866137fb6, type: 2}

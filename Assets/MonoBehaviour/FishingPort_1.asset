@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: FishingPort
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: 5ce03a4e945e1b04fa6cc88bc35225c5, type: 2}
+  airportName: Fishing Port
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: 9dc00e3b9d0688e40b10b0c20111b946, type: 2}
+  - {fileID: 11400000, guid: cf40fe7229a441845b480fb9e6ea7e7d, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 1
+  rotation: 180
+  footprint: {x: 150, y: 150}
+  treeSpawningFootprint: {x: 400, y: 400}
+  blendingDistance: 1750
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: -1500
+    y: -800
+    width: 203
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 909d069d2a608c04a9f96c80074ded64, type: 2}
+  - {fileID: 11400000, guid: 4db13de2719a4f64cb2e56af9c401325, type: 2}
+  - {fileID: 11400000, guid: 07cbf107c93176240a534c661cec95a0, type: 2}
+  - {fileID: 11400000, guid: 16a1aa8d053d9af4bb9840d63c9d064a, type: 2}
+  - {fileID: 11400000, guid: 0c435613ff0a3fb448fa74ad0a055711, type: 2}
+  - {fileID: 11400000, guid: 8b5fbc5fce0258647b4c6bf333ce6ff7, type: 2}
+  - {fileID: 11400000, guid: 21ce9d8a15efab2459bb93fca771c2c5, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 909d069d2a608c04a9f96c80074ded64, type: 2}
+  - {fileID: 11400000, guid: 16a1aa8d053d9af4bb9840d63c9d064a, type: 2}
+  landingMessage:

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: Lumbercamp
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: cd252eee02394ac4598a61a594ecc796, type: 2}
+  airportName: The Lumbercamp
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: 213c81e04b5f34149b1ae23fd732f0b3, type: 2}
+  - {fileID: 11400000, guid: 7eabf76faad79e84380badef6f7a2bb9, type: 2}
+  - {fileID: 11400000, guid: f4538b9c29290a04d8ba8c0baa6ee11c, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 0
+  rotation: 0
+  footprint: {x: 100, y: 300}
+  treeSpawningFootprint: {x: 90, y: 300}
+  blendingDistance: 0
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: -200
+    y: -1000
+    width: 268
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 2b02cf0389023f24ba9d4ccaf28d63bd, type: 2}
+  - {fileID: 11400000, guid: 102c3c8afc21c1b4abc7a69fa0c9c297, type: 2}
+  - {fileID: 11400000, guid: b680070716b642f4fa0e3a0e38968f09, type: 2}
+  - {fileID: 11400000, guid: 6c8f0c32d4701ad4690bb543ddb52b21, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 2b02cf0389023f24ba9d4ccaf28d63bd, type: 2}
+  - {fileID: 11400000, guid: 102c3c8afc21c1b4abc7a69fa0c9c297, type: 2}
+  - {fileID: 11400000, guid: b680070716b642f4fa0e3a0e38968f09, type: 2}
+  - {fileID: 11400000, guid: 6c8f0c32d4701ad4690bb543ddb52b21, type: 2}
+  landingMessage:

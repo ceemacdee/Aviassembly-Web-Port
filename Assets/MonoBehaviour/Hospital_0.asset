@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: Hospital
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: 7584e0d4f65897745b55ceab1377015e, type: 2}
+  airportName: The Hospital
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: 6bc70c7e677f7b34492cd8d322001fc0, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 0
+  rotation: 0
+  footprint: {x: 150, y: 500}
+  treeSpawningFootprint: {x: 150, y: 500}
+  blendingDistance: 350
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: 0
+    y: -300
+    width: 211
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 0b1510a5a54bf2f4d8b85b45f886c561, type: 2}
+  - {fileID: 11400000, guid: 0c471c7ff556e284b989150dac05097f, type: 2}
+  - {fileID: 11400000, guid: 18e68350593a40b45bf6728d04d853a0, type: 2}
+  - {fileID: 11400000, guid: 1adcd08b1aa5b064a94c2dd2ac1fbf94, type: 2}
+  - {fileID: 11400000, guid: 1039dd555f6cb994a80652945df2246d, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 0b1510a5a54bf2f4d8b85b45f886c561, type: 2}
+  - {fileID: 11400000, guid: 0c471c7ff556e284b989150dac05097f, type: 2}
+  - {fileID: 11400000, guid: 1039dd555f6cb994a80652945df2246d, type: 2}
+  landingMessage:

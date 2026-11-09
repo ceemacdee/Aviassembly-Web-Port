@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: AdvancedResearchStation
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: 8b584df56816c6e4fb0b8991cba11293, type: 2}
+  airportName: Advanced Research Station
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: 89f9cc7d5c72902438a256b6a427e83c, type: 2}
+  - {fileID: 11400000, guid: 9d8c471fa0f755642bc99ec87e9ee34e, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 1
+  rotation: 90
+  footprint: {x: 0, y: 0}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 500
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: -100
+    y: -2200
+    width: 388
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 9c0b48952c23a58468ddb959e8dc80bd, type: 2}
+  - {fileID: 11400000, guid: c9d66e3c67e4878469f100ed813a6296, type: 2}
+  - {fileID: 11400000, guid: ecf47f6241fcb6e43a3a42eacf87031f, type: 2}
+  - {fileID: 11400000, guid: 835bf2eba42bc0f4fa1de6c60a1c4684, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 9c0b48952c23a58468ddb959e8dc80bd, type: 2}
+  landingMessage:

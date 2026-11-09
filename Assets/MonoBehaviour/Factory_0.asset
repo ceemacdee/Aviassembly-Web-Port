@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: Factory
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: 58907bb8038628940b24f887875b7fbe, type: 2}
+  airportName: Factory
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: c8eea8f408655af41b5b7dedf6dd14f9, type: 2}
+  - {fileID: 11400000, guid: e6b0afed1d9c6f84382b60c9d600cd21, type: 2}
+  - {fileID: 11400000, guid: ca43728a8e336d042a616dcb2bdb85dd, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 1
+  rotation: -75
+  footprint: {x: 300, y: 300}
+  treeSpawningFootprint: {x: 400, y: 400}
+  blendingDistance: 600
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: -1000
+    y: -1700
+    width: 200
+    height: 50
+  quests:
+  - {fileID: 11400000, guid: 75227096928896c48b9ebde1c3e7ed02, type: 2}
+  - {fileID: 11400000, guid: 793ff80713d44c34aac73a094b07efb7, type: 2}
+  - {fileID: 11400000, guid: ca4523a70728fdc459d6c67f9fe9cf40, type: 2}
+  - {fileID: 11400000, guid: a3c3ad42691962043bd9a8baf1e351ae, type: 2}
+  - {fileID: 11400000, guid: 2329c894106191f49be18a881e6f4bdd, type: 2}
+  - {fileID: 11400000, guid: f7ed52646ab48fe4da3b22d73c4182d8, type: 2}
+  baseQuests: []
+  landingMessage:

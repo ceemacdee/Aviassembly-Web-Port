@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0d2309f2e12e147e6fd0ae118264bf, type: 3}
+  m_Name: 'ID: 479860544'
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: -601.1924
+    y: 68.59903
+    width: 400
+    height: 369
+  questName: Deliver [amount] [cargoType]
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description:
+  giveMessage:
+  completeMessage:
+  researchPointReward: 0
+  advancedReseachPointReward: 0
+  cargoType: {fileID: 11400000, guid: 08a31925bfcd1704c84312c06ce845c9, type: 2}
+  amount: 4
+  rewardOffset: 0

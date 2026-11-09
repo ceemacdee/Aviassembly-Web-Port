@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: IceField
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: a3509992e8b9d4f4bb164f0e99a602ef, type: 2}
+  airportName: Ice packing plant
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: 7028f49c838914e4488c5af44c09790c, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 1
+  rotation: 180
+  footprint: {x: 0, y: 0}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 900
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: -1500
+    y: -1300
+    width: 265
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: faab2f731dcac7747a7bc678b490213f, type: 2}
+  - {fileID: 11400000, guid: 9c4cc711afd74c1408ad56c818aad00b, type: 2}
+  - {fileID: 11400000, guid: f8ed46ead7112a14e8932cd08f6fa8bf, type: 2}
+  - {fileID: 11400000, guid: 6c536b4832d10d04bb4e89a857b8259b, type: 2}
+  - {fileID: 11400000, guid: 86a2bf8d5f1781941b2fc53eb1b648df, type: 2}
+  - {fileID: 11400000, guid: ae26ec450021c7e47a802775c4d6650e, type: 2}
+  - {fileID: 11400000, guid: 2ef13eca87987c348ad9aafef151a74e, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: faab2f731dcac7747a7bc678b490213f, type: 2}
+  - {fileID: 11400000, guid: 6c536b4832d10d04bb4e89a857b8259b, type: 2}
+  landingMessage:

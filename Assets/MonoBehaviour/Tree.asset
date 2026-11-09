@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b08ca5bea4e46bb4085c18839a0ab4, type: 3}
+  m_Name: Tree
+  m_EditorClassIdentifier:
+  mesh: {fileID: 4300000, guid: b377999092e05824b9fe544a17d30d83, type: 2}
+  meshVariants:
+  - {fileID: 4300000, guid: b377999092e05824b9fe544a17d30d83, type: 2}
+  - {fileID: 4300000, guid: a6150a6e3b326fc4aa080a3677b5c9d0, type: 2}
+  - {fileID: 4300000, guid: 7ca07eabe20efbd4e95ad8b0572a694d, type: 2}
+  LODs:
+  - {fileID: 4300000, guid: f82c6dfd2f1e08b45a956f3d48d8998a, type: 2}
+  - {fileID: 4300000, guid: 5154d20d9513a8b409510369623ffac4, type: 2}
+  - {fileID: 4300000, guid: 1b9c3ed86858d3b4684bb0fc388039a5, type: 2}
+  density: 40
+  minSize: 1
+  maxSize: 2
+  randomizationOffset: 0
+  clustering: 0
+  maxClusterSize: 20
+  clusterRadius: 0
+  minSlope: 0
+  maxSlope: 0.05
+  height: 20
+  radius: 2.65
+  center: 0
+  shade: 0.95

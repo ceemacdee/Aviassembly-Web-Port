@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  questName: Helping the hermit
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: Deliver some supplies to the hermit.
+  giveMessage: What are you doing here? Get out! Oh wait Now that you’re here anyway, could you bring me some supplies?
+  completeMessage: Thanks! Here’s some coin for your trouble. I also had some of this useless scrap lying around. Take it if you want.
+  researchPointReward: 10
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: e0749c9cf7c01b14d88ec60d225bcd13, type: 2}
+  - {fileID: 11400000, guid: 3aef950c313ddd243b3d5a1c9d7e4cdc, type: 2}
+  - {fileID: 11400000, guid: 33638425eff25e140904acfe43e0d778, type: 2}

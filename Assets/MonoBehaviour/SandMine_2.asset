@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: SandMine
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: 528e388ce52e88f4d8a3b2f0cdc0a38b, type: 2}
+  airportName: Mine
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: 0efdaa28f479a5749b8272ee7abb3673, type: 2}
+  - {fileID: 11400000, guid: b6584e8f867d335478ad301829f1e6e7, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 1
+  rotation: 30
+  footprint: {x: 0, y: 0}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 500
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: 500
+    y: -2000
+    width: 209
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 4a9c37aa28d697a4f9673b71f980ccd3, type: 2}
+  - {fileID: 11400000, guid: ca3a96c29e16f404d905524a0c5e1540, type: 2}
+  - {fileID: 11400000, guid: 3125e306cd7e5ff4a9c54ad79b628157, type: 2}
+  - {fileID: 11400000, guid: 7639ca592cd6f6744b69d258e1ba477b, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 4a9c37aa28d697a4f9673b71f980ccd3, type: 2}
+  landingMessage:

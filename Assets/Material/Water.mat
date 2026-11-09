@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Water
+  m_Shader: {fileID: 4800000, guid: 34619b5108440fb4c9c5b1f6a662ef66, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties:
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+      _SurfaceNoise:
+        m_Texture: {fileID: 2800000, guid: c61375fe3772cec478d20e24b291cb42, type: 3}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: {}
+    m_Floats:
+      _BumpScale: 1
+      _ColorMask: 15
+      _Cutoff: 0.5
+      _DetailNormalMapScale: 1
+      _DstBlend: 0
+      _FoamDistance: 18.8
+      _GlossMapScale: 1
+      _Glossiness: 0
+      _GlossyReflections: 1
+      _MaxDepth: 149.9
+      _Metallic: 0
+      _Mode: 0
+      _NoiseScrollSpeed: 0.05
+      _OcclusionStrength: 1
+      _Parallax: 0.02
+      _Shade: 1
+      _Smoothness: 0.117
+      _SmoothnessTextureChannel: 0
+      _SpecularHighlights: 1
+      _SrcBlend: 1
+      _Steepness: 0.354
+      _Stencil: 0
+      _StencilComp: 8
+      _StencilOp: 0
+      _StencilReadMask: 255
+      _StencilWriteMask: 255
+      _Strength: 0.2
+      _SurfaceNoiseCutoff: 0.447
+      _TextureOpacity: 0
+      _UVSec: 0
+      _UseUIAlphaClip: 0
+      _ZWrite: 1
+    m_Colors:
+      _BaseColor: {r: 0.373464, g: 0.43442574, b: 0.53199995, a: 1}
+      _Color: {r: 0.31083113, g: 0.4398665, b: 0.5188677, a: 0.9019608}
+      _DeepColor: {r: 0.33250982, g: 0.439185, b: 0.54509807, a: 1}
+      _Direction: {r: 1, g: 0.41, b: 0, a: 0}
+      _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+      _FoamColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0}
+      _ShallowColor: {r: 0.3647059, g: 0.48722365, b: 0.54509807, a: 1}
+      _Specular: {r: 0, g: 0, b: 0, a: 0}
+      _SurfaceNoiseColor: {r: 0.17254902, g: 0.1764706, b: 0.1764706, a: 0}
+      _WaveA: {r: 1, g: 1, b: 0.33, a: 0.001}
+      _WaveB: {r: 2.56, g: 1, b: 0.83, a: 0.001}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 0

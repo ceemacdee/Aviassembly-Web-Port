@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 1106.2776
+    y: 222.15268
+    width: 400
+    height: 459
+  questName: Fixing Turbines
+  storyState: 1
+  followupQuest: {fileID: 11400000, guid: 8fb4901b2b310f7469901efee920ca15, type: 2}
+  description: Turbines broke due to the earthquake. Deliver medicine and tools to get repairs started.
+  giveMessage: 'The earthquake destroyed 2 of the wind tubines. I also go injured during the earthquake. Can you get <b>3 medicine</b> and <b>2 tools</b>? '
+  completeMessage: Thank you for helping me get started on the repairs. Here are <b>[scrapReward] scraps</b> for the effort
+  researchPointReward: 15
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 36c104f519e14c84a81e2a07b6850cba, type: 2}
+  - {fileID: 11400000, guid: 9f4e44b76c2276f46a0c959be5a54945, type: 2}

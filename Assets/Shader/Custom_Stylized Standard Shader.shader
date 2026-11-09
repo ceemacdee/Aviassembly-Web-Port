@@ -1,0 +1,53 @@
+// Reconstructed for the WebGL port (original source not recoverable from the build).
+Shader "Custom/Stylized Standard Shader" {
+	Properties {
+		_MainTex ("Texture", 2D) = "white" {}
+		_Color ("Color", Color) = (1,1,1,1)
+		_Smoothness ("Smoothness", Range(0, 1)) = 0
+		_Shade ("Shade", Range(0, 1)) = 0
+		_TextureOpacity ("Texture Opacity", Range(0, 1)) = 0
+		_DragFactor ("Drag Factor", Range(0, 1)) = 0
+	}
+	SubShader {
+		Tags { "RenderType"="Opaque" "Queue"="Geometry" "Replacement"="Drag" }
+		LOD 200
+
+		Pass {
+			Tags { "LightMode"="ForwardBase" }
+			CGPROGRAM
+			#pragma vertex AviVert
+			#pragma fragment AviFrag
+			#pragma multi_compile_fwdbase
+			#pragma multi_compile_instancing
+			#include "AviassemblyStylized.cginc"
+			ENDCG
+		}
+
+		Pass {
+			Tags { "LightMode"="ForwardAdd" }
+			Blend One One
+			ZWrite Off
+			CGPROGRAM
+			#pragma vertex AviVert
+			#pragma fragment AviFrag
+			#pragma multi_compile_fwdadd_fullshadows
+			#pragma multi_compile_instancing
+			#define AVI_FORWARD_ADD
+			#include "AviassemblyStylized.cginc"
+			ENDCG
+		}
+
+		Pass {
+			Tags { "LightMode"="ShadowCaster" }
+			CGPROGRAM
+			#pragma vertex AviShadowVert
+			#pragma fragment AviShadowFrag
+			#pragma multi_compile_shadowcaster
+			#pragma multi_compile_instancing
+			#define AVI_SHADOW_CASTER
+			#include "AviassemblyStylized.cginc"
+			ENDCG
+		}
+	}
+	Fallback Off
+}

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0d2309f2e12e147e6fd0ae118264bf, type: 3}
+  m_Name: 'ID: 787763151'
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 307.1726
+    y: 185.90259
+    width: 400
+    height: 402
+  questName: Delivering Chemicals
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: Water treatment plans needs <b>[amount] [cargoType]</b> to function.
+  giveMessage: We need some more chemicals. Can you deliver <b>[amount] [cargoType]</b> to keep the water clean?
+  completeMessage: Thank you for the supplies. Here are [scrapReward] scraps for the effort.
+  researchPointReward: 25
+  advancedReseachPointReward: 0
+  cargoType: {fileID: 11400000, guid: 4d8796164766ab54f88b5e639c9e4d23, type: 2}
+  amount: 5
+  rewardOffset: 0

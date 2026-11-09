@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0d2309f2e12e147e6fd0ae118264bf, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  questName: Rescuing survivors
+  storyState: 0
+  followupQuest: {fileID: 11400000, guid: 93637c1847d99974dbed5f85e095892e, type: 2}
+  description: A ship collided with the beach on the other side of the island. Bring <b><color=black>[amount] [cargoType]</b></color> to the cargo terminal so they can receive aid.
+  giveMessage: A ship collided with the beach on the other side of the island. Can you bring any survivors here so they can receive aid?
+  completeMessage: 'Thank you for the effort! Here is a small reward. '
+  researchPointReward: 5
+  advancedReseachPointReward: 0
+  cargoType: {fileID: 11400000, guid: 0653769ea56749f4fb803132181c5581, type: 2}
+  amount: 2
+  rewardOffset: 0

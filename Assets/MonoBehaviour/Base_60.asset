@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0d2309f2e12e147e6fd0ae118264bf, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 1171.0425
+    y: 291.08252
+    width: 400
+    height: 414
+  questName: Helping the farm
+  storyState: 0
+  followupQuest: {fileID: 11400000, guid: c6c5dec33c2bd0a4b999d3e000eba6b0, type: 2}
+  description: The farm got damaged during the earthquake. Get <b><color=black>[amount] [cargoType]</color></b> from the lumbercamp.
+  giveMessage: My farm got damaged during the earthquake. Can you get <b>[amount] [cargoType]</b> from the lumbercamp.
+  completeMessage: 'Thank you for the tools. Now I can finally start repairing. '
+  researchPointReward: 5
+  advancedReseachPointReward: 0
+  cargoType: {fileID: 11400000, guid: 4622c36d68544904694a51db3c006096, type: 2}
+  amount: 3
+  rewardOffset: 0

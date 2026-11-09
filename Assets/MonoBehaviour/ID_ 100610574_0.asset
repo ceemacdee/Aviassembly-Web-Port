@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: 'ID: 100610574'
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 284.25818
+    y: 16.323608
+    width: 400
+    height: 444
+  questName: Reinforcements
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: The miners need wood to keep the mine from collapsing.
+  giveMessage: The mines are unstable due to the earthquake. We haven’t received any wood to reinforce the mines. Could you head to the lumber camp and see if you can get some?
+  completeMessage: Thank you for the supplies. Here are [scrapReward] scraps for the effort.
+  researchPointReward: 15
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 9a0bbdf2b87030f42804bfae7b0e9dc7, type: 2}
+  - {fileID: 11400000, guid: 1d87309dae6a787408d63d2542b69e17, type: 2}

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0d2309f2e12e147e6fd0ae118264bf, type: 3}
+  m_Name: 6
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 897.7224
+    y: 199.40341
+    width: 400
+    height: 429
+  questName: Delivering Batteries
+  storyState: 1
+  followupQuest: {fileID: 11400000, guid: 0c471c7ff556e284b989150dac05097f, type: 2}
+  description: The hospital has no power. Deliver <b><color=black>[amount] small batteries</color></b>.
+  giveMessage: We've suddenly lost power. Can you deliver <b>[amount]</b> small batteries to keep the hospital running?
+  completeMessage: Thank you for the delivery. Here are <b>[reward]</b> coins, and <b>[scrapReward]</b> scrap for the effort. You can use this to research new parts and upgrade your plane.
+  researchPointReward: 10
+  advancedReseachPointReward: 0
+  cargoType: {fileID: 11400000, guid: 626c883fd93764b4cb4e0fe79ea030b7, type: 2}
+  amount: 2
+  rewardOffset: 0

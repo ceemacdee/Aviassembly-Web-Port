@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: Hermit
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: 6ddcbb0641e55e94dafb0db64881ba09, type: 2}
+  airportName: Hermit
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes: []
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 0
+  rotation: 0
+  footprint: {x: 0, y: 0}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 500
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: -400
+    y: -1700
+    width: 139
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: e3646b07306656a41bcdc00ed6a34bde, type: 2}
+  - {fileID: 11400000, guid: c1354bc633ed06d4c84bd5e93c511bcd, type: 2}
+  - {fileID: 11400000, guid: 7e84a0a74a239ce43b6e18f66ad9b85b, type: 2}
+  - {fileID: 11400000, guid: 3e043fe3d525a0d4b8414c08dec9f53a, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: e3646b07306656a41bcdc00ed6a34bde, type: 2}
+  landingMessage:

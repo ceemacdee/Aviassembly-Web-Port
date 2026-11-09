@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: 'ID: 318309305'
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 1018.2301
+    y: 225.54309
+    width: 400
+    height: 459
+  questName: The Explosion
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: The reactor exploded! Deliver medicine for the workers, and water to put out the fires.
+  giveMessage: The reactor exploded! We need your immediate help! Please deliver medicine for our workers. Can you also deliver water to put out the fires?
+  completeMessage: Thank you! Here is [scrapReward] scrap for the effort. Can you transport the nuclear waste to the storage facility?
+  researchPointReward: 65
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 31fb56b03335b2747b816ceabe834aa4, type: 2}
+  - {fileID: 11400000, guid: f9d59a97efc09b74bae2119c6b00ce58, type: 2}

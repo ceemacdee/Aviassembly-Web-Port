@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f2f4bb9c431885425789cc9de331eb, type: 3}
+  m_Name: MountainContinent
+  m_EditorClassIdentifier:
+  continentName: Snow
+  angleFromOrigin: -40
+  distanceFromOrigin: 6200
+  radius: 6505.7905
+  terrainMaterial: {fileID: 2100000, guid: f8ee5584b6d3c6e4b9b4bd62844315ab, type: 2}
+  minHeight: -40
+  maxHeight: 350
+  surfaceDecorations:
+  - {fileID: 11400000, guid: a8709ee3774b8754f89028ad0f252f79, type: 2}
+  fogProfile: {fileID: 11400000, guid: 2a146ffe26ab61a479fdcd34e601fd02, type: 2}
+  backgroundMusic: {fileID: 8300000, guid: 9e6a0459acab20c479752c6e996a64dd, type: 3}
+  surfaceColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 1}
+  temprature: -40
+  scrapAmount: 5
+  hintDistance: 10000
+  airports:
+  - {fileID: 11400000, guid: ae5fb50a97101d6488c51863ae9b2eb6, type: 2}
+  - {fileID: 11400000, guid: 4b1100bf33dc4c74baa84352103f5e32, type: 2}
+  - {fileID: 11400000, guid: 72b52572646e5a94097f277507949642, type: 2}
+  - {fileID: 11400000, guid: d7ac5e0b2d0cb454ca9d7fc117b1d857, type: 2}
+  - {fileID: 11400000, guid: a8de88cf7e6116b41b4908cc0c2f64a6, type: 2}
+  - {fileID: 11400000, guid: 52a35f2e53e21734cbe5f17bc9c26a30, type: 2}
+  - {fileID: 11400000, guid: 688c56ff85bca39499b130f14b1aa04b, type: 2}

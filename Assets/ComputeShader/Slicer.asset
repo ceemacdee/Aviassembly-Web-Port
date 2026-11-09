@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!72 &7200000
+ComputeShader:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Slicer
+  variants:
+  - serializedVersion: 2
+    targetRenderer: 2
+    targetLevel: 0
+    kernels:
+    - serializedVersion: 3
+      name: CSMain
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 00000000
+        cbs:
+        - name: $Globals
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: Result
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: 2
+        - name: Input
+          generatedName:
+          bindPoint: 1
+          samplerBindPoint: -1
+          texDimension: 3
+        code: 44584243f70c38249d40e315cff4f8b8aa0762aa010000002c010000040000003000000040000000500000001c0100004953474e0800000000000000080000004f53474e08000000000000000800000053484558c400000050000500310000006a08000159000004468e200000000000010000009c18000400e0110000000000555500009c28000400e0110001000000555500005f0000023200020068000002010000009b0000040800000008000000010000003600000432001000000000004600020036000006c200100000000000068020000000000000000000a30000894201008043551500f200100000000000460e10000000000046ee110001000000a4000006f2e011000000000046050200460e1000000000003e00000153464930080000000008000000000000
+        threadGroupSize: 080000000800000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    constantBuffers:
+    - name: $Globals
+      byteSize: 16
+      params:
+      - name: layer
+        type: 1
+        offset: 0
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    resourcesResolved: 1
+    compilerPlatform: 0
+    needsReflectionData: 0
+  m_CompilationContext:
+    serializedVersion: 2
+    buildTarget:
+      platform: 0
+      subTarget: 0
+      extendedPlatform: 0
+      isEditor: 0
+    platformGroup: 0
+    sourceFileName:
+    source:
+    sourceFile:
+    kernels: []
+    kernelMacros: []
+    compilationFlags: 0
+    supportedAPIs: 0
+    useDxcAPIs: 0
+    neverUseDxcAPIs: 0
+    includeHash0: 0
+    includeHash1: 0
+    includeHash2: 0
+    includeHash3: 0
+  errors: []

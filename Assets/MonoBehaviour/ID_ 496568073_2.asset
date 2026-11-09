@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: 'ID: 496568073'
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 504.24243
+    y: 339.08167
+    width: 400
+    height: 414
+  questName: Stranded
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: People got stranded here after the earthquake. Deliver some food.
+  giveMessage: We could use even more food. Can you deliver it?
+  completeMessage: Thank you for the supplies. Here are [scrapReward] scraps for the effort.
+  researchPointReward: 30
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 7281446bdf53d194f9f200765cb7f6e8, type: 2}
+  - {fileID: 11400000, guid: 75c8d51847e1c8b47b57942b1c04893a, type: 2}

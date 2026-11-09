@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b08ca5bea4e46bb4085c18839a0ab4, type: 3}
+  m_Name: Rocks
+  m_EditorClassIdentifier:
+  mesh: {fileID: 4300000, guid: b377999092e05824b9fe544a17d30d83, type: 2}
+  meshVariants:
+  - {fileID: 4300000, guid: c0bb311192c48b64fb5ffb81f0df1bfe, type: 2}
+  - {fileID: 4300000, guid: 80bb57a41e2d7c24cb133f65765219d3, type: 2}
+  LODs: []
+  density: 65
+  minSize: 1
+  maxSize: 3.5
+  randomizationOffset: 0
+  clustering: 0
+  maxClusterSize: 3
+  clusterRadius: 4
+  minSlope: 0.07
+  maxSlope: 0.25
+  height: 4.5
+  radius: 4.5
+  center: 1
+  shade: 0.75

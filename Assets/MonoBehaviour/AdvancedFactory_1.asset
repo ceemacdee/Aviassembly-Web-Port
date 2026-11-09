@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: AdvancedFactory
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: 86f26f12c8a00fe48aadad869585a49d, type: 2}
+  airportName: Advanced Factory
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: b3b8bb54befe6c2468d8d5003e5e16eb, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 1
+  rotation: 205
+  footprint: {x: 0, y: 0}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 500
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: 400
+    y: -2500
+    width: 273
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 918ef177d55c9164e944725d2110f60f, type: 2}
+  - {fileID: 11400000, guid: 834aff9e8fc7eee46a378dd99fe205e8, type: 2}
+  - {fileID: 11400000, guid: 45b2809297b80824982bb231cde2bef7, type: 2}
+  - {fileID: 11400000, guid: d74186a5362becc4489a56932dbce239, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 918ef177d55c9164e944725d2110f60f, type: 2}
+  landingMessage:

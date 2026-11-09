@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: ExplosionSite
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: 5eee40d5e45e00e4bbad573430cc7505, type: 2}
+  airportName: Explosion Site
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes:
+  - {fileID: 11400000, guid: 4a87d5223588ea04f982072ca0f08e98, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 0
+  rotation: 0
+  footprint: {x: 500, y: 500}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 500
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: 700
+    y: -2200
+    width: 241
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 803cdd8203a4e5b478168f4fef5682bb, type: 2}
+  - {fileID: 11400000, guid: a4c468d501f7fae4f8c0a827aa3b5662, type: 2}
+  - {fileID: 11400000, guid: 0761711ec31926b40a594ad3f8c320bd, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 803cdd8203a4e5b478168f4fef5682bb, type: 2}
+  landingMessage:

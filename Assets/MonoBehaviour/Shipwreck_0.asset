@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: Shipwreck
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: a5d69b8b69685bf45a1dc57b81920d7b, type: 2}
+  airportName: Shipwreck
+  lockedCargo: 0
+  refuelAvailable: 0
+  cargoTypes:
+  - {fileID: 11400000, guid: 0653769ea56749f4fb803132181c5581, type: 2}
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 0
+  rotation: 0
+  footprint: {x: 0, y: 0}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 0
+  offshoreAirport: 0
+  editorWindow:
+    serializedVersion: 2
+    x: -900
+    y: -200
+    width: 181
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 4c2df53ff72ea234294ad988aae89cb3, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 4c2df53ff72ea234294ad988aae89cb3, type: 2}
+  landingMessage:

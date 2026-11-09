@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 272.9085
+    y: 44.48581
+    width: 400
+    height: 439
+  questName: Producing Medicine
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: High levels of radiations are detected and people are getting sick. Deliver the materials needed for an antidote.
+  giveMessage: We've detected high levels of radiation and people are getting sick. We are producing an antidote but we need resources. Can you help us?
+  completeMessage: Thank you for the supplies. Here are [scrapReward] scraps for the effort.
+  researchPointReward: 60
+  advancedReseachPointReward: 10
+  subQuests:
+  - {fileID: 11400000, guid: 02591904be5f50241bfd0427cd1ba302, type: 2}
+  - {fileID: 11400000, guid: 42dca62f8d225a745bb029db5da29ac0, type: 2}
+  - {fileID: 11400000, guid: a4cb717dc66b092469ff7511020ce8e3, type: 2}

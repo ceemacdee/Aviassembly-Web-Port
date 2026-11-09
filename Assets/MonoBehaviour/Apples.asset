@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637eaf4edf19e7487c27f21f393c1d89, type: 3}
+  m_Name: Apples
+  m_EditorClassIdentifier:
+  cargoName: Fruit
+  icon: {fileID: 2800000, guid: eecfe2039d74ca349b44933f72c398bb, type: 3}
+  basePrice: 35
+  weight: 0.2
+  cargoSpace: 20
+  fragile: 0
+  expires: 1
+  expirationTime: 70

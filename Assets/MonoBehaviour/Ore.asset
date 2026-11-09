@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637eaf4edf19e7487c27f21f393c1d89, type: 3}
+  m_Name: Ore
+  m_EditorClassIdentifier:
+  cargoName:
+  icon: {fileID: 2800000, guid: 33ac24b1f90e46e43b7632c35fe1b65c, type: 3}
+  basePrice: 70
+  weight: 4
+  cargoSpace: 50
+  fragile: 0
+  expires: 0
+  expirationTime: 0

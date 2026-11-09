@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 1756.3845
+    y: 448.10474
+    width: 400
+    height: 444
+  questName: Repairing ships
+  storyState: 0
+  followupQuest: {fileID: 11400000, guid: 305d645db73387c49b17de68fbae79b9, type: 2}
+  description: All fishing ships were destroyed by the earthquake. Help deliver the supplies for repairs.
+  giveMessage: All our fishing ships were destroyed by the earthquake. Can you help us get the materials to rebuild them?
+  completeMessage: Thank you for the supplies. Here are [scrapReward] scraps for the effort.
+  researchPointReward: 40
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 34c5ec8e48d1e07409814771bfa4deb5, type: 2}
+  - {fileID: 11400000, guid: 897d3dffa2e49884b8d3b320b6ac2b7a, type: 2}

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 1035.7672
+    y: -48.029205
+    width: 400
+    height: 479
+  questName: Sickness
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: The workers are getting sick, deliver the materials required to help them get better.
+  giveMessage: We've heard a large explosion. Since the explosion, our workers have started to get sick. Can you deliver some supplies to help our workers to get better?
+  completeMessage: Thank you for the supplies. Here are [scrapReward] scraps for the effort.
+  researchPointReward: 65
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 69eda588903d82245a8904ecaeaaffdc, type: 2}
+  - {fileID: 11400000, guid: 092a7b1f7a16c9444ae49627c83e1bf6, type: 2}
+  - {fileID: 11400000, guid: 6ba07ce95d3768444b9f9619c171409d, type: 2}

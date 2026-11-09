@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 1756.3489
+    y: 801.4433
+    width: 400
+    height: 444
+  questName: Repairs
+  storyState: 0
+  followupQuest: {fileID: 11400000, guid: 6c536b4832d10d04bb4e89a857b8259b, type: 2}
+  description: The earthquake damaged the ice packing plant. Deliver the materials required for repairs.
+  giveMessage: The earthquake damaged our ice packing plant. Can you help us get the materials for repairs?
+  completeMessage: Thank you for the supplies. Here are [scrapReward] scraps for the effort.
+  researchPointReward: 30
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 9c4cc711afd74c1408ad56c818aad00b, type: 2}
+  - {fileID: 11400000, guid: f8ed46ead7112a14e8932cd08f6fa8bf, type: 2}

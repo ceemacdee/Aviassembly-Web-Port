@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+  <title>{{{ PRODUCT_NAME }}}</title>
+  <style>
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #0b2a3f; }
+    #unity-canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; background: #0b2a3f; outline: none; }
+    #loader { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 18px; color: #e8eef2; font: 600 18px/1.3 system-ui, -apple-system, "Segoe UI", sans-serif; background: #0b2a3f; }
+    #loader .title { font-size: 34px; letter-spacing: 0.04em; }
+    #loader .bar { width: min(360px, 70vw); height: 10px; border-radius: 5px; background: rgba(255,255,255,0.15); overflow: hidden; }
+    #loader .fill { width: 0%; height: 100%; background: #c87b2c; transition: width 0.2s ease; }
+    #loader .hint { font-weight: 400; font-size: 14px; opacity: 0.7; }
+    #error { position: fixed; left: 16px; right: 16px; bottom: 16px; padding: 12px 16px; border-radius: 8px; display: none;
+      background: #7a1f1f; color: #fff; font: 14px/1.4 system-ui, sans-serif; white-space: pre-wrap; z-index: 10; }
+  </style>
+</head>
+<body>
+  <canvas id="unity-canvas" tabindex="-1"></canvas>
+  <div id="loader">
+    <div class="title">{{{ PRODUCT_NAME }}}</div>
+    <div class="bar"><div class="fill" id="loader-fill"></div></div>
+    <div class="hint" id="loader-hint">Loading…</div>
+  </div>
+  <div id="error"></div>
+  <script>
+    var canvas = document.querySelector("#unity-canvas");
+    // The game uses the right mouse button (camera, cancel), so suppress the browser context menu.
+    canvas.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+    canvas.addEventListener("mousedown", function () { canvas.focus(); });
+
+    function showError(message) {
+      var el = document.querySelector("#error");
+      el.textContent = message;
+      el.style.display = "block";
+    }
+
+    var buildUrl = "Build";
+    var config = {
+      arguments: [],
+      dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+      frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_THREADS
+      workerUrl: buildUrl + "/{{{ WORKER_FILENAME }}}",
+#endif
+#if USE_WASM
+      codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#endif
+#if MEMORY_FILENAME
+      memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+      symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+      productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+      productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+      showBanner: function (message, type) {
+        if (type === "error") showError(message); else console.log(message);
+      },
+      matchWebGLToCanvasSize: true,
+      devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2)
+    };
+
+    var script = document.createElement("script");
+    script.src = buildUrl + "/{{{ LOADER_FILENAME }}}";
+    script.onload = function () {
+      createUnityInstance(canvas, config, function (progress) {
+        document.querySelector("#loader-fill").style.width = Math.round(progress * 100) + "%";
+        if (progress >= 0.9) document.querySelector("#loader-hint").textContent = "Starting…";
+      }).then(function (unityInstance) {
+        window.unityInstance = unityInstance;
+        document.querySelector("#loader").style.display = "none";
+        canvas.focus();
+      }).catch(function (message) {
+        showError(String(message));
+      });
+    };
+    script.onerror = function () { showError("Could not load the game files. Serve this folder over HTTP (not file://)."); };
+    document.body.appendChild(script);
+  </script>
+</body>
+</html>

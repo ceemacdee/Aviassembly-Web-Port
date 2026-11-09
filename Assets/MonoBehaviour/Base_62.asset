@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0d2309f2e12e147e6fd0ae118264bf, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 270.01782
+    y: 189.11426
+    width: 400
+    height: 369
+  questName: The Explosion
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: Deliver [amount] [cargoType]
+  giveMessage: Please transport the dangerous radioactive material here.
+  completeMessage: 'Thank you so much for helping us out! The islands are safe again! '
+  researchPointReward: 75
+  advancedReseachPointReward: 50
+  cargoType: {fileID: 11400000, guid: c43c695e1c734d9409379a8ec0b8df72, type: 2}
+  amount: 1
+  rewardOffset: 500

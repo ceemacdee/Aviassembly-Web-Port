@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  questName: Supplying the prison
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: The prison hasn’t received supplies since the earthquake. They need you to deliver essential goods as soon as possible.
+  giveMessage: We've not received supplies since the earthquake. Can you deliver them?
+  completeMessage: Thank you for the effort! Here is a small reward.
+  researchPointReward: 5
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: afa8bb71d0d834041aed6db392f4b74e, type: 2}
+  - {fileID: 11400000, guid: d5dfe379016b3524c96a126526d1e596, type: 2}
+  - {fileID: 11400000, guid: 86fbd1fd170fbe745957aee6633c4880, type: 2}

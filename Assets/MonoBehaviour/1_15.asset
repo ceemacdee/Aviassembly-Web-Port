@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 1799.4597
+    y: 519.4226
+    width: 400
+    height: 434
+  questName: The Explosion
+  storyState: 0
+  followupQuest: {fileID: 11400000, guid: 8100ce20a3d59184f97ecd68de44258a, type: 2}
+  description: I need to help prepare the facility to store radioactive materials.
+  giveMessage: Turns out we’re going to need even more materials.
+  completeMessage: Thank you for the supplies. Here are [scrapReward] scraps for the effort.
+  researchPointReward: 60
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 6edb3778d75d3cd4ba9183f36cca468f, type: 2}
+  - {fileID: 11400000, guid: fec21679ad7dc744ebe12b0b693c2d1c, type: 2}
+  - {fileID: 11400000, guid: f93fecaba3a9b00499dd114cdc71fe95, type: 2}

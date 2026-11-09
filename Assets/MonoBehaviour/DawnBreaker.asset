@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: DawnBreaker
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: 5ca2c8e8d64169645908864e7fb21159, type: 2}
+  airportName: DawnBreaker
+  lockedCargo: 0
+  refuelAvailable: 0
+  cargoTypes: []
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 0
+  rotation: 0
+  footprint: {x: 0, y: 0}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 0
+  offshoreAirport: 1
+  editorWindow:
+    serializedVersion: 2
+    x: -400
+    y: -1400
+    width: 218
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 221f2700e01eec549b0b4b48bab6f331, type: 2}
+  - {fileID: 11400000, guid: 10980ab6a85eede4d81018e6e6eda490, type: 2}
+  - {fileID: 11400000, guid: 5a899daac1b212c4ba6dbf15b1714182, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 221f2700e01eec549b0b4b48bab6f331, type: 2}
+  landingMessage:

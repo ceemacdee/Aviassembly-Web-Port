@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f2f4bb9c431885425789cc9de331eb, type: 3}
+  m_Name: DesertContinentType
+  m_EditorClassIdentifier:
+  continentName: Desert
+  angleFromOrigin: 7
+  distanceFromOrigin: 9000
+  radius: 5676.752
+  terrainMaterial: {fileID: 2100000, guid: 16a5ccfee9a1a4f4d8a9c24c161f5db5, type: 2}
+  minHeight: -35
+  maxHeight: 80
+  surfaceDecorations:
+  - {fileID: 11400000, guid: 1cfcf3815e1773348beb56a4be53f095, type: 2}
+  - {fileID: 11400000, guid: cdf3ed3dcdf8d46499b08384e2fd90aa, type: 2}
+  - {fileID: 11400000, guid: e796a5c68ee966245a9fb721baf8b1ea, type: 2}
+  fogProfile: {fileID: 11400000, guid: 3323b23e10c079b478346839536eb7ba, type: 2}
+  backgroundMusic: {fileID: 8300000, guid: 1c0b83716f277b4459a955b06881989b, type: 3}
+  surfaceColor: {r: 0.7921569, g: 0.6745098, b: 0.4509804, a: 1}
+  temprature: 60
+  scrapAmount: 5
+  hintDistance: 10000
+  airports:
+  - {fileID: 11400000, guid: 768e88817ddd9064fbc5308ba82f5732, type: 2}
+  - {fileID: 11400000, guid: 0167daab601a76341b916be1c12bc65a, type: 2}
+  - {fileID: 11400000, guid: 9f461f968f39eda4fad345c754889401, type: 2}
+  - {fileID: 11400000, guid: da154d886ccf9b14e86a5d82cac88f98, type: 2}
+  - {fileID: 11400000, guid: 4c50bf51eb1eca940b788da56f808954, type: 2}
+  - {fileID: 11400000, guid: 701cc1472d3a2f1448141fb5734fa2a7, type: 2}
+  - {fileID: 11400000, guid: 2f46ba6fad3ca364fb0c9fa3ab02b11e, type: 2}

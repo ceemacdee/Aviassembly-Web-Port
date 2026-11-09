@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc27c8432013c9aff8508151ee7237, type: 3}
+  m_Name: OilTanker
+  m_EditorClassIdentifier:
+  airportPrefab: {fileID: 1709254077376921, guid: b06c485c672a28343900b504b27d749d, type: 2}
+  airportName: OilTanker
+  lockedCargo: 0
+  refuelAvailable: 1
+  cargoTypes: []
+  baseAirport: 0
+  initialSpawnAirport: 0
+  rotationOverride: 0
+  rotation: 0
+  footprint: {x: 0, y: 0}
+  treeSpawningFootprint: {x: 0, y: 0}
+  blendingDistance: 0
+  offshoreAirport: 1
+  editorWindow:
+    serializedVersion: 2
+    x: 800
+    y: -1900
+    width: 176
+    height: 100
+  quests:
+  - {fileID: 11400000, guid: 51ee12ead101b764ab9c3196aaff440b, type: 2}
+  - {fileID: 11400000, guid: f439d51be0d2e5640b945d7706666386, type: 2}
+  - {fileID: 11400000, guid: 53cd580bd8adbe64281852fd1f9a85e2, type: 2}
+  baseQuests:
+  - {fileID: 11400000, guid: 51ee12ead101b764ab9c3196aaff440b, type: 2}
+  landingMessage:

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0d2309f2e12e147e6fd0ae118264bf, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 175.08136
+    y: 293.62207
+    width: 400
+    height: 414
+  questName: Helping the farm
+  storyState: 0
+  followupQuest: {fileID: 0}
+  description: The farm got damaged by the earthquake. They need wood for repairs. Get <b><color=black>[amount] [cargoType]</color></b> from the lumber camp and deliver it to the farm.
+  giveMessage: The earthquake has caused more damage than I tought. Can you bring us <b>[amount] more lumber</b> to repair the farm?
+  completeMessage:
+  researchPointReward: 0
+  advancedReseachPointReward: 0
+  cargoType: {fileID: 11400000, guid: e14c7dece89a72144a7395e253e38d30, type: 2}
+  amount: 3
+  rewardOffset: 0

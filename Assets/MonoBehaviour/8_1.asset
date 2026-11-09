@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: 8
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 112.44165
+    y: 102.104706
+    width: 400
+    height: 429
+  questName: Delivering Batteries
+  storyState: 1
+  followupQuest: {fileID: 11400000, guid: 1039dd555f6cb994a80652945df2246d, type: 2}
+  description: Deliver more batteries to the hospital.
+  giveMessage: 'We could use even more batteries to keep the hospital going. Can you deliver <b>4 small batteries</b> and <b>2 big batteries</b>? '
+  completeMessage: Thank you for all the batteries. Here is <b>[scrapReward]</b> scrap for the effort.
+  researchPointReward: 15
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 18e68350593a40b45bf6728d04d853a0, type: 2}
+  - {fileID: 11400000, guid: 1adcd08b1aa5b064a94c2dd2ac1fbf94, type: 2}

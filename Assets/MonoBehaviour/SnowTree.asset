@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b08ca5bea4e46bb4085c18839a0ab4, type: 3}
+  m_Name: SnowTree
+  m_EditorClassIdentifier:
+  mesh: {fileID: 4300000, guid: 9b8e45fb5aec53d4b90995eab83378e2, type: 2}
+  meshVariants:
+  - {fileID: 4300000, guid: 9b8e45fb5aec53d4b90995eab83378e2, type: 2}
+  - {fileID: 4300000, guid: c1bc5788204b0724caa5117ce5cb307e, type: 2}
+  LODs: []
+  density: 60
+  minSize: 1
+  maxSize: 2
+  randomizationOffset: 0
+  clustering: 0
+  maxClusterSize: 0
+  clusterRadius: 0
+  minSlope: 0
+  maxSlope: 0.07
+  height: 20
+  radius: 2.65
+  center: 0
+  shade: 0.95

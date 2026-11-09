@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b76829854032020a8eb1c12582e511, type: 3}
+  m_Name: 'ID: 642765212'
+  m_EditorClassIdentifier:
+  nodeWindow:
+    serializedVersion: 2
+    x: 1472.4252
+    y: 370.27737
+    width: 400
+    height: 444
+  questName: Deliver Materials
+  storyState: 0
+  followupQuest: {fileID: 11400000, guid: 9f5e816828b7a4446a98f378958ea257, type: 2}
+  description: The factory's deliveries are disrupted due to the earthquake. Deliver the required materials to keep the factory running.
+  giveMessage: The earthquake disrupted our deliveries. Can you help us deliver the materials required to keep the factory running?
+  completeMessage: Thank you for the supplies. Here are [scrapReward] scraps for the effort.
+  researchPointReward: 15
+  advancedReseachPointReward: 0
+  subQuests:
+  - {fileID: 11400000, guid: 472fd09fd6bb16247858c7ad3dcc1ce9, type: 2}
+  - {fileID: 11400000, guid: e821034f83ecdaf44aae4fb773b177d2, type: 2}
