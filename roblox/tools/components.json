@@ -1,0 +1,569 @@
+{
+ "TerrainGenerationManager": [
+  "Menu.unity",
+  {
+   "resolutionX": 75,
+   "resolutionY": 75,
+   "minHeight": -82.5,
+   "maxHeight": 167.5,
+   "noiceScale": 0.2,
+   "octaves": 7,
+   "continentFalloff": {
+    "serializedVersion": 2,
+    "m_Curve": [
+     {
+      "serializedVersion": 3,
+      "time": 0,
+      "value": 0,
+      "inSlope": 1,
+      "outSlope": 1,
+      "tangentMode": 0,
+      "weightedMode": 0,
+      "inWeight": 0,
+      "outWeight": 0
+     },
+     {
+      "serializedVersion": 3,
+      "time": 1,
+      "value": 1,
+      "inSlope": 1,
+      "outSlope": 1,
+      "tangentMode": 0,
+      "weightedMode": 0,
+      "inWeight": 0,
+      "outWeight": 0
+     }
+    ],
+    "m_PreInfinity": 2,
+    "m_PostInfinity": 2,
+    "m_RotationOrder": 4
+   },
+   "useContinents": 0,
+   "chunkSize": 1000,
+   "menuTerrain": 1,
+   "defaultMaterial": {
+    "fileID": 0
+   },
+   "defaultSurfaceDecorations": []
+  }
+ ],
+ "StoryManager": [
+  "Flying.unity",
+  {
+   "mysteriousMessages": [
+    "Static... can you hear me? Signal lost... adjusting...",
+    "Error... strange... unidentified pattern... noise...",
+    "Signal breaking... something\u2019s wrong... decoding...",
+    "Frequency strange... off readings..."
+   ],
+   "mysteriousMessages2": [
+    "not...natural...quake...",
+    "quake...decay...labs...critical...unstable...",
+    "Core breach... dangerous levels... evacuate"
+   ],
+   "mysteriousMessages3": [
+    "explosion...reactor...r...r...radioactive...",
+    "No one left... explosion... instability... danger!",
+    "radioactive...reaction...leak...dangerous"
+   ],
+   "finalMessage": "The earthquake you felt was not a natural earthquake. It was the power plant in the desert exploding! We are in desperate need of your help. I will send you the exact coordinates of the explosion site.",
+   "mysteriousMessagesInterval": 60,
+   "mysteriousMessagesIntervalIncrease": 100,
+   "radioTower": {
+    "fileID": 11400000,
+    "guid": "92d05d2455b172246a4b094325f7b86e",
+    "type": 2
+   },
+   "researchFacility": {
+    "fileID": 11400000,
+    "guid": "8562e4de57337fc4084642c3f58b3ed0",
+    "type": 2
+   },
+   "undergroundStorage": {
+    "fileID": 11400000,
+    "guid": "c4dd7eb26d7b54d48a90a0b8e1b97448",
+    "type": 2
+   },
+   "explosionSite": {
+    "fileID": 11400000,
+    "guid": "7cd47637adca0f344b2daf0937888db2",
+    "type": 2
+   },
+   "earthQuake": 0,
+   "cameraController": {
+    "fileID": 2240
+   },
+   "earthQuackeAudio": {
+    "fileID": 600
+   },
+   "flyingUIController": {
+    "fileID": 1950
+   },
+   "MysterySound": {
+    "fileID": 11400000,
+    "guid": "af03fa23f8995cb42b38f9daae893622",
+    "type": 2
+   },
+   "earthquakeParticle": {
+    "fileID": 605
+   },
+   "endCutscene": {
+    "fileID": 1860
+   },
+   "postEarthQuakeSoundtrack": {
+    "fileID": 8300000,
+    "guid": "1bb131d3ead1bbd42ac3c72ef5e65ca4",
+    "type": 3
+   },
+   "postFinalMessageSoundtrack": {
+    "fileID": 8300000,
+    "guid": "0a56c6950afc04c49b285fd30d2bc47c",
+    "type": 3
+   },
+   "finalSequenceSoundtrack": {
+    "fileID": 8300000,
+    "guid": "1f42629d3a4d93848bffc6651a52edde",
+    "type": 3
+   }
+  }
+ ],
+ "ChunckManager": [
+  "Flying.unity",
+  {
+   "chunkPrefab": {
+    "fileID": 1709254077376921,
+    "guid": "f51458e5bedc68a4e9632982b637f9a1",
+    "type": 2
+   },
+   "cameraTransform": {
+    "fileID": 581
+   },
+   "chunkSize": 1000,
+   "chunkSpawnRadius": 5
+  }
+ ],
+ "CameraController": [
+  "Flying.unity",
+  {
+   "targetObject": {
+    "fileID": 0
+   },
+   "flyingUIController": {
+    "fileID": 1950
+   },
+   "offset": {
+    "x": 0,
+    "y": 1.5,
+    "z": 3
+   },
+   "ySmoothTime": 1,
+   "yawSmoothTime": 0.3,
+   "refrenceSpeed": 300,
+   "maxDistanceOffset": 5,
+   "rotation": 0,
+   "explosionZoomSpeed": 20,
+   "maxHeightOffset": 0.35,
+   "cameraMode": 0,
+   "zoomSensitivity": 0.5,
+   "zoomSpeed": 1,
+   "keyboardRotationSensitivity": 15,
+   "firstPersonCameraSensitivity": 2,
+   "firstPersonCameraSpeed": 20,
+   "minFov": 65,
+   "maxFov": 100,
+   "maxFovRefrenceSpeed": 500,
+   "shake": 0,
+   "shakeAmount": 0.5,
+   "shakeSpeed": 10
+  }
+ ],
+ "ScrapSpawner": [
+  "Game.unity",
+  {
+   "scrapPrefab": {
+    "fileID": 1709254077376921,
+    "guid": "9ce318846638e9d49ad45d5de065a8bc",
+    "type": 2
+   },
+   "highlighterPrefab": {
+    "fileID": 1709254077376921,
+    "guid": "39e0a413669a27e4a83eb7d1d72a063a",
+    "type": 2
+   },
+   "scapsPerContinet": 5,
+   "scrapIcon": {
+    "fileID": 2800000,
+    "guid": "8b20c52bc5eb18740ba1815fe3b70ddc",
+    "type": 3
+   },
+   "scrapPickupSound": {
+    "fileID": 11400000,
+    "guid": "7b8481686f61de140828ae17676129d1",
+    "type": 2
+   }
+  }
+ ],
+ "FogOfWar": [
+  "Game.unity",
+  {
+   "partitionSize": 1000,
+   "currentPlayerPartition": {
+    "x": 0,
+    "y": 0
+   },
+   "rewardText": {
+    "fileID": 0
+   },
+   "rewardSound": {
+    "fileID": 11400000,
+    "guid": "7b8481686f61de140828ae17676129d1",
+    "type": 2
+   }
+  }
+ ],
+ "AutoSave": [
+  "Game.unity",
+  {
+   "intervalInMinutes": 2
+  }
+ ],
+ "QuestGenerator": [
+  "Game.unity",
+  {}
+ ],
+ "ContinentManager": [
+  "Game.unity",
+  {
+   "continentRadius": 10000,
+   "distanceBetweenContinents": 10000,
+   "continentHighlighterPrefab": {
+    "fileID": 1709254077376921,
+    "guid": "40eb2b4ab64670e40ac32617c5de1143",
+    "type": 2
+   },
+   "worldAsset": {
+    "fileID": 0
+   },
+   "allContinentTypes": [
+    {
+     "fileID": 11400000,
+     "guid": "7215d692c4ec04343b10577395d7ec39",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "89ed61c40e325b542bb0820ce0803b92",
+     "type": 2
+    }
+   ],
+   "defaultContinentType": {
+    "fileID": 11400000,
+    "guid": "b6be2aa5373126a49932b6c1d58cf221",
+    "type": 2
+   },
+   "debugMode": 0
+  }
+ ],
+ "CargoInventory": [
+  "Game.unity",
+  {
+   "glassBreaking": {
+    "fileID": 11400000,
+    "guid": "4777bacce2f020b4eacbcdba2c894185",
+    "type": 2
+   },
+   "addItem": {
+    "fileID": 11400000,
+    "guid": "4cad61bdd9cd351429c9c2c6f16bf0cf",
+    "type": 2
+   },
+   "breakageCooldown": 7,
+   "minFragileBreakTreshhold": 6,
+   "maxFragileBreakTreshhold": 25
+  }
+ ],
+ "AirportManager": [
+  "Game.unity",
+  {
+   "allCargoTypes": [
+    {
+     "fileID": 11400000,
+     "guid": "57dbbb7a53c358c41ba94f6c871297d2",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "01961e174d5b1ce4cb581302c0004221",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "bad0ebdefb59dfa478e2e6b93f4cbbff",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "b769cae7f84140f4e850fc334d1f2817",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "f35e0bd2af285ea468d90250fad81f18",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "c8eea8f408655af41b5b7dedf6dd14f9",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "e8a87fbe5e53e244fa3262589f4bcf5f",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "4f693ae98d5b3884c8bcdfeae7936025",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "dc7fb131b216497498aaa90a29930a46",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "08a31925bfcd1704c84312c06ce845c9",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "1591aebacdc0baa41834e39641add475",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "fd2c0994f503ddc42972f25d03def8d7",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "4e8792da43c90a842aa6749826098eaa",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "4175f7982635e6840b71975a9b5ccbf2",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "61a3d0ae2448e5640bea1a2bf67e91db",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "c43c695e1c734d9409379a8ec0b8df72",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "dc2581a3c1593fe4984de54ec4410cfb",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "e6b0afed1d9c6f84382b60c9d600cd21",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "ff69fb47b220b3b42a8ce773bc6af206",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "f203ae81dccbcae4f8df2d23748e8bbc",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "ca43728a8e336d042a616dcb2bdb85dd",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "9a28d1b2bc5f23145bada55ef9b4bf1e",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "849e3d8598417634f8a988d06f04db35",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "95228fb26ee06ef4b89eb3331f1c254c",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "a72ed462a657e3a4199c41ef233d6796",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "c5a1d74f5e5c1ab4a8526eb268a9e0a8",
+     "type": 2
+    },
+    {
+     "fileID": 11400000,
+     "guid": "81e39b5a8fc5c6543a55306ba4097e25",
+     "type": 2
+    }
+   ],
+   "airportSpawner": {
+    "fileID": 0
+   },
+   "airportHighlighterPrefab": {
+    "fileID": 1709254077376921,
+    "guid": "5ab970d38062d7c44a384cb0805e9b34",
+    "type": 2
+   }
+  }
+ ],
+ "MoneyManager": [
+  "Game.unity",
+  {
+   "money": 650
+  }
+ ],
+ "PlaneController": [
+  "Game.unity",
+  {
+   "controlHandicap": 0,
+   "rollControlSurfaceLift": 0,
+   "pitchControlSurfaceLift": 0,
+   "explosionSound": {
+    "fileID": 11400000,
+    "guid": "02304c477b5051c42bc1c31630725dfd",
+    "type": 2
+   },
+   "explosionParticlePrefab": {
+    "fileID": 1709254077376921,
+    "guid": "510b48b6092e7fd4d8b341e52916bfe9",
+    "type": 2
+   },
+   "maxTriggerVelocity": 20,
+   "minTriggerVelocity": 2,
+   "airTraction": 0.5,
+   "stablisationForce": 15,
+   "helicopterStabilisationForce": 5,
+   "landingHelper": 0.5,
+   "rollTurnForce": 10,
+   "rollRestoreForce": 6,
+   "autoSteer": 1,
+   "newSteering": 0,
+   "rollForce": 3.5,
+   "pitchForce": 3.5,
+   "yawForce": 2,
+   "throttleSpeed": 1,
+   "rudderSmoothTime": 0.5
+  }
+ ],
+ "PlaneContainer": [
+  "Game.unity",
+  {
+   "helicopter": 0,
+   "yawDrag": 0,
+   "rollDrag": 0,
+   "pitchDrag": 0.005,
+   "verticalLiniarDrag": 0.008,
+   "angleDragMultiplier": 2,
+   "liftSymmetry": 0.1,
+   "thrustSymmetry": 0.1,
+   "gravityForce": 17,
+   "planeGravityMultiplier": 1.5,
+   "helicopterGravityMultiplier": 1.5,
+   "liftMultiplier": 0,
+   "groundedCheckLayerMask": {
+    "serializedVersion": 2,
+    "m_Bits": 64
+   },
+   "maxCGShift": 0.5,
+   "fuelWeight": 0.4,
+   "planeParts": [],
+   "fuel": 0,
+   "fuelCapacity": 0,
+   "refrenceFuelCapacity": 0,
+   "electricity": 0,
+   "electricityStorageCapacity": 0,
+   "refrenceElectricityStorageCapacity": 0,
+   "spawnPoint": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "airbreakDrag": 0,
+   "currentLift": 0
+  }
+ ],
+ "ResearchManager": [
+  "Game.unity",
+  {
+   "researchPoints": 0,
+   "advancedResearchPoints": 0,
+   "reward": {
+    "fileID": 11400000,
+    "guid": "408a17e4f8ad75c44aa5fdfff8e0e7ea",
+    "type": 2
+   },
+   "researchedItem": 0,
+   "researchTree": {
+    "fileID": 11400000,
+    "guid": "7e636bb9ffd2a6542a519c1d45a1a487",
+    "type": 2
+   },
+   "unlockedParts": []
+  }
+ ],
+ "GameManager": [
+  "Persistent.unity",
+  {
+   "fader": {
+    "fileID": 0
+   },
+   "graphicsSettings": {
+    "targetDrawDistance": 0,
+    "drawDistance": 3500,
+    "shadows": 0,
+    "vSync": 0,
+    "SSAO": 1
+   },
+   "currentSaveFile": null,
+   "planePosistion": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "planeRotatation": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "w": 0
+   },
+   "inMenu": 0,
+   "menuIntroPlayed": 0,
+   "modalsOpen": 0,
+   "autoSteer": 0,
+   "autoSave": 0,
+   "raceEnabled": 0,
+   "unlockRaces": 0,
+   "clockVolume": 0,
+   "gameModeData": {
+    "fileID": 0
+   },
+   "savedGameMode": 0
+  }
+ ]
+}
