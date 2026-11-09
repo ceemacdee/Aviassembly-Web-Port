@@ -77,3 +77,34 @@ for i = 1, 60 * 30 do
 end
 print("took off at", took)
 hangar:destroy()
+
+-- paint: click the body in paint mode
+local hangar2 = Hangar.new(campaign, design, origin, { fly = function() end, menu = function() end, designs = function() end, changed = function() end })
+hangar2:setMode("paint")
+hangar2.paintColor = { 0.86, 0.29, 0.17 }
+aim(bodyCenter + Vector3.new(0, 6, 0), bodyCenter)
+hangar2:paintUnderMouse()
+print("painted body colour:", design:get(body.id).color and table.concat(design:get(body.id).color, ","))
+-- decals: place one on the wing (mirror mode makes two)
+hangar2:setMode("decal")
+hangar2.decalImage = "Star"
+local wingCenter = origin * wing.cf.Position
+aim(wingCenter + Vector3.new(0, 6, 0.3), wingCenter + Vector3.new(0, 0, 0.3))
+hangar2:placeDecal()
+print("decals placed:", #design.decals, "visuals:", #hangar2.decalVisuals)
+local round = PlaneDesign.deserialize(design:serialize())
+print("decals after save/load:", #round.decals)
+hangar2:destroy()
+
+-- rotation joint carrying an engine: J turns the thrust direction
+local d2 = PlaneDesign.new()
+d2:add({ name = "Body", cf = CFrame.new(), flip = false, fuselage = require(shared_node("src/shared/Fuselage")).default() })
+d2:add({ name = "RotationJoint", cf = CFrame.new(0, 0.8, 0), flip = false, parent = 1 })
+d2:add({ name = "SmallPropEngine", cf = CFrame.new(0, 1.6, 0), flip = false, parent = 2 })
+local f2 = Flight.new(d2, CFrame.new(0, 50, 0), {})
+local function engineDir() return f2:dirU(f2:engineDirLocal(f2.engines[1])) end
+local before = engineDir()
+local inp = { pitch = 0, roll = 0, yaw = 0, throttle = 0, space = false, retractPressed = false, decouplePressed = false, rotator = 1, autoSteer = true }
+for _ = 1, 30 do f2:step(1 / 60, inp) end
+local after = engineDir()
+print(("rotators=%d moving welds=%d angle=%.1f° engine dir before=%s after=%s"):format(#f2.rotators, #f2.movingWelds, f2.rotators[1] and f2.rotators[1].angle or -1, tostring(before), tostring(after)))

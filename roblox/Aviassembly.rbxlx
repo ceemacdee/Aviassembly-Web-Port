@@ -24,9 +24,14 @@
     </Item>
     <Item class="Folder" referent="4">
       <Properties>
+        <string name="Name">AviassemblySounds</string>
+      </Properties>
+    </Item>
+    <Item class="Folder" referent="5">
+      <Properties>
         <string name="Name">Shared</string>
       </Properties>
-      <Item class="ModuleScript" referent="5">
+      <Item class="ModuleScript" referent="6">
         <Properties>
           <string name="Name">Campaign</string>
           <string name="Source"><![CDATA[--!strict
@@ -770,9 +775,7 @@ function Campaign:updateStory(ctx: StoryContext)
 	-- End of the campaign: all waste storage jobs done.
 	if self.storage and self:allQuestsCompleted(self.storage) and not s.playedEndCutscene and not ctx.messageOpen then
 		s.playedEndCutscene = true
-		self.onMessage("You did it! The radioactive waste is safely stored and the islands are saved. Thank you, pilot!", "Mystery")
-		self.onMessage("Airports will keep offering delivery jobs. Keep flying!", "Misc")
-		result.finished = true
+		result.finished = true -- the client plays the ending cutscene (EndCutscene)
 	end
 
 	-- Mysterious radio messages.
@@ -917,11 +920,11 @@ return Campaign
 ]]></string>
         </Properties>
       </Item>
-      <Item class="Folder" referent="6">
+      <Item class="Folder" referent="7">
         <Properties>
           <string name="Name">Data</string>
         </Properties>
-        <Item class="ModuleScript" referent="7">
+        <Item class="ModuleScript" referent="8">
           <Properties>
             <string name="Name">Constants</string>
             <string name="Source"><![CDATA[-- Tuning values copied from the Unity scenes (PlaneContainer, PlaneController, StoryManager, ...).
@@ -1050,7 +1053,607 @@ return {
 ]]></string>
           </Properties>
         </Item>
-        <Item class="ModuleScript" referent="8">
+        <Item class="ModuleScript" referent="9">
+          <Properties>
+            <string name="Name">Decorations</string>
+            <string name="Source"><![CDATA[-- Decal images (60) and the trees/rocks scattered on each continent (SurfaceDecoration).
+-- Generated from the Unity project by the Aviassembly Roblox exporter. Positions are in studs (1 stud = 1 Unity metre)
+-- and converted to Roblox axes (Unity X is mirrored). Do not edit by hand; re-run the exporter instead.
+return {
+	decals = {
+		{
+			id = "Circle_0",
+			mesh = "Decal_Circle_0",
+		},
+		{
+			id = "Triangle",
+			mesh = "Decal_Triangle",
+		},
+		{
+			id = "Rect",
+			mesh = "Decal_Rect",
+		},
+		{
+			id = "Hexagon",
+			mesh = "Decal_Hexagon",
+		},
+		{
+			id = "TriangleRightAngle",
+			mesh = "Decal_TriangleRightAngle",
+		},
+		{
+			id = "Cresent",
+			mesh = "Decal_Cresent",
+		},
+		{
+			id = "Diamond",
+			mesh = "Decal_Diamond",
+		},
+		{
+			id = "Trapzium",
+			mesh = "Decal_Trapzium",
+		},
+		{
+			id = "HalfCircle",
+			mesh = "Decal_HalfCircle",
+		},
+		{
+			id = "Star",
+			mesh = "Decal_Star",
+		},
+		{
+			id = "CircleOutline",
+			mesh = "Decal_CircleOutline",
+		},
+		{
+			id = "TriangleOutline",
+			mesh = "Decal_TriangleOutline",
+		},
+		{
+			id = "RectOutline",
+			mesh = "Decal_RectOutline",
+		},
+		{
+			id = "HexagonOutline",
+			mesh = "Decal_HexagonOutline",
+		},
+		{
+			id = "DiamondOutline",
+			mesh = "Decal_DiamondOutline",
+		},
+		{
+			id = "StarOutline",
+			mesh = "Decal_StarOutline",
+		},
+		{
+			id = "Electricity",
+			mesh = "Decal_Electricity",
+		},
+		{
+			id = "Arrow",
+			mesh = "Decal_Arrow",
+		},
+		{
+			id = "Alert",
+			mesh = "Decal_Alert",
+		},
+		{
+			id = "Temprature",
+			mesh = "Decal_Temprature",
+		},
+		{
+			id = "Hearth",
+			mesh = "Decal_Hearth",
+		},
+		{
+			id = "Star5Point",
+			mesh = "Decal_Star5Point",
+		},
+		{
+			id = "Wing 1",
+			mesh = "Decal_Wing_1",
+		},
+		{
+			id = "Wing",
+			mesh = "Decal_Wing",
+		},
+		{
+			id = "0",
+			mesh = "Decal_0",
+		},
+		{
+			id = "1",
+			mesh = "Decal_1",
+		},
+		{
+			id = "2",
+			mesh = "Decal_2",
+		},
+		{
+			id = "3",
+			mesh = "Decal_3",
+		},
+		{
+			id = "4",
+			mesh = "Decal_4",
+		},
+		{
+			id = "5",
+			mesh = "Decal_5",
+		},
+		{
+			id = "6",
+			mesh = "Decal_6",
+		},
+		{
+			id = "7",
+			mesh = "Decal_7",
+		},
+		{
+			id = "8",
+			mesh = "Decal_8",
+		},
+		{
+			id = "9",
+			mesh = "Decal_9",
+		},
+		{
+			id = "A",
+			mesh = "Decal_A",
+		},
+		{
+			id = "B",
+			mesh = "Decal_B",
+		},
+		{
+			id = "C",
+			mesh = "Decal_C",
+		},
+		{
+			id = "D",
+			mesh = "Decal_D",
+		},
+		{
+			id = "E",
+			mesh = "Decal_E",
+		},
+		{
+			id = "F",
+			mesh = "Decal_F",
+		},
+		{
+			id = "G",
+			mesh = "Decal_G",
+		},
+		{
+			id = "H",
+			mesh = "Decal_H",
+		},
+		{
+			id = "I",
+			mesh = "Decal_I",
+		},
+		{
+			id = "J",
+			mesh = "Decal_J",
+		},
+		{
+			id = "K",
+			mesh = "Decal_K",
+		},
+		{
+			id = "L",
+			mesh = "Decal_L",
+		},
+		{
+			id = "M",
+			mesh = "Decal_M",
+		},
+		{
+			id = "N",
+			mesh = "Decal_N",
+		},
+		{
+			id = "O",
+			mesh = "Decal_O",
+		},
+		{
+			id = "P",
+			mesh = "Decal_P",
+		},
+		{
+			id = "Q",
+			mesh = "Decal_Q",
+		},
+		{
+			id = "R",
+			mesh = "Decal_R",
+		},
+		{
+			id = "S",
+			mesh = "Decal_S",
+		},
+		{
+			id = "T",
+			mesh = "Decal_T",
+		},
+		{
+			id = "U",
+			mesh = "Decal_U",
+		},
+		{
+			id = "V",
+			mesh = "Decal_V",
+		},
+		{
+			id = "W",
+			mesh = "Decal_W",
+		},
+		{
+			id = "X",
+			mesh = "Decal_X",
+		},
+		{
+			id = "Y",
+			mesh = "Decal_Y",
+		},
+		{
+			id = "Z",
+			mesh = "Decal_Z",
+		},
+	},
+	trees = {
+		Tree_PineTree01 = {
+			{
+				name = "Tree_PineTree01",
+				center = {0.2369, 8.627, 0.1466},
+				size = {13.8819, 32.7766, 14.0275},
+				color = {1, 1, 1},
+				textured = true,
+			},
+		},
+		Tree_PineTree02 = {
+			{
+				name = "Tree_PineTree02",
+				center = {0.2369, 8.627, 0.1466},
+				size = {13.8819, 32.7766, 14.0275},
+				color = {1, 1, 1},
+				textured = true,
+			},
+		},
+		Tree_PineTree03 = {
+			{
+				name = "Tree_PineTree03",
+				center = {0.2369, 8.627, 0.1466},
+				size = {13.8819, 32.7766, 14.0275},
+				color = {1, 1, 1},
+				textured = true,
+			},
+		},
+		Tree_Icosphere = {
+			{
+				name = "Tree_Icosphere",
+				center = {-0.0205, -0.1981, -0.143},
+				size = {13.5754, 12.0988, 13.3242},
+				color = {1, 1, 1},
+				textured = true,
+			},
+		},
+		Tree_Cylinder = {
+			{
+				name = "Tree_Cylinder",
+				center = {-0.497, 10.0, 1.283},
+				size = {8.6106, 20.0, 7.577},
+				color = {1, 1, 1},
+				textured = true,
+			},
+		},
+		Tree_Cylinder_002 = {
+			{
+				name = "Tree_Cylinder_002",
+				center = {0.4772, 5.3288, 0.8221},
+				size = {4.1058, 10.6576, 4.8442},
+				color = {1, 1, 1},
+				textured = true,
+			},
+		},
+		Tree_Cylinder_003 = {
+			{
+				name = "Tree_Cylinder_003",
+				center = {-0.0872, 14.0182, -0.8531},
+				size = {25.3229, 28.2184, 24.6929},
+				color = {1, 1, 1},
+				textured = true,
+			},
+		},
+		Tree_SnowTree = {
+			{
+				name = "Tree_SnowTree",
+				center = {0.2369, 8.627, 0.1466},
+				size = {13.8819, 32.7766, 14.0275},
+				color = {1, 1, 1},
+				textured = true,
+			},
+		},
+		Tree_SnowTree02 = {
+			{
+				name = "Tree_SnowTree02",
+				center = {0.2369, 8.627, 0.1466},
+				size = {13.8819, 32.7766, 14.0275},
+				color = {1, 1, 1},
+				textured = true,
+			},
+		},
+	},
+	continents = {
+		Spawn = {
+			{
+				name = "Tree",
+				variants = {
+					"Tree_PineTree01",
+					"Tree_PineTree02",
+					"Tree_PineTree03",
+				},
+				density = 40,
+				minSize = 1,
+				maxSize = 2,
+				randomizationOffset = 0,
+				clustering = false,
+				maxClusterSize = 20,
+				minSlope = 0,
+				maxSlope = 0.05,
+				height = 20,
+				radius = 2.65,
+				center = false,
+				shade = 0.95,
+			},
+			{
+				name = "Rocks",
+				variants = {
+					"Tree_Icosphere",
+					"Tree_Icosphere",
+				},
+				density = 65,
+				minSize = 1,
+				maxSize = 3.5,
+				randomizationOffset = 0,
+				clustering = false,
+				maxClusterSize = 3,
+				minSlope = 0.07,
+				maxSlope = 0.25,
+				height = 4.5,
+				radius = 4.5,
+				center = true,
+				shade = 0.75,
+			},
+			{
+				name = "Pebbles",
+				variants = {
+					"Tree_Icosphere",
+					"Tree_Icosphere",
+				},
+				density = 75,
+				minSize = 0.1,
+				maxSize = 0.5,
+				randomizationOffset = 30,
+				clustering = false,
+				maxClusterSize = 3,
+				minSlope = 0,
+				maxSlope = 0.1,
+				height = 4.5,
+				radius = 4.5,
+				center = true,
+				shade = 0.75,
+			},
+		},
+		Desert = {
+			{
+				name = "Cactus",
+				variants = {
+					"Tree_Cylinder",
+					"Tree_Cylinder_002",
+					"Tree_Cylinder",
+				},
+				density = 200,
+				minSize = 1,
+				maxSize = 2,
+				randomizationOffset = 0,
+				clustering = false,
+				maxClusterSize = 0,
+				minSlope = 0,
+				maxSlope = 0.07,
+				height = 11,
+				radius = 2.65,
+				center = false,
+				shade = 0.95,
+			},
+			{
+				name = "Palm",
+				variants = {
+					"Tree_Cylinder_003",
+				},
+				density = 400,
+				minSize = 1,
+				maxSize = 2,
+				randomizationOffset = 0,
+				clustering = true,
+				maxClusterSize = 5,
+				minSlope = 0,
+				maxSlope = 0.07,
+				height = 24,
+				radius = 2.65,
+				center = false,
+				shade = 0.95,
+			},
+			{
+				name = "DeadTree",
+				variants = {
+					"Tree_Cylinder_003",
+				},
+				density = 800,
+				minSize = 1,
+				maxSize = 2,
+				randomizationOffset = 0,
+				clustering = false,
+				maxClusterSize = 0,
+				minSlope = 0,
+				maxSlope = 0.07,
+				height = 24,
+				radius = 2.65,
+				center = false,
+				shade = 0.95,
+			},
+			{
+				name = "Pebbles",
+				variants = {
+					"Tree_Icosphere",
+					"Tree_Icosphere",
+				},
+				density = 75,
+				minSize = 0.1,
+				maxSize = 0.5,
+				randomizationOffset = 30,
+				clustering = false,
+				maxClusterSize = 3,
+				minSlope = 0,
+				maxSlope = 0.1,
+				height = 4.5,
+				radius = 4.5,
+				center = true,
+				shade = 0.75,
+			},
+		},
+		Snow = {
+			{
+				name = "SnowTree",
+				variants = {
+					"Tree_SnowTree",
+					"Tree_SnowTree02",
+				},
+				density = 60,
+				minSize = 1,
+				maxSize = 2,
+				randomizationOffset = 0,
+				clustering = false,
+				maxClusterSize = 0,
+				minSlope = 0,
+				maxSlope = 0.07,
+				height = 20,
+				radius = 2.65,
+				center = false,
+				shade = 0.95,
+			},
+			{
+				name = "Rocks",
+				variants = {
+					"Tree_Icosphere",
+					"Tree_Icosphere",
+				},
+				density = 65,
+				minSize = 1,
+				maxSize = 3.5,
+				randomizationOffset = 0,
+				clustering = false,
+				maxClusterSize = 3,
+				minSlope = 0.07,
+				maxSlope = 0.25,
+				height = 4.5,
+				radius = 4.5,
+				center = true,
+				shade = 0.75,
+			},
+			{
+				name = "Pebbles",
+				variants = {
+					"Tree_Icosphere",
+					"Tree_Icosphere",
+				},
+				density = 75,
+				minSize = 0.1,
+				maxSize = 0.5,
+				randomizationOffset = 30,
+				clustering = false,
+				maxClusterSize = 3,
+				minSlope = 0,
+				maxSlope = 0.1,
+				height = 4.5,
+				radius = 4.5,
+				center = true,
+				shade = 0.75,
+			},
+		},
+		Seaport = {
+			{
+				name = "Tree",
+				variants = {
+					"Tree_PineTree01",
+					"Tree_PineTree02",
+					"Tree_PineTree03",
+				},
+				density = 40,
+				minSize = 1,
+				maxSize = 2,
+				randomizationOffset = 0,
+				clustering = false,
+				maxClusterSize = 20,
+				minSlope = 0,
+				maxSlope = 0.05,
+				height = 20,
+				radius = 2.65,
+				center = false,
+				shade = 0.95,
+			},
+		},
+		Hermit = {
+			{
+				name = "Tree",
+				variants = {
+					"Tree_PineTree01",
+					"Tree_PineTree02",
+					"Tree_PineTree03",
+				},
+				density = 40,
+				minSize = 1,
+				maxSize = 2,
+				randomizationOffset = 0,
+				clustering = false,
+				maxClusterSize = 20,
+				minSlope = 0,
+				maxSlope = 0.05,
+				height = 20,
+				radius = 2.65,
+				center = false,
+				shade = 0.95,
+			},
+		},
+		Prison = {
+			{
+				name = "Tree",
+				variants = {
+					"Tree_PineTree01",
+					"Tree_PineTree02",
+					"Tree_PineTree03",
+				},
+				density = 40,
+				minSize = 1,
+				maxSize = 2,
+				randomizationOffset = 0,
+				clustering = false,
+				maxClusterSize = 20,
+				minSlope = 0,
+				maxSlope = 0.05,
+				height = 20,
+				radius = 2.65,
+				center = false,
+				shade = 0.95,
+			},
+		},
+	},
+}
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="10">
           <Properties>
             <string name="Name">Parts</string>
             <string name="Source"><![CDATA[-- Every buildable plane part: stats, physics components, attachment points, colliders and mesh pieces.
@@ -1124,11 +1727,12 @@ return {
 				file = "Parts_Wheels",
 				center = {0.0008, 0.0001, -0.0049},
 				size = {0.0112, 0.0039, 0.0042},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.8992, 0.8992, 0.8992},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Cube.001",
 				path = "AreoWheel/Cube.001",
+				paintable = true,
 			},
 			{
 				name = "AeroWheel__1",
@@ -1140,6 +1744,7 @@ return {
 				textured = true,
 				go = "Cube.001",
 				path = "AreoWheel/Cube.001",
+				paintable = false,
 			},
 			{
 				name = "AeroWheel__2",
@@ -1151,6 +1756,7 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "AreoWheel/Cylinder",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -1230,6 +1836,8 @@ return {
 				textured = false,
 				go = "Cube.002",
 				path = "AreoWheeLong/Cube.002",
+				paintable = true,
+				mirror = "AeroWheelLong__0_M",
 			},
 			{
 				name = "AeroWheelLong__1",
@@ -1241,6 +1849,8 @@ return {
 				textured = true,
 				go = "Cube.002",
 				path = "AreoWheeLong/Cube.002",
+				paintable = false,
+				mirror = "AeroWheelLong__1_M",
 			},
 			{
 				name = "AeroWheelLong__2",
@@ -1252,6 +1862,8 @@ return {
 				textured = true,
 				go = "Cylinder.001",
 				path = "AreoWheeLong/Cylinder.001",
+				paintable = false,
+				mirror = "AeroWheelLong__2_M",
 			},
 		},
 		bounds = {
@@ -1332,6 +1944,7 @@ return {
 				textured = false,
 				go = "AirIntake",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "AirIntake__1",
@@ -1343,6 +1956,7 @@ return {
 				textured = true,
 				go = "AirIntake",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -1423,6 +2037,7 @@ return {
 				textured = false,
 				go = "AirIntake2",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "AirIntake2__1",
@@ -1434,6 +2049,7 @@ return {
 				textured = true,
 				go = "AirIntake2",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -1514,6 +2130,7 @@ return {
 				textured = false,
 				go = "AirOutlet",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "AirOutlet__1",
@@ -1525,6 +2142,7 @@ return {
 				textured = true,
 				go = "AirOutlet",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -1598,6 +2216,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "Rotor",
+				paintable = false,
+				mirror = "AirTurbine__0_M",
 			},
 			{
 				name = "AirTurbine__1",
@@ -1609,6 +2229,8 @@ return {
 				textured = true,
 				go = "Cylinder.002",
 				path = "Cylinder.002",
+				paintable = false,
+				mirror = "AirTurbine__1_M",
 			},
 		},
 		bounds = {
@@ -1681,6 +2303,8 @@ return {
 				textured = true,
 				go = "Cube.001",
 				path = "Airbreak/Cube.001",
+				paintable = false,
+				mirror = "Airbreak__0_M",
 			},
 			{
 				name = "Airbreak__1",
@@ -1692,6 +2316,7 @@ return {
 				textured = true,
 				go = "Cube.002",
 				path = "Airbreak/Cube.002",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -1765,6 +2390,8 @@ return {
 				textured = false,
 				go = "AreoDynamicCockpit",
 				path = "",
+				paintable = true,
+				mirror = "AreoDynamicCockpit__0_M",
 			},
 			{
 				name = "AreoDynamicCockpit__1",
@@ -1776,6 +2403,8 @@ return {
 				textured = false,
 				go = "AreoDynamicCockpit",
 				path = "",
+				paintable = false,
+				mirror = "AreoDynamicCockpit__1_M",
 			},
 			{
 				name = "AreoDynamicCockpit__2",
@@ -1787,6 +2416,8 @@ return {
 				textured = false,
 				go = "AreoDynamicCockpit",
 				path = "",
+				paintable = false,
+				mirror = "AreoDynamicCockpit__2_M",
 			},
 			{
 				name = "AreoDynamicCockpit__3",
@@ -1798,6 +2429,7 @@ return {
 				textured = false,
 				go = "AreoDynamicCockpit",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -1870,6 +2502,8 @@ return {
 				textured = true,
 				go = "BigBalloon",
 				path = "",
+				paintable = false,
+				mirror = "BigBalloon__0_M",
 			},
 		},
 		bounds = {
@@ -1942,6 +2576,7 @@ return {
 				textured = true,
 				go = "BigBatteries",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -2015,17 +2650,21 @@ return {
 				textured = false,
 				go = "BigCockpit",
 				path = "",
+				paintable = false,
+				mirror = "BigCockpit__0_M",
 			},
 			{
 				name = "BigCockpit__1",
 				file = "Parts_Cockpits",
 				center = {0.0, 0.0, 0.1525},
 				size = {1.6, 1.6, 1.9232},
-				color = {0.9057, 0.9057, 0.9057},
+				color = {0.852, 0.8521, 0.852},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BigCockpit",
 				path = "",
+				paintable = true,
+				mirror = "BigCockpit__1_M",
 			},
 		},
 		bounds = {
@@ -2115,6 +2754,7 @@ return {
 				textured = true,
 				go = "BigElectricEngine",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "BigElectricEngine__1",
@@ -2126,6 +2766,7 @@ return {
 				textured = false,
 				go = "BigElectricEngine",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "BigElectricEngine__2",
@@ -2137,6 +2778,8 @@ return {
 				textured = true,
 				go = "Cube.009",
 				path = "Cube.009",
+				paintable = false,
+				mirror = "BigElectricEngine__2_M",
 			},
 		},
 		propeller = {
@@ -2208,11 +2851,12 @@ return {
 				file = "Parts_Utility",
 				center = {-0.0019, -0.0, 0.0},
 				size = {0.004, 0.0079, 0.0174},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.4261, 0.4136, 0.384},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BigExternalFuelTank",
 				path = "",
+				paintable = true,
 			},
 		},
 		bounds = {
@@ -2301,6 +2945,7 @@ return {
 				textured = true,
 				go = "UpperSuspension",
 				path = "BigOldWheel/UpperSuspension",
+				paintable = false,
 			},
 			{
 				name = "BigOldWheel__1",
@@ -2312,6 +2957,7 @@ return {
 				textured = true,
 				go = "LowerSuspension",
 				path = "BigOldWheel/UpperSuspension/LowerSuspension",
+				paintable = false,
 			},
 			{
 				name = "BigOldWheel__2",
@@ -2323,6 +2969,7 @@ return {
 				textured = true,
 				go = "Wheel",
 				path = "BigOldWheel/UpperSuspension/LowerSuspension/Wheel",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -2411,6 +3058,8 @@ return {
 				textured = true,
 				go = "Wheel strut 2",
 				path = "Struts/WheelStrut1/Wheel strut 2",
+				paintable = false,
+				mirror = "BigRetractableGear__0_M",
 			},
 			{
 				name = "BigRetractableGear__1",
@@ -2422,6 +3071,8 @@ return {
 				textured = true,
 				go = "Strut1",
 				path = "Struts/p1/Strut1",
+				paintable = false,
+				mirror = "BigRetractableGear__1_M",
 			},
 			{
 				name = "BigRetractableGear__2",
@@ -2433,6 +3084,8 @@ return {
 				textured = true,
 				go = "Strut2",
 				path = "Struts/p2/Strut2",
+				paintable = false,
+				mirror = "BigRetractableGear__2_M",
 			},
 			{
 				name = "BigRetractableGear__3",
@@ -2444,6 +3097,8 @@ return {
 				textured = true,
 				go = "Case",
 				path = "Case",
+				paintable = false,
+				mirror = "BigRetractableGear__3_M",
 			},
 			{
 				name = "BigRetractableGear__4",
@@ -2455,6 +3110,7 @@ return {
 				textured = true,
 				go = "Lower Suspension",
 				path = "UpperSuspension/Lower Suspension/Lower Suspension",
+				paintable = false,
 			},
 			{
 				name = "BigRetractableGear__5",
@@ -2466,6 +3122,7 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel/Wheels",
+				paintable = false,
 			},
 			{
 				name = "BigRetractableGear__6",
@@ -2477,6 +3134,7 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel (1)/Wheels",
+				paintable = false,
 			},
 			{
 				name = "BigRetractableGear__7",
@@ -2488,6 +3146,7 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "UpperSuspension/Mesh",
+				paintable = false,
 			},
 		},
 		retractable = {
@@ -2575,11 +3234,13 @@ return {
 				file = "Parts_Wings",
 				center = {0.2712, 0.3455, -1.2284},
 				size = {3.6507, 1.2471, 5.9072},
-				color = {0.95, 0.95, 0.95},
+				color = {0.9141, 0.9138, 0.9141},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BigWing",
 				path = "",
+				paintable = true,
+				mirror = "BigWing__0_M",
 			},
 			{
 				name = "BigWing__1",
@@ -2591,6 +3252,8 @@ return {
 				textured = false,
 				go = "BigWing",
 				path = "",
+				paintable = false,
+				mirror = "BigWing__1_M",
 			},
 			{
 				name = "BigWing__2",
@@ -2602,6 +3265,8 @@ return {
 				textured = false,
 				go = "JetWing02Aileron",
 				path = "ConrolSurface/JetWing02Aileron",
+				paintable = false,
+				mirror = "BigWing__2_M",
 			},
 		},
 		bounds = {
@@ -2732,6 +3397,8 @@ return {
 				textured = true,
 				go = "Cube",
 				path = "Bikewheel/Cube",
+				paintable = false,
+				mirror = "BikeWheel__0_M",
 			},
 			{
 				name = "BikeWheel__1",
@@ -2743,6 +3410,7 @@ return {
 				textured = true,
 				go = "Cylinder.011",
 				path = "Bikewheel/Cylinder.011",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -2828,11 +3496,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {-0.0, -0.0, 1.0},
 				size = {1.0, 1.0, 2.0},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.591, 0.5478, 0.4952},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BiplaneCockpit",
 				path = "",
+				paintable = true,
+				mirror = "BiplaneCockpit__0_M",
 			},
 			{
 				name = "BiplaneCockpit__1",
@@ -2844,6 +3514,8 @@ return {
 				textured = true,
 				go = "BiplaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "BiplaneCockpit__1_M",
 			},
 			{
 				name = "BiplaneCockpit__2",
@@ -2855,6 +3527,8 @@ return {
 				textured = false,
 				go = "BiplaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "BiplaneCockpit__2_M",
 			},
 			{
 				name = "BiplaneCockpit__3",
@@ -2866,6 +3540,8 @@ return {
 				textured = true,
 				go = "PilotHead",
 				path = "PilotHead",
+				paintable = false,
+				mirror = "BiplaneCockpit__3_M",
 			},
 			{
 				name = "BiplaneCockpit__4",
@@ -2877,6 +3553,8 @@ return {
 				textured = false,
 				go = "PilotHead",
 				path = "PilotHead",
+				paintable = false,
+				mirror = "BiplaneCockpit__4_M",
 			},
 			{
 				name = "BiplaneCockpit__5",
@@ -2888,6 +3566,8 @@ return {
 				textured = false,
 				go = "PilotHead",
 				path = "PilotHead",
+				paintable = false,
+				mirror = "BiplaneCockpit__5_M",
 			},
 			{
 				name = "BiplaneCockpit__6",
@@ -2899,6 +3579,8 @@ return {
 				textured = false,
 				go = "PilotHead",
 				path = "PilotHead",
+				paintable = false,
+				mirror = "BiplaneCockpit__6_M",
 			},
 		},
 		bounds = {
@@ -2985,17 +3667,21 @@ return {
 				textured = true,
 				go = "BiplaneWing",
 				path = "",
+				paintable = false,
+				mirror = "BiplaneWing__0_M",
 			},
 			{
 				name = "BiplaneWing__1",
 				file = "Parts_Wings",
 				center = {0.0075, -0.0174, -0.0287},
 				size = {1.3644, 0.1388, 3.005},
-				color = {0.9137, 0.9137, 0.9137},
+				color = {0.8613, 0.8603, 0.86},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BiplaneWing",
 				path = "",
+				paintable = true,
+				mirror = "BiplaneWing__1_M",
 			},
 		},
 		bounds = {
@@ -3141,6 +3827,8 @@ return {
 				textured = true,
 				go = "Camera",
 				path = "",
+				paintable = false,
+				mirror = "Camera__0_M",
 			},
 			{
 				name = "Camera__1",
@@ -3152,6 +3840,7 @@ return {
 				textured = false,
 				go = "Camera",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -3228,11 +3917,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {0.0, 0.1998, 1.0},
 				size = {1.0, 1.3995, 2.0},
-				color = {0.9057, 0.9057, 0.9057},
+				color = {0.852, 0.8521, 0.852},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Cockpit",
 				path = "",
+				paintable = true,
+				mirror = "Cockpit__0_M",
 			},
 			{
 				name = "Cockpit__1",
@@ -3244,6 +3935,8 @@ return {
 				textured = false,
 				go = "Cockpit",
 				path = "",
+				paintable = false,
+				mirror = "Cockpit__1_M",
 			},
 		},
 		bounds = {
@@ -3325,6 +4018,8 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "Mesh",
+				paintable = false,
+				mirror = "Connector__0_M",
 			},
 		},
 		bounds = {
@@ -3396,6 +4091,7 @@ return {
 				textured = true,
 				go = "Base",
 				path = "Base",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -3482,17 +4178,21 @@ return {
 				textured = false,
 				go = "DeltaWing01",
 				path = "",
+				paintable = false,
+				mirror = "DeltaWing01__0_M",
 			},
 			{
 				name = "DeltaWing01__1",
 				file = "Parts_Wings",
 				center = {-0.246, 0.008, -0.2058},
 				size = {2.5786, 0.2238, 2.2905},
-				color = {0.9, 0.9, 0.9},
+				color = {0.8536, 0.854, 0.8536},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "DeltaWing01",
 				path = "",
+				paintable = true,
+				mirror = "DeltaWing01__1_M",
 			},
 			{
 				name = "DeltaWing01__2",
@@ -3504,6 +4204,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "DeltaWing01__2_M",
 			},
 		},
 		bounds = {
@@ -3590,17 +4292,21 @@ return {
 				textured = false,
 				go = "DeltaWing02",
 				path = "",
+				paintable = false,
+				mirror = "DeltaWing02__0_M",
 			},
 			{
 				name = "DeltaWing02__1",
 				file = "Parts_Wings",
 				center = {0.6872, -0.0013, -1.6823},
 				size = {3.9049, 0.3763, 3.0296},
-				color = {1, 1, 1},
+				color = {0.9394, 0.9403, 0.9394},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "DeltaWing02",
 				path = "",
+				paintable = true,
+				mirror = "DeltaWing02__1_M",
 			},
 			{
 				name = "DeltaWing02__2",
@@ -3612,6 +4318,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "DeltaWing02__2_M",
 			},
 		},
 		bounds = {
@@ -3719,6 +4427,7 @@ return {
 				textured = false,
 				go = "Body",
 				path = "Body",
+				paintable = true,
 			},
 			{
 				name = "ElectricEngine__1",
@@ -3730,6 +4439,7 @@ return {
 				textured = false,
 				go = "BodyEnd",
 				path = "BodyEnd",
+				paintable = true,
 			},
 			{
 				name = "ElectricEngine__2",
@@ -3741,6 +4451,8 @@ return {
 				textured = true,
 				go = "PropellerBase",
 				path = "PropellerBase/PropellerBase",
+				paintable = false,
+				mirror = "ElectricEngine__2_M",
 			},
 			{
 				name = "ElectricEngine__3",
@@ -3752,6 +4464,8 @@ return {
 				textured = true,
 				go = "1",
 				path = "PropellerBase/1",
+				paintable = false,
+				mirror = "ElectricEngine__3_M",
 			},
 			{
 				name = "ElectricEngine__4",
@@ -3763,6 +4477,8 @@ return {
 				textured = true,
 				go = "1 (1)",
 				path = "PropellerBase/1 (1)",
+				paintable = false,
+				mirror = "ElectricEngine__4_M",
 			},
 			{
 				name = "ElectricEngine__5",
@@ -3774,6 +4490,8 @@ return {
 				textured = true,
 				go = "1 (2)",
 				path = "PropellerBase/1 (2)",
+				paintable = false,
+				mirror = "ElectricEngine__5_M",
 			},
 			{
 				name = "ElectricEngine__6",
@@ -3785,6 +4503,8 @@ return {
 				textured = true,
 				go = "1 (3)",
 				path = "PropellerBase/1 (3)",
+				paintable = false,
+				mirror = "ElectricEngine__6_M",
 			},
 			{
 				name = "ElectricEngine__7",
@@ -3796,6 +4516,8 @@ return {
 				textured = true,
 				go = "1 (4)",
 				path = "PropellerBase/1 (4)",
+				paintable = false,
+				mirror = "ElectricEngine__7_M",
 			},
 			{
 				name = "ElectricEngine__8",
@@ -3807,6 +4529,8 @@ return {
 				textured = true,
 				go = "1 (5)",
 				path = "PropellerBase/1 (5)",
+				paintable = false,
+				mirror = "ElectricEngine__8_M",
 			},
 			{
 				name = "ElectricEngine__9",
@@ -3818,6 +4542,8 @@ return {
 				textured = true,
 				go = "1 (6)",
 				path = "PropellerBase/1 (6)",
+				paintable = false,
+				mirror = "ElectricEngine__9_M",
 			},
 			{
 				name = "ElectricEngine__10",
@@ -3829,6 +4555,8 @@ return {
 				textured = true,
 				go = "1 (7)",
 				path = "PropellerBase/1 (7)",
+				paintable = false,
+				mirror = "ElectricEngine__10_M",
 			},
 		},
 		propeller = {
@@ -3919,17 +4647,21 @@ return {
 				textured = false,
 				go = "ElectronWing",
 				path = "",
+				paintable = false,
+				mirror = "ElectronWing__0_M",
 			},
 			{
 				name = "ElectronWing__1",
 				file = "Parts_Wings",
 				center = {-0.0821, -0.0358, -0.2458},
 				size = {2.0735, 0.6883, 4.8025},
-				color = {0.96, 0.96, 0.96},
+				color = {0.9198, 0.9209, 0.9198},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "ElectronWing",
 				path = "",
+				paintable = true,
+				mirror = "ElectronWing__1_M",
 			},
 			{
 				name = "ElectronWing__2",
@@ -3941,6 +4673,8 @@ return {
 				textured = true,
 				go = "Cube.003",
 				path = "Aileron/Cube.003",
+				paintable = false,
+				mirror = "ElectronWing__2_M",
 			},
 		},
 		bounds = {
@@ -4048,6 +4782,8 @@ return {
 				textured = true,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = false,
+				mirror = "Engine__0_M",
 			},
 			{
 				name = "Engine__1",
@@ -4059,6 +4795,8 @@ return {
 				textured = false,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = true,
+				mirror = "Engine__1_M",
 			},
 			{
 				name = "Engine__2",
@@ -4070,6 +4808,8 @@ return {
 				textured = true,
 				go = "Propeller",
 				path = "Propeller",
+				paintable = false,
+				mirror = "Engine__2_M",
 			},
 			{
 				name = "Engine__3",
@@ -4081,6 +4821,8 @@ return {
 				textured = true,
 				go = "1",
 				path = "Propeller/1",
+				paintable = false,
+				mirror = "Engine__3_M",
 			},
 			{
 				name = "Engine__4",
@@ -4092,6 +4834,8 @@ return {
 				textured = true,
 				go = "2",
 				path = "Propeller/2",
+				paintable = false,
+				mirror = "Engine__4_M",
 			},
 			{
 				name = "Engine__5",
@@ -4103,6 +4847,8 @@ return {
 				textured = true,
 				go = "3",
 				path = "Propeller/3",
+				paintable = false,
+				mirror = "Engine__5_M",
 			},
 			{
 				name = "Engine__6",
@@ -4114,6 +4860,7 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
 			},
 		},
 		propeller = {
@@ -4185,11 +4932,12 @@ return {
 				file = "Parts_Utility",
 				center = {-0.0027, -0.0, 0.0},
 				size = {0.007, 0.006, 0.0121},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.4261, 0.4136, 0.384},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "ExternalFuelTank",
 				path = "",
+				paintable = true,
 			},
 		},
 		bounds = {
@@ -4275,17 +5023,21 @@ return {
 				textured = true,
 				go = "FighterJetEngine",
 				path = "",
+				paintable = false,
+				mirror = "FighterJetEngine__0_M",
 			},
 			{
 				name = "FighterJetEngine__1",
 				file = "Parts_Engines",
 				center = {0.0073, -0.0, -0.0},
 				size = {0.0256, 0.0059, 0.006},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.591, 0.5478, 0.4952},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "FighterJetEngine",
 				path = "",
+				paintable = true,
+				mirror = "FighterJetEngine__1_M",
 			},
 		},
 		bounds = {
@@ -4358,6 +5110,8 @@ return {
 				textured = false,
 				go = "FuelTank",
 				path = "",
+				paintable = true,
+				mirror = "FuelTank__0_M",
 			},
 		},
 		bounds = {
@@ -4426,11 +5180,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {0.0, 0.0002, 0.0268},
 				size = {0.018, 0.019, 0.0537},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.591, 0.5478, 0.4952},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "GliderCockpit",
 				path = "",
+				paintable = true,
+				mirror = "GliderCockpit__0_M",
 			},
 			{
 				name = "GliderCockpit__1",
@@ -4442,6 +5198,8 @@ return {
 				textured = false,
 				go = "GliderCockpit",
 				path = "",
+				paintable = false,
+				mirror = "GliderCockpit__1_M",
 			},
 		},
 		bounds = {
@@ -4537,6 +5295,8 @@ return {
 				textured = true,
 				go = "GliderWing",
 				path = "",
+				paintable = false,
+				mirror = "GliderWing__0_M",
 			},
 			{
 				name = "GliderWing__1",
@@ -4548,6 +5308,8 @@ return {
 				textured = false,
 				go = "GliderWing",
 				path = "",
+				paintable = true,
+				mirror = "GliderWing__1_M",
 			},
 			{
 				name = "GliderWing__2",
@@ -4559,6 +5321,8 @@ return {
 				textured = true,
 				go = "Cube",
 				path = "GameObject/Cube",
+				paintable = false,
+				mirror = "GliderWing__2_M",
 			},
 		},
 		bounds = {
@@ -4632,6 +5396,8 @@ return {
 				textured = false,
 				go = "HelicopterCockpit",
 				path = "",
+				paintable = false,
+				mirror = "HelicopterCockpit__0_M",
 			},
 			{
 				name = "HelicopterCockpit__1",
@@ -4643,6 +5409,8 @@ return {
 				textured = false,
 				go = "HelicopterCockpit",
 				path = "",
+				paintable = true,
+				mirror = "HelicopterCockpit__1_M",
 			},
 			{
 				name = "HelicopterCockpit__2",
@@ -4654,6 +5422,8 @@ return {
 				textured = true,
 				go = "HelicopterCockpit",
 				path = "",
+				paintable = false,
+				mirror = "HelicopterCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -4743,6 +5513,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__0_M",
 			},
 			{
 				name = "HelicopterEngine__1",
@@ -4754,6 +5526,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__1_M",
 			},
 			{
 				name = "HelicopterEngine__2",
@@ -4765,6 +5539,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__2_M",
 			},
 			{
 				name = "HelicopterEngine__3",
@@ -4776,6 +5552,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__3_M",
 			},
 			{
 				name = "HelicopterEngine__4",
@@ -4787,6 +5565,8 @@ return {
 				textured = true,
 				go = "Cylinder.001",
 				path = "HelicopterRotor/Rotor/Cylinder.001",
+				paintable = false,
+				mirror = "HelicopterEngine__4_M",
 			},
 			{
 				name = "HelicopterEngine__5",
@@ -4798,6 +5578,7 @@ return {
 				textured = true,
 				go = "Cylinder.002",
 				path = "HelicopterRotor/Rotor/Cylinder.002",
+				paintable = false,
 			},
 			{
 				name = "HelicopterEngine__6",
@@ -4809,6 +5590,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Cylinder.002/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__6_M",
 			},
 			{
 				name = "HelicopterEngine__7",
@@ -4820,6 +5603,8 @@ return {
 				textured = true,
 				go = "Body",
 				path = "HelicopterRotor/Body",
+				paintable = false,
+				mirror = "HelicopterEngine__7_M",
 			},
 			{
 				name = "HelicopterEngine__8",
@@ -4831,6 +5616,8 @@ return {
 				textured = false,
 				go = "Body",
 				path = "HelicopterRotor/Body",
+				paintable = true,
+				mirror = "HelicopterEngine__8_M",
 			},
 		},
 		propeller = {
@@ -4924,6 +5711,8 @@ return {
 				textured = true,
 				go = "Cylinder.001",
 				path = "HelicopterRotor/GameObject/Cylinder.001",
+				paintable = false,
+				mirror = "HelicopterEngineSmall__0_M",
 			},
 			{
 				name = "HelicopterEngineSmall__1",
@@ -4935,6 +5724,8 @@ return {
 				textured = true,
 				go = "Cylinder.002",
 				path = "HelicopterRotor/GameObject/Cylinder.002",
+				paintable = false,
+				mirror = "HelicopterEngineSmall__1_M",
 			},
 			{
 				name = "HelicopterEngineSmall__2",
@@ -4946,6 +5737,8 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "HelicopterRotor/GameObject/Cylinder",
+				paintable = false,
+				mirror = "HelicopterEngineSmall__2_M",
 			},
 			{
 				name = "HelicopterEngineSmall__3",
@@ -4957,6 +5750,8 @@ return {
 				textured = false,
 				go = "Cube.002",
 				path = "HelicopterRotor/Cube.002",
+				paintable = false,
+				mirror = "HelicopterEngineSmall__3_M",
 			},
 		},
 		propeller = {
@@ -5128,6 +5923,8 @@ return {
 				textured = true,
 				go = "HelicopterLandingGear",
 				path = "",
+				paintable = false,
+				mirror = "HelicopterLandingGear__0_M",
 			},
 		},
 		bounds = {
@@ -5201,6 +5998,8 @@ return {
 				textured = false,
 				go = "HugeCockpit",
 				path = "",
+				paintable = true,
+				mirror = "HugeCockpit__0_M",
 			},
 			{
 				name = "HugeCockpit__1",
@@ -5212,6 +6011,8 @@ return {
 				textured = true,
 				go = "HugeCockpit",
 				path = "",
+				paintable = false,
+				mirror = "HugeCockpit__1_M",
 			},
 			{
 				name = "HugeCockpit__2",
@@ -5223,6 +6024,8 @@ return {
 				textured = false,
 				go = "HugeCockpit",
 				path = "",
+				paintable = false,
+				mirror = "HugeCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -5321,6 +6124,8 @@ return {
 				textured = true,
 				go = "Propeller (1)",
 				path = "Propeller/Propeller (1)",
+				paintable = false,
+				mirror = "HugePropEngine__0_M",
 			},
 			{
 				name = "HugePropEngine__1",
@@ -5332,6 +6137,8 @@ return {
 				textured = true,
 				go = "Propeller (3)",
 				path = "Propeller/Propeller (3)",
+				paintable = false,
+				mirror = "HugePropEngine__1_M",
 			},
 			{
 				name = "HugePropEngine__2",
@@ -5343,6 +6150,8 @@ return {
 				textured = true,
 				go = "Propeller (2)",
 				path = "Propeller/Propeller (2)",
+				paintable = false,
+				mirror = "HugePropEngine__2_M",
 			},
 			{
 				name = "HugePropEngine__3",
@@ -5354,6 +6163,7 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "Propeller/Cylinder",
+				paintable = false,
 			},
 			{
 				name = "HugePropEngine__4",
@@ -5365,6 +6175,8 @@ return {
 				textured = false,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = true,
+				mirror = "HugePropEngine__4_M",
 			},
 			{
 				name = "HugePropEngine__5",
@@ -5376,6 +6188,8 @@ return {
 				textured = true,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = false,
+				mirror = "HugePropEngine__5_M",
 			},
 		},
 		propeller = {
@@ -5456,11 +6270,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {0.0, 0.0022, 0.9994},
 				size = {0.9994, 1.0037, 1.9987},
-				color = {0.9057, 0.9057, 0.9057},
+				color = {0.852, 0.8521, 0.852},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "JetCockpit",
 				path = "",
+				paintable = true,
+				mirror = "JetCockpit__0_M",
 			},
 			{
 				name = "JetCockpit__1",
@@ -5472,6 +6288,8 @@ return {
 				textured = false,
 				go = "JetCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetCockpit__1_M",
 			},
 			{
 				name = "JetCockpit__2",
@@ -5483,6 +6301,8 @@ return {
 				textured = false,
 				go = "JetCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -5556,6 +6376,8 @@ return {
 				textured = false,
 				go = "JetCockpit02",
 				path = "",
+				paintable = true,
+				mirror = "JetCockpit02__0_M",
 			},
 			{
 				name = "JetCockpit02__1",
@@ -5567,6 +6389,8 @@ return {
 				textured = false,
 				go = "JetCockpit02",
 				path = "",
+				paintable = false,
+				mirror = "JetCockpit02__1_M",
 			},
 			{
 				name = "JetCockpit02__2",
@@ -5578,6 +6402,8 @@ return {
 				textured = false,
 				go = "JetCockpit02",
 				path = "",
+				paintable = false,
+				mirror = "JetCockpit02__2_M",
 			},
 		},
 		bounds = {
@@ -5663,6 +6489,7 @@ return {
 				textured = true,
 				go = "JetEngine",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "JetEngine__1",
@@ -5674,6 +6501,7 @@ return {
 				textured = false,
 				go = "JetEngine",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "JetEngine__2",
@@ -5685,6 +6513,8 @@ return {
 				textured = true,
 				go = "Cube.009",
 				path = "Cube.009",
+				paintable = false,
+				mirror = "JetEngine__2_M",
 			},
 		},
 		propeller = {
@@ -5762,6 +6592,8 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetlineCockpit__0_M",
 			},
 			{
 				name = "JetlineCockpit__1",
@@ -5773,6 +6605,7 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "JetlineCockpit__2",
@@ -5784,6 +6617,8 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = true,
+				mirror = "JetlineCockpit__2_M",
 			},
 			{
 				name = "JetlineCockpit__3",
@@ -5795,6 +6630,8 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetlineCockpit__3_M",
 			},
 			{
 				name = "JetlineCockpit__4",
@@ -5806,6 +6643,8 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetlineCockpit__4_M",
 			},
 		},
 		bounds = {
@@ -5895,6 +6734,7 @@ return {
 				textured = false,
 				go = "LargeBody",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "LargeBody__1",
@@ -5906,6 +6746,8 @@ return {
 				textured = false,
 				go = "Windows (1)",
 				path = "Windows (1)",
+				paintable = false,
+				mirror = "LargeBody__1_M",
 			},
 			{
 				name = "LargeBody__2",
@@ -5917,6 +6759,8 @@ return {
 				textured = false,
 				go = "Windows (1)",
 				path = "Windows (1)",
+				paintable = false,
+				mirror = "LargeBody__2_M",
 			},
 			{
 				name = "LargeBody__3",
@@ -5928,6 +6772,8 @@ return {
 				textured = false,
 				go = "Windows (2)",
 				path = "Windows (2)",
+				paintable = false,
+				mirror = "LargeBody__3_M",
 			},
 			{
 				name = "LargeBody__4",
@@ -5939,6 +6785,8 @@ return {
 				textured = false,
 				go = "Windows (2)",
 				path = "Windows (2)",
+				paintable = false,
+				mirror = "LargeBody__4_M",
 			},
 			{
 				name = "LargeBody__5",
@@ -5950,6 +6798,8 @@ return {
 				textured = false,
 				go = "Windows (3)",
 				path = "Windows (3)",
+				paintable = false,
+				mirror = "LargeBody__5_M",
 			},
 			{
 				name = "LargeBody__6",
@@ -5961,6 +6811,8 @@ return {
 				textured = false,
 				go = "Windows (3)",
 				path = "Windows (3)",
+				paintable = false,
+				mirror = "LargeBody__6_M",
 			},
 			{
 				name = "LargeBody__7",
@@ -5972,6 +6824,8 @@ return {
 				textured = false,
 				go = "Windows (4)",
 				path = "Windows (4)",
+				paintable = false,
+				mirror = "LargeBody__7_M",
 			},
 			{
 				name = "LargeBody__8",
@@ -5983,6 +6837,8 @@ return {
 				textured = false,
 				go = "Windows (4)",
 				path = "Windows (4)",
+				paintable = false,
+				mirror = "LargeBody__8_M",
 			},
 			{
 				name = "LargeBody__9",
@@ -5994,6 +6850,8 @@ return {
 				textured = false,
 				go = "Windows (5)",
 				path = "Windows (5)",
+				paintable = false,
+				mirror = "LargeBody__9_M",
 			},
 			{
 				name = "LargeBody__10",
@@ -6005,6 +6863,8 @@ return {
 				textured = false,
 				go = "Windows (5)",
 				path = "Windows (5)",
+				paintable = false,
+				mirror = "LargeBody__10_M",
 			},
 			{
 				name = "LargeBody__11",
@@ -6016,6 +6876,8 @@ return {
 				textured = false,
 				go = "Windows (6)",
 				path = "Windows (6)",
+				paintable = false,
+				mirror = "LargeBody__11_M",
 			},
 			{
 				name = "LargeBody__12",
@@ -6027,6 +6889,8 @@ return {
 				textured = false,
 				go = "Windows (6)",
 				path = "Windows (6)",
+				paintable = false,
+				mirror = "LargeBody__12_M",
 			},
 			{
 				name = "LargeBody__13",
@@ -6038,6 +6902,8 @@ return {
 				textured = false,
 				go = "Windows (7)",
 				path = "Windows (7)",
+				paintable = false,
+				mirror = "LargeBody__13_M",
 			},
 			{
 				name = "LargeBody__14",
@@ -6049,6 +6915,8 @@ return {
 				textured = false,
 				go = "Windows (7)",
 				path = "Windows (7)",
+				paintable = false,
+				mirror = "LargeBody__14_M",
 			},
 			{
 				name = "LargeBody__15",
@@ -6060,6 +6928,8 @@ return {
 				textured = false,
 				go = "Windows (8)",
 				path = "Windows (8)",
+				paintable = false,
+				mirror = "LargeBody__15_M",
 			},
 			{
 				name = "LargeBody__16",
@@ -6071,6 +6941,8 @@ return {
 				textured = false,
 				go = "Windows (8)",
 				path = "Windows (8)",
+				paintable = false,
+				mirror = "LargeBody__16_M",
 			},
 		},
 		bounds = {
@@ -6144,6 +7016,7 @@ return {
 				textured = false,
 				go = "Nose",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -6274,6 +7147,7 @@ return {
 				textured = true,
 				go = "Cube",
 				path = "Bikewheel/Cube",
+				paintable = false,
 			},
 			{
 				name = "OldSteelWheel__1",
@@ -6285,6 +7159,7 @@ return {
 				textured = true,
 				go = "Cylinder.011",
 				path = "Bikewheel/Cylinder.011",
+				paintable = false,
 			},
 			{
 				name = "OldSteelWheel__2",
@@ -6296,6 +7171,7 @@ return {
 				textured = true,
 				go = "Cylinder.011",
 				path = "Bikewheel/Cylinder.011",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -6368,6 +7244,8 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "Parachute/Cylinder",
+				paintable = false,
+				mirror = "Parachute__0_M",
 			},
 			{
 				name = "Parachute__1",
@@ -6379,6 +7257,8 @@ return {
 				textured = true,
 				go = "Cylinder.003",
 				path = "Parachute/Cylinder.003",
+				paintable = false,
+				mirror = "Parachute__1_M",
 			},
 		},
 		bounds = {
@@ -6447,11 +7327,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {0.0, -0.0, 0.1818},
 				size = {1.4, 1.4, 2.1751},
-				color = {0.9057, 0.9057, 0.9057},
+				color = {0.852, 0.8521, 0.852},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "PrivateJetCockpit",
 				path = "",
+				paintable = true,
+				mirror = "PrivateJetCockpit__0_M",
 			},
 			{
 				name = "PrivateJetCockpit__1",
@@ -6463,6 +7345,8 @@ return {
 				textured = false,
 				go = "PrivateJetCockpit",
 				path = "",
+				paintable = false,
+				mirror = "PrivateJetCockpit__1_M",
 			},
 			{
 				name = "PrivateJetCockpit__2",
@@ -6474,6 +7358,8 @@ return {
 				textured = false,
 				go = "PrivateJetCockpit",
 				path = "",
+				paintable = false,
+				mirror = "PrivateJetCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -6559,6 +7445,7 @@ return {
 				textured = false,
 				go = "PropfanEngine",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "PropfanEngine__1",
@@ -6570,6 +7457,7 @@ return {
 				textured = true,
 				go = "PropfanEngine",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "PropfanEngine__2",
@@ -6581,6 +7469,8 @@ return {
 				textured = true,
 				go = "Cylinder.003",
 				path = "Cylinder.003",
+				paintable = false,
+				mirror = "PropfanEngine__2_M",
 			},
 			{
 				name = "PropfanEngine__3",
@@ -6592,6 +7482,8 @@ return {
 				textured = true,
 				go = "Cylinder.005",
 				path = "Cylinder.003/Cylinder.005",
+				paintable = false,
+				mirror = "PropfanEngine__3_M",
 			},
 		},
 		propeller = {
@@ -6681,6 +7573,7 @@ return {
 				textured = true,
 				go = "RamJet",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "RamJet__1",
@@ -6692,6 +7585,7 @@ return {
 				textured = false,
 				go = "RamJet",
 				path = "",
+				paintable = true,
 			},
 		},
 		bounds = {
@@ -6771,6 +7665,7 @@ return {
 				textured = true,
 				go = "RearWheel",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "RearWheel__1",
@@ -6782,6 +7677,7 @@ return {
 				textured = false,
 				go = "RearWheel",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "RearWheel__2",
@@ -6793,6 +7689,7 @@ return {
 				textured = true,
 				go = "Wheel",
 				path = "GameObject/Wheel",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -6896,6 +7793,8 @@ return {
 				textured = true,
 				go = "RocketEngine",
 				path = "RocketEngine",
+				paintable = false,
+				mirror = "RocketEngine__0_M",
 			},
 			{
 				name = "RocketEngine__1",
@@ -6907,6 +7806,7 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
 			},
 		},
 		propeller = {
@@ -6985,6 +7885,7 @@ return {
 				textured = true,
 				go = "Base",
 				path = "Base",
+				paintable = false,
 			},
 			{
 				name = "RotationJoint__1",
@@ -6996,6 +7897,8 @@ return {
 				textured = true,
 				go = "Rotator",
 				path = "Rotator",
+				paintable = false,
+				mirror = "RotationJoint__1_M",
 			},
 		},
 		bounds = {
@@ -7069,6 +7972,7 @@ return {
 				textured = false,
 				go = "SharpNose",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -7141,6 +8045,8 @@ return {
 				textured = true,
 				go = "SmallBalloon",
 				path = "",
+				paintable = false,
+				mirror = "SmallBalloon__0_M",
 			},
 		},
 		bounds = {
@@ -7213,6 +8119,7 @@ return {
 				textured = true,
 				go = "SmallBatteries",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -7299,17 +8206,21 @@ return {
 				textured = false,
 				go = "SmallCanard",
 				path = "",
+				paintable = false,
+				mirror = "SmallCanard__0_M",
 			},
 			{
 				name = "SmallCanard__1",
 				file = "Parts_Wings",
 				center = {0.0344, 0.0001, -0.1109},
 				size = {0.8695, 0.0908, 0.8321},
-				color = {1, 1, 1},
+				color = {0.9413, 0.9429, 0.9413},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "SmallCanard",
 				path = "",
+				paintable = true,
+				mirror = "SmallCanard__1_M",
 			},
 		},
 		bounds = {
@@ -7382,6 +8293,7 @@ return {
 				textured = false,
 				go = "SmallFuelTank",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "SmallFuelTank__1",
@@ -7393,6 +8305,7 @@ return {
 				textured = false,
 				go = "SmallFuelTank",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "SmallFuelTank__2",
@@ -7404,6 +8317,7 @@ return {
 				textured = false,
 				go = "SmallFuelTank",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -7477,6 +8391,8 @@ return {
 				textured = false,
 				go = "SmallHelicopterCockpit",
 				path = "",
+				paintable = true,
+				mirror = "SmallHelicopterCockpit__0_M",
 			},
 			{
 				name = "SmallHelicopterCockpit__1",
@@ -7488,6 +8404,8 @@ return {
 				textured = true,
 				go = "SmallHelicopterCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallHelicopterCockpit__1_M",
 			},
 			{
 				name = "SmallHelicopterCockpit__2",
@@ -7499,6 +8417,8 @@ return {
 				textured = false,
 				go = "SmallHelicopterCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallHelicopterCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -7584,6 +8504,8 @@ return {
 				textured = true,
 				go = "SmallJetEngine",
 				path = "",
+				paintable = false,
+				mirror = "SmallJetEngine__0_M",
 			},
 			{
 				name = "SmallJetEngine__1",
@@ -7595,6 +8517,7 @@ return {
 				textured = false,
 				go = "SmallJetEngine",
 				path = "",
+				paintable = true,
 			},
 		},
 		bounds = {
@@ -7681,17 +8604,21 @@ return {
 				textured = false,
 				go = "SmallJetWing",
 				path = "",
+				paintable = false,
+				mirror = "SmallJetWing__0_M",
 			},
 			{
 				name = "SmallJetWing__1",
 				file = "Parts_Wings",
 				center = {-0.243, 0.2095, -0.3469},
 				size = {3.8999, 1.3874, 4.688},
-				color = {0.96, 0.96, 0.96},
+				color = {0.9238, 0.9241, 0.9238},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "SmallJetWing",
 				path = "",
+				paintable = true,
+				mirror = "SmallJetWing__1_M",
 			},
 			{
 				name = "SmallJetWing__2",
@@ -7703,6 +8630,8 @@ return {
 				textured = false,
 				go = "Cube.001",
 				path = "GameObject/Cube.001",
+				paintable = false,
+				mirror = "SmallJetWing__2_M",
 			},
 		},
 		bounds = {
@@ -7784,6 +8713,8 @@ return {
 				textured = false,
 				go = "SmallLargeCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallLargeCockpit__0_M",
 			},
 			{
 				name = "SmallLargeCockpit__1",
@@ -7795,6 +8726,8 @@ return {
 				textured = false,
 				go = "SmallLargeCockpit",
 				path = "",
+				paintable = true,
+				mirror = "SmallLargeCockpit__1_M",
 			},
 			{
 				name = "SmallLargeCockpit__2",
@@ -7806,6 +8739,8 @@ return {
 				textured = false,
 				go = "SmallLargeCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallLargeCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -7887,6 +8822,8 @@ return {
 				textured = false,
 				go = "SmallPlaneCockpit",
 				path = "",
+				paintable = true,
+				mirror = "SmallPlaneCockpit__0_M",
 			},
 			{
 				name = "SmallPlaneCockpit__1",
@@ -7898,6 +8835,8 @@ return {
 				textured = false,
 				go = "SmallPlaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallPlaneCockpit__1_M",
 			},
 			{
 				name = "SmallPlaneCockpit__2",
@@ -7909,6 +8848,8 @@ return {
 				textured = false,
 				go = "SmallPlaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallPlaneCockpit__2_M",
 			},
 			{
 				name = "SmallPlaneCockpit__3",
@@ -7920,6 +8861,8 @@ return {
 				textured = false,
 				go = "SmallPlaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallPlaneCockpit__3_M",
 			},
 		},
 		bounds = {
@@ -8022,11 +8965,13 @@ return {
 				file = "Parts_Engines",
 				center = {0.053, 0.0016, -0.0},
 				size = {1.0897, 0.9204, 0.9557},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.591, 0.5478, 0.4952},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Cube.003",
 				path = "TurboPropSmall/Cube.003",
+				paintable = true,
+				mirror = "SmallPropEngine__0_M",
 			},
 			{
 				name = "SmallPropEngine__1",
@@ -8038,6 +8983,8 @@ return {
 				textured = true,
 				go = "Cylinder.003",
 				path = "Propeller/Cylinder.003",
+				paintable = false,
+				mirror = "SmallPropEngine__1_M",
 			},
 			{
 				name = "SmallPropEngine__2",
@@ -8049,6 +8996,8 @@ return {
 				textured = true,
 				go = "Propeller1",
 				path = "Propeller/Propeller1",
+				paintable = false,
+				mirror = "SmallPropEngine__2_M",
 			},
 			{
 				name = "SmallPropEngine__3",
@@ -8060,6 +9009,8 @@ return {
 				textured = true,
 				go = "Propeller1 (1)",
 				path = "Propeller/Propeller1 (1)",
+				paintable = false,
+				mirror = "SmallPropEngine__3_M",
 			},
 			{
 				name = "SmallPropEngine__4",
@@ -8071,6 +9022,8 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
+				mirror = "SmallPropEngine__4_M",
 			},
 		},
 		propeller = {
@@ -8154,6 +9107,7 @@ return {
 				textured = false,
 				go = "SmallRearWheel",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "SmallRearWheel__1",
@@ -8165,6 +9119,7 @@ return {
 				textured = true,
 				go = "SmallRearWheel",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "SmallRearWheel__2",
@@ -8176,6 +9131,7 @@ return {
 				textured = true,
 				go = "Wheel",
 				path = "GameObject/Wheel",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -8262,17 +9218,21 @@ return {
 				textured = false,
 				go = "SmallRecreationalWing",
 				path = "",
+				paintable = false,
+				mirror = "SmallRecreationalWing__0_M",
 			},
 			{
 				name = "SmallRecreationalWing__1",
 				file = "Parts_Wings",
 				center = {0.0014, 0.0, -0.0394},
 				size = {1.2689, 0.198, 3.8893},
-				color = {0.96, 0.96, 0.96},
+				color = {0.9188, 0.9189, 0.9188},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "SmallRecreationalWing",
 				path = "",
+				paintable = true,
+				mirror = "SmallRecreationalWing__1_M",
 			},
 			{
 				name = "SmallRecreationalWing__2",
@@ -8284,6 +9244,7 @@ return {
 				textured = true,
 				go = "Cube.003",
 				path = "Aileron/Cube.003",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -8372,6 +9333,8 @@ return {
 				textured = true,
 				go = "Case",
 				path = "Case",
+				paintable = false,
+				mirror = "SmallRetractableGear__0_M",
 			},
 			{
 				name = "SmallRetractableGear__1",
@@ -8383,6 +9346,8 @@ return {
 				textured = true,
 				go = "Lower Suspension",
 				path = "UpperSuspension/Lower Suspension/Lower Suspension",
+				paintable = false,
+				mirror = "SmallRetractableGear__1_M",
 			},
 			{
 				name = "SmallRetractableGear__2",
@@ -8394,6 +9359,8 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel/Wheels",
+				paintable = false,
+				mirror = "SmallRetractableGear__2_M",
 			},
 			{
 				name = "SmallRetractableGear__3",
@@ -8405,6 +9372,7 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "UpperSuspension/Mesh",
+				paintable = false,
 			},
 		},
 		retractable = {
@@ -8465,6 +9433,7 @@ return {
 				textured = true,
 				go = "SolarPanel",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -8551,17 +9520,21 @@ return {
 				textured = false,
 				go = "StraightWing",
 				path = "",
+				paintable = false,
+				mirror = "StraightWing__0_M",
 			},
 			{
 				name = "StraightWing__1",
 				file = "Parts_Wings",
 				center = {0.2151, 0.2823, -0.1781},
 				size = {2.0034, 0.7231, 5.6905},
-				color = {0.934, 0.934, 0.934},
+				color = {0.9047, 0.9046, 0.9047},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "StraightWing",
 				path = "",
+				paintable = true,
+				mirror = "StraightWing__1_M",
 			},
 			{
 				name = "StraightWing__2",
@@ -8573,6 +9546,8 @@ return {
 				textured = false,
 				go = "Cube.003",
 				path = "Aileron/Cube.003",
+				paintable = false,
+				mirror = "StraightWing__2_M",
 			},
 		},
 		bounds = {
@@ -8646,6 +9621,8 @@ return {
 				textured = true,
 				go = "Tail",
 				path = "",
+				paintable = false,
+				mirror = "Tail__0_M",
 			},
 		},
 		bounds = {
@@ -8727,11 +9704,12 @@ return {
 				file = "Parts_Wings",
 				center = {0.0066, 0.0, -0.6678},
 				size = {1.1119, 0.1198, 1.3355},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.8908, 0.8908, 0.8908},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "TailWing",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "TailWing__1",
@@ -8743,6 +9721,8 @@ return {
 				textured = false,
 				go = "Cube",
 				path = "Cube",
+				paintable = false,
+				mirror = "TailWing__1_M",
 			},
 		},
 		bounds = {
@@ -8824,11 +9804,12 @@ return {
 				file = "Parts_Wings",
 				center = {0.0588, 0.0, -1.0695},
 				size = {1.898, 0.1718, 2.2774},
-				color = {1, 1, 1},
+				color = {0.9042, 0.9028, 0.9026},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Tailwing02",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "Tailwing02__1",
@@ -8840,6 +9821,8 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "Tailwing02__1_M",
 			},
 		},
 		bounds = {
@@ -8926,17 +9909,21 @@ return {
 				textured = false,
 				go = "Tailwing03",
 				path = "",
+				paintable = false,
+				mirror = "Tailwing03__0_M",
 			},
 			{
 				name = "Tailwing03__1",
 				file = "Parts_Wings",
 				center = {-0.0576, -0.0188, -0.0726},
 				size = {1.2999, 0.1586, 1.8535},
-				color = {1, 1, 1},
+				color = {0.9505, 0.9509, 0.9505},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Tailwing03",
 				path = "",
+				paintable = true,
+				mirror = "Tailwing03__1_M",
 			},
 			{
 				name = "Tailwing03__2",
@@ -8948,6 +9935,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "Tailwing03__2_M",
 			},
 		},
 		bounds = {
@@ -9034,17 +10023,19 @@ return {
 				textured = false,
 				go = "Tailwing04",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "Tailwing04__1",
 				file = "Parts_Wings",
 				center = {0.0942, 0.0, -0.7878},
 				size = {1.0852, 0.1639, 1.6541},
-				color = {1, 1, 1},
+				color = {0.9413, 0.9429, 0.9413},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Tailwing04",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "Tailwing04__2",
@@ -9056,6 +10047,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "Tailwing04__2_M",
 			},
 		},
 		bounds = {
@@ -9127,6 +10120,8 @@ return {
 				textured = true,
 				go = "Cube.002",
 				path = "TempratureFan/Cube.002",
+				paintable = false,
+				mirror = "TempratureFan__0_M",
 			},
 			{
 				name = "TempratureFan__1",
@@ -9138,6 +10133,8 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "TempratureFan/Cylinder",
+				paintable = false,
+				mirror = "TempratureFan__1_M",
 			},
 		},
 		bounds = {
@@ -9226,6 +10223,8 @@ return {
 				textured = true,
 				go = "Case",
 				path = "Case",
+				paintable = false,
+				mirror = "TinyRetractableGear__0_M",
 			},
 			{
 				name = "TinyRetractableGear__1",
@@ -9237,6 +10236,8 @@ return {
 				textured = true,
 				go = "Lower Suspension",
 				path = "UpperSuspension/Lower Suspension/Lower Suspension",
+				paintable = false,
+				mirror = "TinyRetractableGear__1_M",
 			},
 			{
 				name = "TinyRetractableGear__2",
@@ -9248,6 +10249,8 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel/Wheels",
+				paintable = false,
+				mirror = "TinyRetractableGear__2_M",
 			},
 			{
 				name = "TinyRetractableGear__3",
@@ -9259,6 +10262,7 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "UpperSuspension/Mesh",
+				paintable = false,
 			},
 		},
 		retractable = {
@@ -9367,11 +10371,13 @@ return {
 				file = "Parts_Engines",
 				center = {-0.4485, -0.0, 0.0},
 				size = {0.9017, 0.9971, 0.9971},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.9096, 0.9094, 0.9096},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = true,
+				mirror = "TurboProp__0_M",
 			},
 			{
 				name = "TurboProp__1",
@@ -9383,6 +10389,8 @@ return {
 				textured = true,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = false,
+				mirror = "TurboProp__1_M",
 			},
 			{
 				name = "TurboProp__2",
@@ -9394,6 +10402,8 @@ return {
 				textured = false,
 				go = "Propeller",
 				path = "Propeller",
+				paintable = false,
+				mirror = "TurboProp__2_M",
 			},
 			{
 				name = "TurboProp__3",
@@ -9405,6 +10415,8 @@ return {
 				textured = true,
 				go = "Propeller",
 				path = "Propeller",
+				paintable = false,
+				mirror = "TurboProp__3_M",
 			},
 			{
 				name = "TurboProp__4",
@@ -9416,6 +10428,8 @@ return {
 				textured = true,
 				go = "1",
 				path = "Propeller/1",
+				paintable = false,
+				mirror = "TurboProp__4_M",
 			},
 			{
 				name = "TurboProp__5",
@@ -9427,6 +10441,8 @@ return {
 				textured = true,
 				go = "2",
 				path = "Propeller/2",
+				paintable = false,
+				mirror = "TurboProp__5_M",
 			},
 			{
 				name = "TurboProp__6",
@@ -9438,6 +10454,8 @@ return {
 				textured = true,
 				go = "3",
 				path = "Propeller/3",
+				paintable = false,
+				mirror = "TurboProp__6_M",
 			},
 			{
 				name = "TurboProp__7",
@@ -9449,6 +10467,8 @@ return {
 				textured = true,
 				go = "4",
 				path = "Propeller/4",
+				paintable = false,
+				mirror = "TurboProp__7_M",
 			},
 			{
 				name = "TurboProp__8",
@@ -9460,6 +10480,7 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
 			},
 		},
 		propeller = {
@@ -9552,6 +10573,7 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "Top Suspension/Mesh",
+				paintable = false,
 			},
 			{
 				name = "Wheel01__1",
@@ -9563,6 +10585,7 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "Top Suspension/BottomSuspension/Mesh",
+				paintable = false,
 			},
 			{
 				name = "Wheel01__2",
@@ -9574,6 +10597,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "Top Suspension/BottomSuspension/Mesh",
+				paintable = false,
+				mirror = "Wheel01__2_M",
 			},
 			{
 				name = "Wheel01__3",
@@ -9585,6 +10610,8 @@ return {
 				textured = false,
 				go = "Wheel",
 				path = "Top Suspension/BottomSuspension/Wheel",
+				paintable = false,
+				mirror = "Wheel01__3_M",
 			},
 			{
 				name = "Wheel01__4",
@@ -9596,6 +10623,8 @@ return {
 				textured = false,
 				go = "Wheel",
 				path = "Top Suspension/BottomSuspension/Wheel",
+				paintable = false,
+				mirror = "Wheel01__4_M",
 			},
 			{
 				name = "Wheel01__5",
@@ -9607,6 +10636,7 @@ return {
 				textured = false,
 				go = "Wheel",
 				path = "Top Suspension/BottomSuspension/Wheel",
+				paintable = false,
 			},
 			{
 				name = "Wheel01__6",
@@ -9618,6 +10648,7 @@ return {
 				textured = false,
 				go = "Wheel",
 				path = "Top Suspension/BottomSuspension/Wheel",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -9706,6 +10737,8 @@ return {
 				textured = true,
 				go = "Wheel strut 2",
 				path = "Struts/WheelStrut1/Wheel strut 2",
+				paintable = false,
+				mirror = "Wheel03__0_M",
 			},
 			{
 				name = "Wheel03__1",
@@ -9717,6 +10750,8 @@ return {
 				textured = true,
 				go = "WheelStrut1",
 				path = "Struts/WheelStrut2/WheelStrut1",
+				paintable = false,
+				mirror = "Wheel03__1_M",
 			},
 			{
 				name = "Wheel03__2",
@@ -9728,6 +10763,8 @@ return {
 				textured = true,
 				go = "Strut1",
 				path = "Struts/p1/Strut1",
+				paintable = false,
+				mirror = "Wheel03__2_M",
 			},
 			{
 				name = "Wheel03__3",
@@ -9739,6 +10776,8 @@ return {
 				textured = true,
 				go = "Strut2",
 				path = "Struts/p2/Strut2",
+				paintable = false,
+				mirror = "Wheel03__3_M",
 			},
 			{
 				name = "Wheel03__4",
@@ -9750,6 +10789,8 @@ return {
 				textured = true,
 				go = "Case",
 				path = "Case",
+				paintable = false,
+				mirror = "Wheel03__4_M",
 			},
 			{
 				name = "Wheel03__5",
@@ -9761,6 +10802,7 @@ return {
 				textured = true,
 				go = "Lower Suspension",
 				path = "UpperSuspension/Lower Suspension/Lower Suspension",
+				paintable = false,
 			},
 			{
 				name = "Wheel03__6",
@@ -9772,6 +10814,7 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel/Wheels",
+				paintable = false,
 			},
 			{
 				name = "Wheel03__7",
@@ -9783,6 +10826,7 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "UpperSuspension/Mesh",
+				paintable = false,
 			},
 		},
 		retractable = {
@@ -9870,11 +10914,13 @@ return {
 				file = "Parts_Wings",
 				center = {0.0895, -0.0016, 0.1447},
 				size = {1.9356, 0.2564, 3.736},
-				color = {0.8868, 0.8868, 0.8868},
+				color = {0.8771, 0.8769, 0.8771},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Wing",
 				path = "",
+				paintable = true,
+				mirror = "Wing__0_M",
 			},
 			{
 				name = "Wing__1",
@@ -9886,6 +10932,8 @@ return {
 				textured = false,
 				go = "Aileron ",
 				path = "Aileron ",
+				paintable = false,
+				mirror = "Wing__1_M",
 			},
 		},
 		bounds = {
@@ -9957,6 +11005,8 @@ return {
 				textured = true,
 				go = "WoodConnection",
 				path = "",
+				paintable = false,
+				mirror = "WoodConnection__0_M",
 			},
 			{
 				name = "WoodConnection__1",
@@ -9968,17 +11018,21 @@ return {
 				textured = true,
 				go = "WoodConnection",
 				path = "",
+				paintable = false,
+				mirror = "WoodConnection__1_M",
 			},
 			{
 				name = "WoodConnection__2",
 				file = "Parts_Utility",
 				center = {-0.0, 0.0112, 0.0009},
 				size = {0.0245, 0.002, 0.0236},
-				color = {0.9137, 0.9137, 0.9137},
+				color = {0.8613, 0.8603, 0.86},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "WoodConnection",
 				path = "",
+				paintable = true,
+				mirror = "WoodConnection__2_M",
 			},
 		},
 		bounds = {
@@ -10086,6 +11140,8 @@ return {
 				textured = true,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = false,
+				mirror = "WoodEngine__0_M",
 			},
 			{
 				name = "WoodEngine__1",
@@ -10097,6 +11153,8 @@ return {
 				textured = false,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = true,
+				mirror = "WoodEngine__1_M",
 			},
 			{
 				name = "WoodEngine__2",
@@ -10108,6 +11166,8 @@ return {
 				textured = true,
 				go = "Prop",
 				path = "Prop",
+				paintable = false,
+				mirror = "WoodEngine__2_M",
 			},
 			{
 				name = "WoodEngine__3",
@@ -10119,6 +11179,7 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
 			},
 		},
 		propeller = {
@@ -10194,6 +11255,8 @@ return {
 				textured = true,
 				go = "WoodStrut",
 				path = "",
+				paintable = false,
+				mirror = "WoodStrut__0_M",
 			},
 		},
 		bounds = {
@@ -10280,6 +11343,8 @@ return {
 				textured = true,
 				go = "WoodWing",
 				path = "",
+				paintable = false,
+				mirror = "WoodWing__0_M",
 			},
 		},
 		bounds = {
@@ -10291,7 +11356,7 @@ return {
 ]]></string>
           </Properties>
         </Item>
-        <Item class="ModuleScript" referent="9">
+        <Item class="ModuleScript" referent="11">
           <Properties>
             <string name="Name">Research</string>
             <string name="Source"><![CDATA[-- Research tree: part unlock costs (scrap, advanced scrap) and tree layout.
@@ -11038,7 +12103,95 @@ return {
 ]]></string>
           </Properties>
         </Item>
-        <Item class="ModuleScript" referent="10">
+        <Item class="ModuleScript" referent="12">
+          <Properties>
+            <string name="Name">Sounds</string>
+            <string name="Source"><![CDATA[-- Which audio file the original played for each event (names match the .ogg files in sounds/).
+-- Generated from the Unity project by the Aviassembly Roblox exporter. Positions are in studs (1 stud = 1 Unity metre)
+-- and converted to Roblox axes (Unity X is mirrored). Do not edit by hand; re-run the exporter instead.
+return {
+	ui = {
+		click = "ButtonClick02",
+		clickLight = "BrightButton01",
+		clickHeavy = "ButtonClick03",
+		clickSelection = "ButtonHeavy",
+		clickReward = "BrightButton02",
+		hover = "BightButtonHover01",
+		placement = "Placement",
+		remove = "Removal",
+		paint = "PaintSplash",
+		addItem = "AddItem",
+		reward = "Reward",
+		cash = "CashRegister",
+		warning = "Notification",
+		writing = "Writing",
+		explosion = "Explosion",
+		glass = "GlassBreaking",
+		mystery = "MysterySound",
+		radioClick = "RadioClick",
+		radioStatic = "RadioStatic",
+		stopwatch = "Stopwatch",
+	},
+	volumes = {
+		remove = 0.5,
+		explosion = 0.5,
+		writing = 0.8,
+		addItem = 0.8,
+		reward = 0.8,
+		hover = 0.5,
+		cash = 0.8,
+		paint = 0.8,
+		glass = 0.5,
+		mystery = 0.8,
+		radioClick = 0.5,
+	},
+	engines = {
+		Engine = "PropellerEngine",
+		HugePropEngine = "PropellerEngine",
+		SmallPropEngine = "PropellerEngine",
+		TurboProp = "PropellerEngine",
+		WoodEngine = "PropellerEngine",
+		JetEngine = "JetEngine",
+		SmallJetEngine = "JetEngine",
+		PropfanEngine = "JetEngine",
+		BigElectricEngine = "JetEngine",
+		FighterJetEngine = "JetEngine",
+		RamJet = "JetEngine",
+		RocketEngine = "RocketEngine",
+		HelicopterEngine = "Helisound 1",
+		HelicopterEngineSmall = "Helisound 1",
+	},
+	afterburners = {
+		FighterJetEngine = "RocketEngine",
+		RamJet = "RocketEngine",
+	},
+	ambience = {
+		wind = "Wind",
+		nature = "Nature",
+		birds = "Birds",
+		airTraffic = "AirTrafficControlLoop",
+		earthquake = "EarthQuacke",
+	},
+	music = {
+		menu = "Ambiment",
+		building = {
+			"Hard Boiled",
+			"On the Ground",
+			"Vibe Ace",
+		},
+		continents = {
+			Spawn = "Floating Cities",
+			Desert = "Desert City",
+		},
+		postEarthquake = "Gothamlicious",
+		postFinalMessage = "Constancy Part Two",
+		finalSequence = "Evening Melodrama",
+	},
+}
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="13">
           <Properties>
             <string name="Name">World</string>
             <string name="Source"><![CDATA[-- Continents, airports (with their quest chains) and cargo types, from the latest world asset (version 24).
@@ -11084,6 +12237,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 0,
 					offshore = false,
 					position = {0, 0, 0},
@@ -11246,6 +12400,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {150, 500},
+					treeFootprint = {150, 500},
 					blendingDistance = 350,
 					offshore = false,
 					position = {0, 0, 3000},
@@ -11595,6 +12750,7 @@ return {
 					rotationOverride = true,
 					rotation = -30,
 					footprint = {200, 300},
+					treeFootprint = {0, 0},
 					blendingDistance = 0,
 					offshore = false,
 					position = {2000, 0, 6000},
@@ -11841,6 +12997,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {100, 300},
+					treeFootprint = {90, 300},
 					blendingDistance = 0,
 					offshore = false,
 					position = {2000, 0, 10000},
@@ -12223,6 +13380,7 @@ return {
 					rotationOverride = true,
 					rotation = 35,
 					footprint = {200, 500},
+					treeFootprint = {0, 0},
 					blendingDistance = 400,
 					offshore = false,
 					position = {-1000, 0, 5000},
@@ -12675,6 +13833,7 @@ return {
 					rotationOverride = true,
 					rotation = 210,
 					footprint = {275, 275},
+					treeFootprint = {0, 0},
 					blendingDistance = 350,
 					offshore = false,
 					position = {0, 0, 7000},
@@ -12919,6 +14078,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {150, 250},
+					treeFootprint = {0, 0},
 					blendingDistance = 450,
 					offshore = false,
 					position = {-1000, 0, 10000},
@@ -13213,6 +14373,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {75, 275},
+					treeFootprint = {100, 250},
 					blendingDistance = 450,
 					offshore = false,
 					position = {-2000, 0, 7000},
@@ -13414,6 +14575,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 0,
 					offshore = false,
 					position = {-2000, 0, 15000},
@@ -13574,6 +14736,7 @@ return {
 					rotationOverride = true,
 					rotation = 205,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 400,
 					offshore = false,
 					position = {-2000, 0, 18000},
@@ -14167,6 +15330,7 @@ return {
 					rotationOverride = true,
 					rotation = 205,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 500,
 					offshore = false,
 					position = {-4000, 0, 25000},
@@ -14411,6 +15575,7 @@ return {
 					rotationOverride = true,
 					rotation = 0,
 					footprint = {300, 300},
+					treeFootprint = {0, 0},
 					blendingDistance = 500,
 					offshore = false,
 					position = {-6000, 0, 17000},
@@ -14543,6 +15708,7 @@ return {
 					rotationOverride = true,
 					rotation = 90,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 500,
 					offshore = false,
 					position = {1000, 0, 22000},
@@ -14743,6 +15909,7 @@ return {
 					rotationOverride = true,
 					rotation = 210,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 500,
 					offshore = false,
 					position = {-5000, 0, 20000},
@@ -14969,6 +16136,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {500, 500},
+					treeFootprint = {0, 0},
 					blendingDistance = 500,
 					offshore = false,
 					position = {-7000, 0, 22000},
@@ -15178,6 +16346,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 0,
 					offshore = true,
 					position = {-8000, 0, 19000},
@@ -15370,6 +16539,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 0,
 					offshore = false,
 					position = {10000, 0, 9000},
@@ -15530,6 +16700,7 @@ return {
 					rotationOverride = true,
 					rotation = 0,
 					footprint = {300, 300},
+					treeFootprint = {400, 400},
 					blendingDistance = 600,
 					offshore = false,
 					position = {10000, 0, 12000},
@@ -15721,6 +16892,7 @@ return {
 					rotationOverride = true,
 					rotation = 180,
 					footprint = {150, 150},
+					treeFootprint = {400, 400},
 					blendingDistance = 1750,
 					offshore = false,
 					position = {15000, 0, 8000},
@@ -16232,6 +17404,7 @@ return {
 					rotationOverride = true,
 					rotation = -75,
 					footprint = {300, 300},
+					treeFootprint = {400, 400},
 					blendingDistance = 600,
 					offshore = false,
 					position = {10000, 0, 17000},
@@ -16703,6 +17876,7 @@ return {
 					rotationOverride = true,
 					rotation = 45,
 					footprint = {300, 300},
+					treeFootprint = {400, 400},
 					blendingDistance = 600,
 					offshore = false,
 					position = {13000, 0, 16000},
@@ -17149,6 +18323,7 @@ return {
 					rotationOverride = true,
 					rotation = 180,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 900,
 					offshore = false,
 					position = {15000, 0, 13000},
@@ -17560,6 +18735,7 @@ return {
 					rotationOverride = true,
 					rotation = 210,
 					footprint = {200, 200},
+					treeFootprint = {200, 300},
 					blendingDistance = 350,
 					offshore = false,
 					position = {7000, 0, 14000},
@@ -17934,6 +19110,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 0,
 					offshore = true,
 					position = {17000, 0, 10000},
@@ -18098,6 +19275,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 0,
 					offshore = true,
 					position = {11000, 0, 19000},
@@ -18262,6 +19440,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 0,
 					offshore = true,
 					position = {4000, 0, 14000},
@@ -18454,6 +19633,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {200, 200},
+					treeFootprint = {300, 300},
 					blendingDistance = 5,
 					offshore = false,
 					position = {7000, 0, 4000},
@@ -18739,6 +19919,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 0,
 					offshore = false,
 					position = {9000, 0, 2000},
@@ -18849,6 +20030,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {0, 0},
 					blendingDistance = 500,
 					offshore = false,
 					position = {4000, 0, 17000},
@@ -19083,6 +20265,7 @@ return {
 					rotationOverride = false,
 					rotation = 0,
 					footprint = {0, 0},
+					treeFootprint = {300, 300},
 					blendingDistance = 700,
 					offshore = false,
 					position = {-6000, 0, 11000},
@@ -19522,7 +20705,7 @@ return {
           </Properties>
         </Item>
       </Item>
-      <Item class="ModuleScript" referent="11">
+      <Item class="ModuleScript" referent="14">
         <Properties>
           <string name="Name">Fuselage</string>
           <string name="Source"><![CDATA[--!strict
@@ -19685,11 +20868,11 @@ return Fuselage
 ]]></string>
         </Properties>
       </Item>
-      <Item class="Folder" referent="12">
+      <Item class="Folder" referent="15">
         <Properties>
           <string name="Name">Util</string>
         </Properties>
-        <Item class="ModuleScript" referent="13">
+        <Item class="ModuleScript" referent="16">
           <Properties>
             <string name="Name">MathUtil</string>
             <string name="Source"><![CDATA[--!strict
@@ -19820,13 +21003,14 @@ return MathUtil
 ]]></string>
           </Properties>
         </Item>
-        <Item class="ModuleScript" referent="14">
+        <Item class="ModuleScript" referent="17">
           <Properties>
             <string name="Name">Noise</string>
             <string name="Source"><![CDATA[--!strict
--- Terrain noise, ported from NoiceGenerator.cs. Unity's Mathf.PerlinNoise is closed source, so this is
--- classic improved Perlin noise remapped to Unity's [0, 1] range; terrain has the same character and scale
--- as the original but not identical hills.
+-- Terrain noise, ported from NoiceGenerator.cs.
+-- Mathf.PerlinNoise is implemented in Unity's native engine. Community analysis says it is Ken Perlin's
+-- "improved noise" (reference permutation and gradients) evaluated at z = 0, rescaled to roughly 0..1 with
+-- value = noise / 1.483 + 0.46527309. That reconstruction is used here.
 local Noise = {}
 
 local perm: { number } = {}
@@ -19853,32 +21037,37 @@ local function fade(t: number): number
 	return t * t * t * (t * (t * 6 - 15) + 10)
 end
 
+-- Ken Perlin's reference grad(hash, x, y, z) with z = 0.
 local function grad(hash: number, x: number, y: number): number
-	local h = hash % 8
-	local u = if h < 4 then x else y
-	local v = if h < 4 then y else x
-	return (if h % 2 == 0 then u else -u) + (if math.floor(h / 2) % 2 == 0 then 2 * v else -2 * v)
+	local h = hash % 16
+	local u = if h < 8 then x else y
+	local v = if h < 4 then y elseif h == 12 or h == 14 then x else 0
+	return (if h % 2 == 0 then u else -u) + (if math.floor(h / 2) % 2 == 0 then v else -v)
 end
 
--- 2D Perlin noise in [0, 1] (Unity convention).
+local function lerp(t: number, a: number, b: number): number
+	return a + t * (b - a)
+end
+
+-- Improved noise at z = 0, in [-1, 1].
+function Noise.improved(x: number, y: number): number
+	local X = math.floor(x)
+	local Y = math.floor(y)
+	x -= X
+	y -= Y
+	X %= 256
+	Y %= 256
+	local u, v = fade(x), fade(y)
+	local A = perm[X] + Y
+	local AA, AB = perm[A], perm[A + 1]
+	local B = perm[X + 1] + Y
+	local BA, BB = perm[B], perm[B + 1]
+	return lerp(v, lerp(u, grad(perm[AA], x, y), grad(perm[BA], x - 1, y)), lerp(u, grad(perm[AB], x, y - 1), grad(perm[BB], x - 1, y - 1)))
+end
+
+-- Mathf.PerlinNoise
 function Noise.perlin(x: number, y: number): number
-	local xi = math.floor(x)
-	local yi = math.floor(y)
-	local xf = x - xi
-	local yf = y - yi
-	xi = xi % 256
-	yi = yi % 256
-	local u = fade(xf)
-	local v = fade(yf)
-	local aa = perm[perm[xi] + yi]
-	local ab = perm[perm[xi] + yi + 1]
-	local ba = perm[perm[xi + 1] + yi]
-	local bb = perm[perm[xi + 1] + yi + 1]
-	local x1 = grad(aa, xf, yf) + (grad(ba, xf - 1, yf) - grad(aa, xf, yf)) * u
-	local x2 = grad(ab, xf, yf - 1) + (grad(bb, xf - 1, yf - 1) - grad(ab, xf, yf - 1)) * u
-	local n = x1 + (x2 - x1) * v
-	-- grad() output spans roughly [-2.2, 2.2]; scale into Unity's 0..1 with mean 0.5.
-	return math.clamp(0.5 + n * 0.25, -0.1, 1.1)
+	return Noise.improved(x, y) / 1.483 + 0.46527309
 end
 
 local function perlinOffset(x: number, y: number): number
@@ -19906,7 +21095,7 @@ return Noise
           </Properties>
         </Item>
       </Item>
-      <Item class="ModuleScript" referent="15">
+      <Item class="ModuleScript" referent="18">
         <Properties>
           <string name="Name">WorldMap</string>
           <string name="Source"><![CDATA[--!strict
@@ -19944,6 +21133,7 @@ export type Airport = {
 	isBase: boolean,
 	rotation: number, -- yaw in degrees (Unity)
 	flatness: Rect,
+	treeFootprint: Rect?,
 	cargoTypes: { string },
 }
 
@@ -20252,6 +21442,8 @@ for _, airport in WorldMap.Airports do
 		blending = 200
 	end
 	airport.flatness = newRect(size, Vector2.new(airport.position.X, airport.position.Z), rotation)
+	local tf = Vector2.new(data.treeFootprint and data.treeFootprint[1] or 0, data.treeFootprint and data.treeFootprint[2] or 0)
+	airport.treeFootprint = newRect(if tf.Magnitude < 10 then size else tf, Vector2.new(airport.position.X, airport.position.Z), rotation)
 	if not data.offshore then
 		table.insert(flatObjects, {
 			rect = airport.flatness,
@@ -20350,11 +21542,11 @@ return WorldMap
       </Item>
     </Item>
   </Item>
-  <Item class="ServerScriptService" referent="16">
+  <Item class="ServerScriptService" referent="19">
     <Properties>
       <string name="Name">ServerScriptService</string>
     </Properties>
-    <Item class="Script" referent="17">
+    <Item class="Script" referent="20">
       <Properties>
         <string name="Name">SaveService</string>
         <token name="RunContext">0</token>
@@ -20458,23 +21650,302 @@ end)
       </Properties>
     </Item>
   </Item>
-  <Item class="StarterPlayer" referent="18">
+  <Item class="SoundService" referent="21">
+    <Properties>
+      <string name="Name">SoundService</string>
+    </Properties>
+  </Item>
+  <Item class="StarterPlayer" referent="22">
     <Properties>
       <string name="Name">StarterPlayer</string>
     </Properties>
-    <Item class="StarterPlayerScripts" referent="19">
+    <Item class="StarterPlayerScripts" referent="23">
       <Properties>
         <string name="Name">StarterPlayerScripts</string>
       </Properties>
-      <Item class="Folder" referent="20">
+      <Item class="Folder" referent="24">
         <Properties>
           <string name="Name">Aviassembly</string>
         </Properties>
-        <Item class="Folder" referent="21">
+        <Item class="Folder" referent="25">
           <Properties>
             <string name="Name">Game</string>
           </Properties>
-          <Item class="ModuleScript" referent="22">
+          <Item class="ModuleScript" referent="26">
+            <Properties>
+              <string name="Name">Audio</string>
+              <string name="Source"><![CDATA[--!strict
+-- Sound effects, engine loops, ambience and music (AudioManager, EngineSound, FlyingAmbience,
+-- BackgroundMusicManager, FlyingBackgroundMusic).
+-- Roblox needs audio uploaded to your account, so the sounds are imported once in Studio (see README) as Sound
+-- objects named after the original files, anywhere under ReplicatedStorage (e.g. ReplicatedStorage.AviassemblySounds).
+-- Everything is silent until then.
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local SoundService = game:GetService("SoundService")
+local Workspace = game:GetService("Workspace")
+local Shared = ReplicatedStorage:WaitForChild("Shared")
+local Sounds = require(Shared.Data.Sounds)
+
+local Audio = {}
+Audio.masterVolume = 1
+Audio.musicVolume = 0.6
+
+local index: { [string]: Sound }? = nil
+
+local function normalize(name: string): string
+	return (name:lower():gsub("%.ogg$", ""):gsub("[%s_%-]", ""))
+end
+
+function Audio.refresh()
+	local map: { [string]: Sound } = {}
+	for _, d in ReplicatedStorage:GetDescendants() do
+		if d:IsA("Sound") then
+			map[normalize(d.Name)] = d
+		end
+	end
+	index = map
+end
+
+function Audio.find(name: string): Sound?
+	if not index then
+		Audio.refresh()
+	end
+	return (index :: any)[normalize(name)]
+end
+
+function Audio.available(): boolean
+	if not index then
+		Audio.refresh()
+	end
+	return next(index :: any) ~= nil
+end
+
+local holder = Instance.new("Folder")
+holder.Name = "AviassemblyAudio"
+holder.Parent = SoundService
+
+-- One-shot UI / game sound by its key in Data/Sounds.ui (or a raw file name).
+function Audio.play(key: string, volume: number?)
+	local file = Sounds.ui[key] or key
+	local source = Audio.find(file)
+	if not source then
+		return
+	end
+	local s = source:Clone()
+	s.Volume = (volume or Sounds.volumes[key] or 1) * Audio.masterVolume
+	s.Looped = false
+	s.Parent = holder
+	s:Play()
+	s.Ended:Connect(function()
+		s:Destroy()
+	end)
+	task.delay(30, function()
+		if s.Parent then
+			s:Destroy()
+		end
+	end)
+end
+
+-- A looping sound whose volume/pitch is driven every frame.
+export type Loop = { sound: Sound?, set: (self: any, volume: number, pitch: number?) -> (), stop: (self: any) -> () }
+
+function Audio.loop(file: string, parent: Instance?): Loop
+	local source = Audio.find(file)
+	local s: Sound? = nil
+	if source then
+		s = source:Clone()
+		local snd = s :: Sound
+		snd.Looped = true
+		snd.Volume = 0
+		snd.Parent = parent or holder
+		snd:Play()
+	end
+	return {
+		sound = s,
+		set = function(self, volume: number, pitch: number?)
+			if self.sound then
+				self.sound.Volume = math.clamp(volume, 0, 3) * Audio.masterVolume
+				if pitch then
+					self.sound.PlaybackSpeed = math.max(pitch, 0.05)
+				end
+			end
+		end,
+		stop = function(self)
+			if self.sound then
+				self.sound:Destroy()
+				self.sound = nil
+			end
+		end,
+	}
+end
+
+-- ------------------------------------------------------------------------------------------- music
+local current: Sound? = nil
+local currentName: string? = nil
+local fading: { Sound } = {}
+
+function Audio.music(file: string?, volume: number?)
+	if file == currentName then
+		return
+	end
+	if current then
+		table.insert(fading, current)
+	end
+	current, currentName = nil, file
+	if not file then
+		return
+	end
+	local source = Audio.find(file)
+	if not source then
+		return
+	end
+	local s = source:Clone()
+	s.Looped = true
+	s.Volume = 0
+	s:SetAttribute("Target", volume or 1)
+	s.Parent = holder
+	s:Play()
+	current = s
+end
+
+-- Building music cycles through the original playlist.
+local buildingIndex = 0
+function Audio.nextBuildingTrack()
+	buildingIndex = buildingIndex % #Sounds.music.building + 1
+	Audio.music(Sounds.music.building[buildingIndex], 0.8)
+end
+
+game:GetService("RunService").Heartbeat:Connect(function(dt)
+	if current then
+		local target = (current:GetAttribute("Target") or 1) * Audio.musicVolume * Audio.masterVolume
+		current.Volume += (target - current.Volume) * math.clamp(dt * 0.8, 0, 1)
+	end
+	for i = #fading, 1, -1 do
+		local s = fading[i]
+		s.Volume -= dt * 0.5
+		if s.Volume <= 0.01 then
+			s:Destroy()
+			table.remove(fading, i)
+		end
+	end
+end)
+
+local _ = Workspace
+return Audio
+]]></string>
+            </Properties>
+          </Item>
+          <Item class="ModuleScript" referent="27">
+            <Properties>
+              <string name="Name">Decals</string>
+              <string name="Source"><![CDATA[--!strict
+-- Plane decals (DecalPlacer / Decal / MeshDecal). Each decal is a thin invisible part sitting on the surface
+-- with a Roblox Decal on its front face. The images come from the "Decals.glb" import: the importer uploads
+-- each image and the game reuses the TextureID of the matching "Decal_<name>" mesh. Before that import, the
+-- decal shows its name as text so placement still works.
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Shared = ReplicatedStorage:WaitForChild("Shared")
+local Decorations = require(Shared.Data.Decorations)
+local PartVisual = require(script.Parent.PartVisual)
+
+local Decals = {}
+Decals.List = Decorations.decals
+Decals.DefaultColor = Color3.new(0.192, 0.2, 0.192) -- Decal.mat colour
+Decals.DefaultSize = 0.6
+
+export type DecalData = {
+	part: number, -- PlaneDesign entry id
+	pos: { number }, -- part-local position (port convention, before flip)
+	normal: { number }, -- part-local surface normal
+	up: { number }, -- part-local up direction of the image
+	size: number,
+	color: { number },
+	image: string,
+	mirror: number?, -- index of the mirrored decal
+}
+
+function Decals.textureFor(image: string): string?
+	for _, d in Decals.List do
+		if d.id == image then
+			local mesh = PartVisual.findMesh(d.mesh)
+			if mesh and mesh:IsA("MeshPart") and mesh.TextureID ~= "" then
+				return mesh.TextureID
+			end
+			local sa = mesh and mesh:FindFirstChildOfClass("SurfaceAppearance")
+			if sa and sa.ColorMap ~= "" then
+				return sa.ColorMap
+			end
+		end
+	end
+	return nil
+end
+
+local FALLBACK_TEXT = { Circle_0 = "●", Triangle = "▲", Rect = "■", Hexagon = "⬢", Star = "★", Star5Point = "★", Diamond = "◆", Hearth = "♥", Arrow = "➜", Alert = "!", Electricity = "⚡", HalfCircle = "◗", Cresent = "☾" }
+
+-- World CFrame of a decal given the CFrame of its part.
+function Decals.cframe(d: any, partCFrame: CFrame, flip: boolean): CFrame
+	local p = Vector3.new(d.pos[1], d.pos[2], d.pos[3])
+	local n = Vector3.new(d.normal[1], d.normal[2], d.normal[3])
+	local u = Vector3.new(d.up[1], d.up[2], d.up[3])
+	if flip then
+		p = Vector3.new(p.X, -p.Y, p.Z)
+		n = Vector3.new(n.X, -n.Y, n.Z)
+		u = Vector3.new(u.X, -u.Y, u.Z)
+	end
+	local wp = partCFrame * p
+	local wn = partCFrame:VectorToWorldSpace(n).Unit
+	local wu = partCFrame:VectorToWorldSpace(u)
+	wu = (wu - wn * wu:Dot(wn))
+	if wu.Magnitude < 1e-3 then
+		wu = if math.abs(wn.Y) < 0.9 then Vector3.yAxis else Vector3.xAxis
+	end
+	return CFrame.lookAt(wp + wn * 0.012, wp + wn * 2, wu.Unit)
+end
+
+function Decals.create(d: any, worldCFrame: CFrame, parent: Instance): BasePart
+	local holder = Instance.new("Part")
+	holder.Name = "Decal"
+	holder.Size = Vector3.new(d.size, d.size, 0.02)
+	holder.CFrame = worldCFrame
+	holder.Transparency = 1
+	holder.Anchored = true
+	holder.CanCollide = false
+	holder.CanTouch = false
+	holder.CanQuery = true
+	holder.Massless = true
+	local color = Color3.new(d.color[1], d.color[2], d.color[3])
+	local texture = Decals.textureFor(d.image)
+	if texture then
+		local decal = Instance.new("Decal")
+		decal.Face = Enum.NormalId.Front
+		decal.Texture = texture
+		decal.Color3 = color
+		decal.Parent = holder
+	else
+		local gui = Instance.new("SurfaceGui")
+		gui.Face = Enum.NormalId.Front
+		gui.CanvasSize = Vector2.new(100, 100)
+		gui.LightInfluence = 1
+		local label = Instance.new("TextLabel")
+		label.BackgroundTransparency = 1
+		label.Size = UDim2.fromScale(1, 1)
+		label.Text = FALLBACK_TEXT[d.image] or d.image
+		label.TextScaled = true
+		label.Font = Enum.Font.GothamBlack
+		label.TextColor3 = color
+		label.Parent = gui
+		gui.Parent = holder
+	end
+	holder:SetAttribute("DecalImage", d.image)
+	holder.Parent = parent
+	return holder
+end
+
+return Decals
+]]></string>
+            </Properties>
+          </Item>
+          <Item class="ModuleScript" referent="28">
             <Properties>
               <string name="Name">Flight</string>
               <string name="Source"><![CDATA[--!strict
@@ -20495,6 +21966,9 @@ local MathUtil = require(Shared.Util.MathUtil)
 local Frames = require(script.Parent.Frames)
 local PartVisual = require(script.Parent.PartVisual)
 local PlaneDesign = require(script.Parent.PlaneDesign)
+local Decals = require(script.Parent.Decals)
+local Audio = require(script.Parent.Audio)
+local Sounds = require(Shared.Data.Sounds)
 
 local PC = Constants.PlaneContainer
 local CTRL = Constants.PlaneController
@@ -20537,6 +22011,7 @@ export type Input = {
 	space: boolean,
 	retractPressed: boolean,
 	decouplePressed: boolean,
+	rotator: number?, -- H / J
 	autoSteer: boolean,
 }
 
@@ -20589,6 +22064,14 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 		comSum += center * stats.weight
 	end
 	local com = if totalWeight > 0 then comSum / totalWeight else spawnCFrame.Position
+	-- Decals ride on their parts.
+	for _, d in design.decals or {} do
+		for _, p in self.parts do
+			if p.entry.id == d.part then
+				Decals.create(d, Decals.cframe(d, p.cf, p.entry.flip), p.built.model)
+			end
+		end
+	end
 
 	-- Root at the centre of mass, oriented like the design frame.
 	local root = Instance.new("Part")
@@ -20656,10 +22139,82 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 			spinning[s.part] = { p = p, axis = s.axis }
 		end
 	end
+	-- Rotation joints (Rotator): the joint part and everything attached to it turn around the joint's axis;
+	-- the joint's base stays put. Pieces they move are attached with Welds whose offsets are animated.
+	self.rotators = {}
+	local byId = {}
+	for _, p in self.parts do
+		byId[p.entry.id] = p
+	end
+	for _, p in self.parts do
+		for _, comp in Parts[p.entry.name].components do
+			if comp.type == "Rotator" then
+				local axis = p.cf.ZVector * (if p.entry.flip then -1 else 1)
+				table.insert(self.rotators, { part = p, angle = 0, speed = comp.data.speed or 80, returnToStart = comp.data.returnToStart == 1, basePath = comp.data.rotatorBase, pivotWorld = p.cf.Position, axisWorld = axis })
+			end
+		end
+	end
+	local moving = {} -- BasePart -> list of rotators (outermost first) moving it
+	local function ancestorsRotators(p)
+		local chain = {}
+		local cur = p
+		while cur do
+			for _, r in self.rotators do
+				if r.part == cur and cur ~= p then
+					table.insert(chain, 1, r)
+				end
+			end
+			cur = cur.entry.parent and byId[cur.entry.parent] or nil
+		end
+		return chain
+	end
+	for _, p in self.parts do
+		local chain = ancestorsRotators(p)
+		-- the joint part itself turns too, except its base
+		for _, r in self.rotators do
+			if r.part == p then
+				table.insert(chain, r)
+			end
+		end
+		p.rotatorChain = chain
+		if #chain > 0 then
+			for _, d in p.built.model:GetDescendants() do
+				if d:IsA("BasePart") then
+					local isBase = false
+					local own = chain[#chain]
+					if own.part == p and own.basePath then
+						local node = nil
+						for _, n in Parts[p.entry.name].nodes do
+							if n.name == d.Name then
+								node = n
+							end
+						end
+						if node and node.path and string.sub(node.path, 1, #own.basePath) == own.basePath then
+							isBase = true
+						end
+					end
+					if not isBase then
+						moving[d] = chain
+					elseif #chain > 1 then
+						moving[d] = { table.unpack(chain, 1, #chain - 1) }
+					end
+				end
+			end
+		end
+	end
+	self.movingWelds = {}
 	for _, d in model:GetDescendants() do
 		if d:IsA("BasePart") and d ~= root then
 			local spin = spinning[d]
-			if spin then
+			local chain = moving[d]
+			if chain and not spin then
+				local w = Instance.new("Weld")
+				w.Part0 = root
+				w.Part1 = d
+				w.C0 = root.CFrame:Inverse() * d.CFrame
+				w.Parent = d
+				table.insert(self.movingWelds, { weld = w, baseC0 = w.C0, chain = chain })
+			elseif spin then
 				-- propellers use a Weld whose offset is animated
 				local w = Instance.new("Weld")
 				w.Part0 = root
@@ -20682,6 +22237,10 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 
 	-- Physics components in root-local Roblox space.
 	local rootInv = root.CFrame:Inverse()
+	for _, r in self.rotators do
+		r.pivot = rootInv * r.pivotWorld
+		r.axis = rootInv:VectorToWorldSpace(r.axisWorld).Unit
+	end
 	self.wings, self.engines, self.wheels, self.balloons, self.drags, self.turbines, self.decouplers = {}, {}, {}, {}, {}, {}, {}
 	self.fuelCapacity = 1
 	self.batteryCapacity = 0.05
@@ -20710,16 +22269,27 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 				local scaleSign = if comp.path == "" and e.flip then -1 else 1
 				local d = comp.data
 				local c = { part = p, data = d, pos = lp, right = dir(f.right), up = dir(f.up), forward = dir(f.forward), scaleSign = scaleSign }
+				c.base = { pos = c.pos, right = c.right, up = c.up, forward = c.forward }
 				if comp.type == "Wing" then
 					local o = d.orientation
 					c.oPos = rootInv * Frames.worldPoint(p.cf, e.flip, Frames.v(o.pos))
 					c.oRight, c.oUp, c.oForward = dir(o.right), dir(o.up), dir(o.forward)
 					c.area = d.area[1] * d.area[2]
+					c.base.oPos, c.base.oRight, c.base.oUp, c.base.oForward = c.oPos, c.oRight, c.oUp, c.oForward
 					table.insert(self.wings, c)
 					self.fuelCapacity += math.abs(d.fuel or 0)
 				elseif comp.type == "Engine" then
 					c.throttle = 0
 					c.maxPower = 1
+					local file = Sounds.engines[e.name]
+					if file then
+						c.sound = Audio.loop(file)
+						c.pitchModulation = math.random() * 0.2
+					end
+					local ab = Sounds.afterburners[e.name]
+					if ab then
+						c.afterburnerSound = Audio.loop(ab)
+					end
 					table.insert(self.engines, c)
 				elseif comp.type == "Wheel" then
 					c.prevHit = d.suspentionLength
@@ -20787,6 +22357,13 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 		self.helicopter = 1
 	end
 
+	self.allComps = {}
+	for _, list in { self.wings, self.engines, self.wheels, self.balloons, self.drags, self.turbines, self.decouplers } do
+		for _, c in list do
+			table.insert(self.allComps, c)
+		end
+	end
+	self.windSound = Audio.loop(Sounds.ambience.wind)
 	self:classifyWings()
 	self:updateControllability()
 	self:updateMass()
@@ -21329,6 +22906,7 @@ function Flight:explodeAt(position: Vector3, size: number)
 	ex.ExplosionType = Enum.ExplosionType.NoCraters
 	ex.Position = position
 	ex.Parent = Workspace
+	Audio.play("explosion")
 end
 
 -- PartExploder.ExplodePart: the part and everything attached to it break off.
@@ -21382,6 +22960,7 @@ function Flight:explodePlane()
 		return
 	end
 	self.exploded = true
+	self:updateAudio()
 	self:explodeAt(self.root.Position, self.planeLength * 0.2)
 	for _, p in self.parts do
 		if p.alive then
@@ -21427,6 +23006,7 @@ function Flight:step(dt: number, input: Input)
 		end
 	end
 
+	self:updateRotators(input.rotator or 0, dt)
 	local grounded = self:isGrounded()
 
 	-- PlaneController.FixedUpdate
@@ -21543,6 +23123,72 @@ function Flight:step(dt: number, input: Input)
 		end
 	end
 	self.prevVelocity = self.root.AssemblyLinearVelocity
+	self:updateAudio()
+end
+
+-- Rotator.UpdatePart: H / J turn every rotation joint.
+function Flight:updateRotators(inputValue: number, dt: number)
+	if #self.rotators == 0 then
+		return
+	end
+	local changed = false
+	for _, r in self.rotators do
+		if r.part.alive then
+			local delta = MathUtil.snapToIncrement(dt * inputValue * r.speed, 0.1)
+			if inputValue == 0 and r.returnToStart then
+				delta = -r.angle * dt * 10
+			end
+			local newAngle = math.clamp(r.angle + delta, -180, 180)
+			if newAngle ~= r.angle then
+				r.angle = newAngle
+				changed = true
+			end
+		end
+	end
+	if not changed then
+		return
+	end
+	local function motion(chain): CFrame
+		local m = CFrame.identity
+		for _, r in chain do
+			local pivot = CFrame.new(r.pivot)
+			m = m * pivot * CFrame.fromAxisAngle(r.axis, math.rad(r.angle)) * pivot:Inverse()
+		end
+		return m
+	end
+	for _, w in self.movingWelds do
+		if w.weld.Parent then
+			w.weld.C0 = motion(w.chain) * w.baseC0
+		end
+	end
+	-- move the physics points/directions of the parts that turn
+	for _, c in self.allComps do
+		local chain = c.part.rotatorChain
+		if chain and #chain > 0 and c.base then
+			local m = motion(chain)
+			c.pos, c.right, c.up, c.forward = m * c.base.pos, m:VectorToWorldSpace(c.base.right), m:VectorToWorldSpace(c.base.up), m:VectorToWorldSpace(c.base.forward)
+			if c.base.oPos then
+				c.oPos, c.oRight, c.oUp, c.oForward = m * c.base.oPos, m:VectorToWorldSpace(c.base.oRight), m:VectorToWorldSpace(c.base.oUp), m:VectorToWorldSpace(c.base.oForward)
+			end
+		end
+	end
+end
+
+function Flight:updateAudio()
+	local speed = self.root.AssemblyLinearVelocity.Magnitude
+	for _, e in self.engines do
+		local thr = if e.part.alive and not self.exploded then math.abs(e.effective or 0) else 0
+		if e.sound then
+			e.sound:set(thr, 0.5 + thr * 0.5 - (e.pitchModulation or 0))
+		end
+		if e.afterburnerSound then
+			local ab = math.clamp(thr - 0.8, 0, 1) * 5
+			e.afterburnerSound:set(ab, 0.5 + ab * 0.5 - (e.pitchModulation or 0))
+		end
+	end
+	if self.windSound then
+		self.windSound:set(if self.exploded then 0 else math.clamp(speed / 200, 0, 1), 0.8)
+	end
 end
 
 -- Values the HUD shows.
@@ -21581,6 +23227,17 @@ end
 
 function Flight:destroy()
 	self.exploded = true
+	for _, e in self.engines or {} do
+		if e.sound then
+			e.sound:stop()
+		end
+		if e.afterburnerSound then
+			e.afterburnerSound:stop()
+		end
+	end
+	if self.windSound then
+		self.windSound:stop()
+	end
 	if self.model then
 		self.model:Destroy()
 	end
@@ -21590,7 +23247,7 @@ return Flight
 ]]></string>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="23">
+          <Item class="ModuleScript" referent="29">
             <Properties>
               <string name="Name">Frames</string>
               <string name="Source"><![CDATA[--!strict
@@ -21678,7 +23335,7 @@ return Frames
 ]]></string>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="24">
+          <Item class="ModuleScript" referent="30">
             <Properties>
               <string name="Name">Hangar</string>
               <string name="Source"><![CDATA[--!strict
@@ -21697,12 +23354,23 @@ local Frames = require(script.Parent.Frames)
 local PartVisual = require(script.Parent.PartVisual)
 local PlaneDesign = require(script.Parent.PlaneDesign)
 local UI = require(script.Parent.UI)
+local Audio = require(script.Parent.Audio)
+local Decals = require(script.Parent.Decals)
 
 local C = UI.Colors
 local Hangar = {}
 Hangar.__index = Hangar
 
 local SNAP_DISTANCE = 0.75
+local ROTATION_STEP = 15
+-- Paint colours (ColorPickerUI presets + the original part colours)
+local SWATCHES = {
+	{ 0.915, 0.915, 0.915 }, { 0.6, 0.6, 0.6 }, { 0.3, 0.3, 0.32 }, { 0.12, 0.12, 0.13 },
+	{ 0.86, 0.29, 0.17 }, { 0.92, 0.37, 0.24 }, { 0.78, 0.48, 0.17 }, { 0.91, 0.76, 0.27 },
+	{ 0.95, 0.88, 0.55 }, { 0.52, 0.62, 0.3 }, { 0.32, 0.42, 0.35 }, { 0.2, 0.5, 0.35 },
+	{ 0.25, 0.62, 0.86 }, { 0.3, 0.43, 0.6 }, { 0.18, 0.25, 0.5 }, { 0.55, 0.35, 0.7 },
+	{ 0.85, 0.45, 0.6 }, { 0.48, 0.35, 0.18 }, { 0.61, 0.52, 0.46 }, { 1, 1, 1 },
+}
 local CATEGORIES = { "Cockpits", "Engines", "Wings", "Wheels", "Utility", "Electric" }
 local CATEGORY_TITLES = { Cockpits = "Body", Engines = "Engines", Wings = "Wings", Wheels = "Wheels", Utility = "Misc", Electric = "Electric" }
 -- Part order inside each category, from the original PartBars.
@@ -21718,6 +23386,8 @@ local ORDER = {
 local function v(t: any): Vector3
 	return Frames.v(t)
 end
+
+local collisionPointFor: (string, any?) -> any?
 
 function Hangar.new(campaign: any, design: any, originCFrame: CFrame, callbacks: any)
 	local self = setmetatable({}, Hangar)
@@ -21735,6 +23405,13 @@ function Hangar.new(campaign: any, design: any, originCFrame: CFrame, callbacks:
 	self.undo = {} :: { any }
 	self.category = "Cockpits"
 	self.connections = {}
+	self.mode = "build" -- build | paint | decal
+	self.paintColor = SWATCHES[5]
+	self.decalImage = Decals.List[1] and Decals.List[1].id or "Circle_0"
+	self.decalColor = { Decals.DefaultColor.R, Decals.DefaultColor.G, Decals.DefaultColor.B }
+	self.decalSize = Decals.DefaultSize
+	self.decalRotation = 0
+	self.decalVisuals = {} :: { BasePart }
 	self.camYaw, self.camPitch, self.camDistance = math.rad(140), math.rad(20), 14
 
 	self.folder = Instance.new("Model")
@@ -21776,6 +23453,8 @@ function Hangar.new(campaign: any, design: any, originCFrame: CFrame, callbacks:
 	for _, e in design.parts do
 		self:buildEntry(e)
 	end
+	self:renderDecals()
+	self:buildHandles()
 	self:buildUI()
 	self:bindInput()
 	self:refresh()
@@ -21801,6 +23480,299 @@ end
 function Hangar:rebuildEntry(e: any)
 	self:removeVisual(e.id)
 	self:buildEntry(e)
+	self:renderDecals()
+end
+
+-- ------------------------------------------------------------------------------------------- decals
+function Hangar:renderDecals()
+	for _, d in self.decalVisuals do
+		d:Destroy()
+	end
+	self.decalVisuals = {}
+	for index, d in self.design.decals do
+		local e = self.design:get(d.part)
+		if e then
+			local holder = Decals.create(d, Decals.cframe(d, self.origin * e.cf, e.flip), self.folder)
+			holder:SetAttribute("DecalIndex", index)
+			table.insert(self.decalVisuals, holder)
+		end
+	end
+end
+
+-- Surface under the mouse on the plane: world hit, entry id.
+function Hangar:decalPlacement(): (any?, CFrame?)
+	local hit, id = self:hitPlane()
+	if not hit or not id then
+		return nil, nil
+	end
+	local e = self.design:get(id)
+	if not e then
+		return nil, nil
+	end
+	local partCF = self.origin * e.cf
+	local normalW = hit.Normal
+	-- image "up": world up projected on the surface (DecalPlacer.OrientProjectionVolume), then the user rotation
+	local up = Vector3.yAxis - normalW * Vector3.yAxis:Dot(normalW)
+	if up.Magnitude < 0.05 then
+		up = (self.origin:VectorToWorldSpace(Vector3.zAxis) - normalW * self.origin:VectorToWorldSpace(Vector3.zAxis):Dot(normalW))
+	end
+	up = CFrame.fromAxisAngle(normalW, math.rad(self.decalRotation)):VectorToWorldSpace(up.Unit)
+	local function toLocal(v: Vector3, isPoint: boolean): { number }
+		local l = if isPoint then partCF:PointToObjectSpace(v) else partCF:VectorToObjectSpace(v)
+		if e.flip then
+			l = Vector3.new(l.X, -l.Y, l.Z)
+		end
+		return { l.X, l.Y, l.Z }
+	end
+	local d = { part = id, pos = toLocal(hit.Position, true), normal = toLocal(normalW, false), up = toLocal(up, false), size = self.decalSize, color = table.clone(self.decalColor), image = self.decalImage }
+	return d, Decals.cframe(d, partCF, e.flip)
+end
+
+function Hangar:placeDecal()
+	local d = self:decalPlacement()
+	if not d then
+		UI.toast(self.gui, "Point at the plane to place a decal", C.bad)
+		return
+	end
+	table.insert(self.design.decals, d)
+	-- mirror copy (DecalPlacer.MakeMirrorCopy)
+	local e = self.design:get(d.part)
+	if self.mirrorMode and e and e.mirror and self.design:get(e.mirror) then
+		local m = self.design:get(e.mirror)
+		local worldCF = Decals.cframe(d, self.origin * e.cf, e.flip)
+		local local0 = self.origin:ToObjectSpace(worldCF)
+		local center, n = self:symmetryPlane()
+		local pos = local0.Position - n * (2 * (local0.Position - center):Dot(n))
+		local look = Frames.reflect(local0.LookVector, n)
+		local upv = Frames.reflect(local0.UpVector, n)
+		local mcf = self.origin * CFrame.lookAt(pos, pos + look, upv)
+		local partCF = self.origin * m.cf
+		local function toLocal(v: Vector3, isPoint: boolean): { number }
+			local l = if isPoint then partCF:PointToObjectSpace(v) else partCF:VectorToObjectSpace(v)
+			if m.flip then
+				l = Vector3.new(l.X, -l.Y, l.Z)
+			end
+			return { l.X, l.Y, l.Z }
+		end
+		table.insert(self.design.decals, { part = m.id, pos = toLocal(mcf.Position - mcf.LookVector * 0.012, true), normal = toLocal(mcf.LookVector, false), up = toLocal(mcf.UpVector, false), size = d.size, color = table.clone(d.color), image = d.image })
+	end
+	Audio.play("paint")
+	self:renderDecals()
+end
+
+function Hangar:removeDecalUnderMouse(): boolean
+	local origin, dir = self:designRay()
+	local params = RaycastParams.new()
+	params.FilterType = Enum.RaycastFilterType.Include
+	params.FilterDescendantsInstances = self.decalVisuals
+	local hit = Workspace:Raycast(origin, dir * 500, params)
+	local index = hit and hit.Instance:GetAttribute("DecalIndex")
+	if not index then
+		return false
+	end
+	table.remove(self.design.decals, index)
+	Audio.play("remove")
+	self:renderDecals()
+	return true
+end
+
+-- ------------------------------------------------------------------------------------------- paint (PartPainter)
+function Hangar:paintUnderMouse()
+	local _, id = self:hitPlane()
+	local e = id and self.design:get(id)
+	if not e then
+		return
+	end
+	if not PartVisual.isPaintable(e.name) then
+		UI.toast(self.gui, "This part can't be painted", C.bad)
+		return
+	end
+	local targets = { e }
+	if self.mirrorMode and e.mirror and self.design:get(e.mirror) then
+		table.insert(targets, self.design:get(e.mirror))
+	end
+	for _, t in targets do
+		t.color = table.clone(self.paintColor)
+		local b = self.built[t.id]
+		if b then
+			PartVisual.setColor(b, Color3.new(t.color[1], t.color[2], t.color[3]))
+		end
+	end
+	Audio.play("paint")
+end
+
+-- ------------------------------------------------------------------------------------------- rotate / resize handles
+function Hangar:buildHandles()
+	local proxy = Instance.new("Part")
+	proxy.Name = "HandleProxy"
+	proxy.Anchored = true
+	proxy.CanCollide = false
+	proxy.CanQuery = false
+	proxy.Transparency = 1
+	proxy.Size = Vector3.new(1, 1, 1)
+	proxy.Parent = self.folder
+	self.handleProxy = proxy
+	local playerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
+	local arcs = Instance.new("ArcHandles")
+	arcs.Color3 = C.accent
+	arcs.Visible = false
+	arcs.Parent = playerGui
+	self.arcHandles = arcs
+	local sizer = Instance.new("Handles")
+	sizer.Style = Enum.HandlesStyle.Resize
+	sizer.Color3 = Color3.fromRGB(90, 170, 230)
+	sizer.Visible = false
+	sizer.Parent = playerGui
+	self.sizeHandles = sizer
+
+	-- RotationGizmo: rotate the selected part (and everything attached to it) around its attach point.
+	local dragStart = nil
+	table.insert(self.connections, arcs.MouseButton1Down:Connect(function()
+		local e = self.selected and self.design:get(self.selected)
+		if not e then
+			return
+		end
+		local snapshot = {}
+		local function collect(entry)
+			snapshot[entry.id] = entry.cf
+			for _, c in self.design:children(entry.id) do
+				collect(c)
+			end
+		end
+		collect(e)
+		if self.mirrorMode and e.mirror and self.design:get(e.mirror) then
+			collect(self.design:get(e.mirror))
+		end
+		dragStart = { pivot = self.handleProxy.CFrame, snapshot = snapshot }
+	end))
+	table.insert(self.connections, arcs.MouseDrag:Connect(function(axis, angle)
+		local e = self.selected and self.design:get(self.selected)
+		if not e or not dragStart then
+			return
+		end
+		local step = if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then 1 else ROTATION_STEP
+		local snapped = math.rad(math.floor(math.deg(angle) / step + 0.5) * step)
+		local axisVector = ({ [Enum.Axis.X] = Vector3.xAxis, [Enum.Axis.Y] = Vector3.yAxis, [Enum.Axis.Z] = Vector3.zAxis })[axis]
+		local pivotLocal = self.origin:ToObjectSpace(dragStart.pivot)
+		local rot = pivotLocal * CFrame.fromAxisAngle(axisVector, snapped) * pivotLocal:Inverse()
+		local mirrorId = e.mirror
+		local function apply(entry)
+			local start = dragStart.snapshot[entry.id]
+			if start then
+				entry.cf = rot * start
+				local b = self.built[entry.id]
+				if b then
+					b.model:PivotTo(self.origin * entry.cf)
+				end
+			end
+			for _, c in self.design:children(entry.id) do
+				apply(c)
+			end
+		end
+		apply(e)
+		if self.mirrorMode and mirrorId and self.design:get(mirrorId) then
+			local function mirrorApply(entry)
+				if entry.mirror then
+					local twin = self.design:get(entry.mirror)
+					if twin and dragStart.snapshot[entry.id] then
+						local mcf = self:mirrorOf(entry.cf, entry.flip)
+						twin.cf = mcf
+						local b = self.built[twin.id]
+						if b then
+							b.model:PivotTo(self.origin * twin.cf)
+						end
+					end
+				end
+				for _, c in self.design:children(entry.id) do
+					mirrorApply(c)
+				end
+			end
+			mirrorApply(e)
+		end
+	end))
+	table.insert(self.connections, arcs.MouseButton1Up:Connect(function()
+		dragStart = nil
+		self:renderDecals()
+		self:placeHandles()
+	end))
+
+	-- ProceduralSizeGizmo: drag the faces of a Body to resize it.
+	local sizeStart = nil
+	table.insert(self.connections, sizer.MouseButton1Down:Connect(function()
+		local e = self.selected and self.design:get(self.selected)
+		if e and e.fuselage then
+			sizeStart = { settings = Fuselage.copy(e.fuselage), last = 0 }
+		end
+	end))
+	table.insert(self.connections, sizer.MouseDrag:Connect(function(face, distance)
+		local e = self.selected and self.design:get(self.selected)
+		if not e or not sizeStart then
+			return
+		end
+		local d = math.floor(distance / 0.05 + 0.5) * 0.05
+		if d == sizeStart.last then
+			return
+		end
+		sizeStart.last = d
+		local start = sizeStart.settings
+		self:resizeBody(e.id, function(s)
+			local function copyFrom(src)
+				s.side1.radius, s.side2.radius = src.side1.radius, src.side2.radius
+				s.side1.lengthOffset, s.side2.lengthOffset = src.side1.lengthOffset, src.side2.lengthOffset
+			end
+			copyFrom(start)
+			if face == Enum.NormalId.Back then
+				s.side1.lengthOffset += Vector3.new(0, 0, d)
+			elseif face == Enum.NormalId.Front then
+				s.side2.lengthOffset += Vector3.new(0, 0, d)
+			elseif face == Enum.NormalId.Left or face == Enum.NormalId.Right then
+				s.side1.radius += Vector2.new(d / 2, 0)
+				s.side2.radius += Vector2.new(d / 2, 0)
+			else
+				s.side1.radius += Vector2.new(0, d / 2)
+				s.side2.radius += Vector2.new(0, d / 2)
+			end
+		end, true)
+	end))
+	table.insert(self.connections, sizer.MouseButton1Up:Connect(function()
+		sizeStart = nil
+		self:placeHandles()
+	end))
+end
+
+-- Put the handles on the selected part (rotation around its attach point; resize box around a Body).
+function Hangar:placeHandles()
+	local e = self.mode == "build" and self.selected and self.design:get(self.selected)
+	if not e or not self.arcHandles then
+		if self.arcHandles then
+			self.arcHandles.Visible = false
+			self.sizeHandles.Visible = false
+		end
+		return
+	end
+	local cp = collisionPointFor(e.name, e.fuselage)
+	local pivotLocal = if cp then Frames.localPoint(cp.pos, e.flip) else Vector3.zero
+	local proxy = self.handleProxy
+	local data = Parts[e.name]
+	if data.procedural and e.fuselage then
+		local s = e.fuselage
+		local p1, p2 = Fuselage.endPoints(s)
+		local w = math.max(s.side1.radius.X, s.side2.radius.X) * 2
+		local h = math.max(s.side1.radius.Y, s.side2.radius.Y) * 2
+		local len = math.abs(p1.Z - p2.Z)
+		local mid = (p1 + p2) / 2
+		proxy.Size = Vector3.new(w, h, len)
+		proxy.CFrame = self.origin * e.cf * CFrame.new(Frames.localPoint(Vector3.new(-mid.X, mid.Y, mid.Z), e.flip))
+		self.sizeHandles.Adornee = proxy
+		self.sizeHandles.Visible = true
+		self.arcHandles.Visible = false
+		return
+	end
+	self.sizeHandles.Visible = false
+	proxy.Size = Vector3.one * 0.6
+	proxy.CFrame = self.origin * e.cf * CFrame.new(pivotLocal)
+	self.arcHandles.Adornee = proxy
+	self.arcHandles.Visible = e.parent ~= nil
 end
 
 -- Snap points of a placed (or candidate) part in design space: { pos, forward, owner }
@@ -21821,7 +23793,7 @@ local function snapPointsFor(name: string, cf: CFrame, flip: boolean, fus: any?)
 	return out
 end
 
-local function collisionPointFor(name: string, fus: any?): any?
+function collisionPointFor(name: string, fus: any?): any?
 	local data = Parts[name]
 	if data.procedural then
 		local s = fus or Fuselage.default()
@@ -22154,6 +24126,7 @@ function Hangar:place()
 		end
 	end
 	table.insert(self.undo, { kind = "place", ids = { e.id, added[2] and added[2].id or nil }, price = price })
+	Audio.play("placement")
 	self:refresh()
 end
 
@@ -22171,6 +24144,8 @@ function Hangar:deleteSelected()
 	self.campaign:changeMoney(refund)
 	table.insert(self.undo, { kind = "remove", entries = removed, price = refund })
 	self.selected = nil
+	Audio.play("remove")
+	self:renderDecals()
 	self:refresh()
 end
 
@@ -22205,7 +24180,7 @@ function Hangar:undoLast()
 end
 
 -- Body resizing (ProceduralFuselage gizmos), with the price difference charged or refunded.
-function Hangar:resizeBody(id: number, change: (any) -> ())
+function Hangar:resizeBody(id: number, change: (any) -> (), quiet: boolean?)
 	local e = self.design:get(id)
 	if not e or not Parts[e.name].procedural then
 		return
@@ -22233,7 +24208,9 @@ function Hangar:resizeBody(id: number, change: (any) -> ())
 		after += PlaneDesign.partStats({ name = x.name, fuselage = new }).price
 	end
 	if after > before and not self.campaign:hasMoney(after - before) then
-		UI.toast(self.gui, "Not enough money", C.bad)
+		if not quiet then
+			UI.toast(self.gui, "Not enough money", C.bad)
+		end
 		return
 	end
 	self.campaign:changeMoney(before - after)
@@ -22256,9 +24233,10 @@ function Hangar:buildUI()
 	self.scrapLabel = UI.label("", 18, { AutomaticSize = Enum.AutomaticSize.X, Size = UDim2.new(0, 0, 1, 0), Parent = top })
 
 	-- part palette (bottom)
-	local palette = UI.panel({ Size = UDim2.new(1, -420, 0, 170), AnchorPoint = Vector2.new(0, 1), Position = UDim2.new(0, 16, 1, -16), Parent = gui })
+	local palette = UI.panel({ Size = UDim2.new(1, -420, 0, 204), AnchorPoint = Vector2.new(0, 1), Position = UDim2.new(0, 16, 1, -16), Parent = gui })
 	UI.padding(10).Parent = palette
 	local tabs = UI.new("Frame", { BackgroundTransparency = 1, Size = UDim2.new(1, 0, 0, 32), Parent = palette })
+	self.tabs = tabs
 	UI.list(Enum.FillDirection.Horizontal, 6).Parent = tabs
 	self.tabButtons = {}
 	for i, cat in CATEGORIES do
@@ -22291,7 +24269,7 @@ function Hangar:buildUI()
 	UI.list(nil, 6).Parent = self.selPanel
 
 	-- toolbar (bottom right)
-	local bar = UI.panel({ Size = UDim2.new(0, 380, 0, 170), AnchorPoint = Vector2.new(1, 1), Position = UDim2.new(1, -16, 1, -16), Parent = gui })
+	local bar = UI.panel({ Size = UDim2.new(0, 380, 0, 204), AnchorPoint = Vector2.new(1, 1), Position = UDim2.new(1, -16, 1, -16), Parent = gui })
 	UI.padding(10).Parent = bar
 	local grid = UI.new("UIGridLayout", { CellSize = UDim2.new(0, 112, 0, 40), CellPadding = UDim2.new(0, 6, 0, 6), SortOrder = Enum.SortOrder.LayoutOrder, Parent = bar })
 	local _ = grid
@@ -22299,9 +24277,12 @@ function Hangar:buildUI()
 		self.mirrorMode = not self.mirrorMode
 		self:refresh()
 	end, { LayoutOrder = 1, Parent = bar })
-	UI.button("Rotate (R)", function()
-		self.rotation = (self.rotation + 45) % 360
-	end, { LayoutOrder = 2, Parent = bar })
+	self.modeButtons = {}
+	for i, m in { { "build", "Build" }, { "paint", "Paint" }, { "decal", "Decals" } } do
+		self.modeButtons[m[1]] = UI.button(m[2], function()
+			self:setMode(m[1])
+		end, { LayoutOrder = -10 + i, Parent = bar })
+	end
 	UI.button("Undo", function()
 		self:undoLast()
 	end, { LayoutOrder = 3, Parent = bar })
@@ -22320,6 +24301,29 @@ function Hangar:buildUI()
 	UI.button("Menu", function()
 		self.callbacks.menu()
 	end, { LayoutOrder = 8, Parent = bar })
+end
+
+function Hangar:setMode(mode: string)
+	self.mode = mode
+	if mode ~= "build" then
+		self:setTool(nil)
+		self.selected = nil
+	end
+	Audio.play("click")
+	self:refresh()
+end
+
+function Hangar:swatches(order: number, current: { number }, onPick: ({ number }) -> ())
+	for i, c in SWATCHES do
+		local selected = math.abs(c[1] - current[1]) + math.abs(c[2] - current[2]) + math.abs(c[3] - current[3]) < 0.01
+		local b = UI.button("", function()
+			onPick(c)
+			self:refresh()
+		end, { Size = UDim2.new(0, 44, 0, 44), BackgroundColor3 = Color3.new(c[1], c[2], c[3]), LayoutOrder = order + i, Parent = self.partList })
+		if selected then
+			UI.new("UIStroke", { Color = C.accent, Thickness = 3, Parent = b })
+		end
+	end
 end
 
 function Hangar:partButton(name: string, order: number)
@@ -22369,10 +24373,44 @@ function Hangar:refresh()
 			c:Destroy()
 		end
 	end
-	for i, name in ORDER[self.category] do
-		if Parts[name] then
-			self:partButton(name, i)
+	self.tabs.Visible = self.mode == "build"
+	for m, b in self.modeButtons do
+		b.BackgroundColor3 = if m == self.mode then C.accent else C.panelLight
+		b.TextColor3 = if m == self.mode then C.text else C.textDark
+	end
+	if self.mode == "build" then
+		for i, name in ORDER[self.category] do
+			if Parts[name] then
+				self:partButton(name, i)
+			end
 		end
+	elseif self.mode == "paint" then
+		UI.label("Pick a colour, then click a part to paint it" .. (if self.mirrorMode then " (and its mirror)" else "") .. ".", 14, { Size = UDim2.new(0, 230, 0, 120), LayoutOrder = 0, Parent = self.partList })
+		self:swatches(0, self.paintColor, function(c)
+			self.paintColor = c
+		end)
+	else
+		UI.label(string.format("Click the plane to place.\nDelete removes the decal under the mouse.\nSize %.1f  ·  Rotation %d°", self.decalSize, self.decalRotation), 13, { Size = UDim2.new(0, 210, 0, 120), LayoutOrder = 0, Parent = self.partList })
+		for i, spec in { { "−", -0.1, 0 }, { "+", 0.1, 0 }, { "⟲", 0, -15 }, { "⟳", 0, 15 } } do
+			UI.button(spec[1], function()
+				self.decalSize = math.clamp(self.decalSize + spec[2], 0.1, 4)
+				self.decalRotation = (self.decalRotation + spec[3]) % 360
+				self:refresh()
+			end, { Size = UDim2.new(0, 44, 0, 44), LayoutOrder = i, Parent = self.partList })
+		end
+		for i, d in Decals.List do
+			local texture = Decals.textureFor(d.id)
+			local b = UI.button(if texture then "" else d.id, function()
+				self.decalImage = d.id
+				self:refresh()
+			end, { Size = UDim2.new(0, 56, 0, 56), TextSize = 12, LayoutOrder = 10 + i, BackgroundColor3 = if self.decalImage == d.id then C.accent else C.panelLight, Parent = self.partList })
+			if texture then
+				UI.new("ImageLabel", { BackgroundTransparency = 1, Image = texture, Size = UDim2.fromScale(0.8, 0.8), Position = UDim2.fromScale(0.1, 0.1), ImageColor3 = Color3.new(0.1, 0.1, 0.1), Parent = b })
+			end
+		end
+		self:swatches(200, self.decalColor, function(c)
+			self.decalColor = c
+		end)
 	end
 	self.mirrorButton.Text = "Mirror: " .. (if self.mirrorMode then "on" else "off")
 
@@ -22412,6 +24450,7 @@ function Hangar:refreshSelection()
 		end
 	end
 	local e = self.selected and self.design:get(self.selected)
+	self:placeHandles()
 	if not e then
 		self.highlight.Adornee = nil
 		return
@@ -22536,22 +24575,33 @@ function Hangar:bindInput()
 			return
 		end
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
-			if self.tool then
+			if self.mode == "paint" then
+				self:paintUnderMouse()
+			elseif self.mode == "decal" then
+				self:placeDecal()
+			elseif self.tool then
 				self:place()
 			else
 				local _, id = self:hitPlane()
 				self.selected = id
+				if id then
+					Audio.play("clickSelection")
+				end
 				self:refresh()
 			end
 		elseif input.KeyCode == Enum.KeyCode.R then
-			self.rotation = (self.rotation + 45) % 360
+			self.rotation = (self.rotation + ROTATION_STEP) % 360
 		elseif input.KeyCode == Enum.KeyCode.T then
-			self.rotation = (self.rotation - 45) % 360
+			self.rotation = (self.rotation - ROTATION_STEP) % 360
 		elseif input.KeyCode == Enum.KeyCode.X then
 			self.mirrorMode = not self.mirrorMode
 			self:refresh()
 		elseif input.KeyCode == Enum.KeyCode.Delete or input.KeyCode == Enum.KeyCode.Backspace then
-			self:deleteSelected()
+			if self.mode == "decal" then
+				self:removeDecalUnderMouse()
+			else
+				self:deleteSelected()
+			end
 		elseif input.KeyCode == Enum.KeyCode.Z and (UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) or UserInputService:IsKeyDown(Enum.KeyCode.RightControl)) then
 			self:undoLast()
 		elseif input.KeyCode == Enum.KeyCode.Escape then
@@ -22590,6 +24640,20 @@ function Hangar:bindInput()
 		local offset = CFrame.Angles(0, self.camYaw, 0) * CFrame.Angles(-self.camPitch, 0, 0) * Vector3.new(0, 0, self.camDistance)
 		camera.CFrame = CFrame.lookAt(focus + offset, focus)
 		self:updateGhost()
+		if self.mode == "decal" then
+			local d, cf = self:decalPlacement()
+			if self.decalGhost then
+				self.decalGhost:Destroy()
+				self.decalGhost = nil
+			end
+			if d and cf then
+				self.decalGhost = Decals.create(d, cf, Workspace)
+				self.decalGhost.CanQuery = false
+			end
+		elseif self.decalGhost then
+			self.decalGhost:Destroy()
+			self.decalGhost = nil
+		end
 	end))
 end
 
@@ -22603,6 +24667,13 @@ function Hangar:destroy()
 	end
 	self.gui:Destroy()
 	self.highlight:Destroy()
+	if self.arcHandles then
+		self.arcHandles:Destroy()
+		self.sizeHandles:Destroy()
+	end
+	if self.decalGhost then
+		self.decalGhost:Destroy()
+	end
 	self.folder:Destroy()
 	UserInputService.MouseBehavior = Enum.MouseBehavior.Default
 end
@@ -22611,7 +24682,7 @@ return Hangar
 ]]></string>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="25">
+          <Item class="ModuleScript" referent="31">
             <Properties>
               <string name="Name">PartVisual</string>
               <string name="Source"><![CDATA[--!strict
@@ -22663,8 +24734,8 @@ local function color(t: { number }?): Color3
 end
 
 -- Creates a visual for one exported mesh piece (part node or airport chunk).
-function PartVisual.meshPiece(node: any, worldCFrame: CFrame, parent: Instance): BasePart
-	local source = PartVisual.findMesh(node.name)
+function PartVisual.meshPiece(node: any, worldCFrame: CFrame, parent: Instance, meshName: string?): BasePart
+	local source = PartVisual.findMesh(meshName or node.name)
 	local piece: BasePart
 	if source then
 		local m = source:Clone()
@@ -22760,9 +24831,21 @@ function PartVisual.create(partName: string, cf: CFrame, flip: boolean, fuselage
 			spinAxis = if comp.data.helicopterRotor == 1 then Frames.v(f.up) else Frames.v(f.right)
 		end
 	end
+	local paint = opts and opts.color
 	for _, node in data.nodes do
 		local center = Frames.localPoint(Frames.v(node.center), flip)
-		local piece = PartVisual.meshPiece(node, cf * CFrame.new(center), model)
+		-- Mirrored copies use the top-to-bottom flipped mesh exported for them (Unity used a negative scale).
+		local meshName = nil
+		if flip and node.mirror and PartVisual.findMesh(node.mirror) then
+			meshName = node.mirror
+		end
+		local piece = PartVisual.meshPiece(node, cf * CFrame.new(center), model, meshName)
+		if node.paintable then
+			piece:SetAttribute("Paintable", true)
+			if paint then
+				piece.Color = paint
+			end
+		end
 		table.insert(built.visuals, piece)
 		if spinPath and node.path and (node.path == spinPath or string.sub(node.path, 1, #spinPath + 1) == spinPath .. "/") then
 			table.insert(built.spinners, { part = piece, axis = spinAxis })
@@ -22804,19 +24887,47 @@ function PartVisual.create(partName: string, cf: CFrame, flip: boolean, fuselage
 	return built
 end
 
+-- PartPainter: only the paintable surfaces (and the procedural body) change colour.
 function PartVisual.setColor(built: Built, color: Color3)
 	for _, v in built.visuals do
-		if not v:IsA("MeshPart") or v.TextureID == "" then
+		if v:GetAttribute("Paintable") or v:IsA("WedgePart") then
 			v.Color = color
 		end
 	end
+end
+
+-- Default paint colour of a part (its first paintable surface), for the colour picker.
+function PartVisual.defaultColor(partName: string): Color3
+	local data = Parts[partName]
+	if data.procedural then
+		return BODY_COLOR
+	end
+	for _, node in data.nodes do
+		if node.paintable then
+			return color(node.color)
+		end
+	end
+	return BODY_COLOR
+end
+
+function PartVisual.isPaintable(partName: string): boolean
+	local data = Parts[partName]
+	if data.procedural then
+		return true
+	end
+	for _, node in data.nodes do
+		if node.paintable then
+			return true
+		end
+	end
+	return false
 end
 
 return PartVisual
 ]]></string>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="26">
+          <Item class="ModuleScript" referent="32">
             <Properties>
               <string name="Name">PlaneDesign</string>
               <string name="Source"><![CDATA[--!strict
@@ -22845,6 +24956,7 @@ export type Entry = {
 function PlaneDesign.new()
 	local self = setmetatable({}, PlaneDesign)
 	self.parts = {} :: { Entry }
+	self.decals = {} :: { any }
 	self.nextId = 1
 	return self
 end
@@ -22895,6 +25007,19 @@ function PlaneDesign:remove(id: number, withMirror: boolean?): { Entry }
 	end
 	local mirror = e.mirror
 	rec(id)
+	-- decals on removed parts go too
+	for i = #self.decals, 1, -1 do
+		local d = self.decals[i]
+		local gone = true
+		for _, p in self.parts do
+			if p.id == d.part then
+				gone = false
+			end
+		end
+		if gone then
+			table.remove(self.decals, i)
+		end
+	end
 	if withMirror and mirror and self:get(mirror) then
 		for _, r in self:remove(mirror, false) do
 			table.insert(removed, r)
@@ -22967,7 +25092,10 @@ end
 
 -- ---------------------------------------------------------------------------------------------- serialisation
 function PlaneDesign:serialize(): any
-	local out = { v = 1, parts = {} }
+	local out = { v = 1, parts = {}, decals = {} }
+	for _, d in self.decals do
+		table.insert(out.decals, { p = d.part, x = d.pos, n = d.normal, u = d.up, s = d.size, c = d.color, i = d.image })
+	end
 	for _, e in self.parts do
 		table.insert(out.parts, {
 			i = e.id,
@@ -23003,6 +25131,11 @@ function PlaneDesign.deserialize(data: any)
 			self.nextId = math.max(self.nextId, p.i + 1)
 		end
 	end
+	for _, d in data.decals or {} do
+		if self:get(d.p) then
+			table.insert(self.decals, { part = d.p, pos = d.x, normal = d.n, up = d.u, size = d.s, color = d.c, image = d.i })
+		end
+	end
 	return self
 end
 
@@ -23010,7 +25143,7 @@ return PlaneDesign
 ]]></string>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="27">
+          <Item class="ModuleScript" referent="33">
             <Properties>
               <string name="Name">Triangles</string>
               <string name="Source"><![CDATA[--!strict
@@ -23094,7 +25227,7 @@ return Triangles
 ]]></string>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="28">
+          <Item class="ModuleScript" referent="34">
             <Properties>
               <string name="Name">UI</string>
               <string name="Source"><![CDATA[--!strict
@@ -23125,6 +25258,9 @@ UI.Colors = {
 local C = UI.Colors
 UI.Font = Enum.Font.GothamMedium
 UI.FontBold = Enum.Font.GothamBold
+
+-- set by Main once Audio is loaded (ButtonAudio)
+function UI.clickSound() end
 
 function UI.new(class: string, props: { [string]: any }?, children: { Instance }?): any
 	local inst = Instance.new(class)
@@ -23197,7 +25333,10 @@ function UI.button(text: string, onClick: () -> (), props: { [string]: any }?): 
 		(b :: any)[k] = v
 	end
 	UI.corner(8).Parent = b
-	b.Activated:Connect(onClick)
+	b.Activated:Connect(function()
+		UI.clickSound()
+		onClick()
+	end)
 	return b
 end
 
@@ -23620,12 +25759,14 @@ UI.ControlsText = table.concat({
 	"<b>Flying</b>",
 	"W / S — pitch down / up      A / D — roll      Q / E — yaw (rudder)",
 	"Space — throttle up (hold near the ground to help take-off)      Ctrl or Shift — throttle down / brake / reverse",
-	"G — retract landing gear      F — decouple      M — map      Enter — airport menu when landed",
+	"G — retract landing gear      F — decouple      H / J — turn rotation joints      M — map      Enter — airport menu when landed",
 	"Right mouse drag — look around      Mouse wheel — zoom      C — cockpit camera",
 	"",
 	"<b>Building</b>",
-	"Click a part, then click on the plane to attach it      R / T — rotate      X — mirror mode",
-	"Click a placed part to select it      Delete — remove it      Ctrl+Z — undo",
+	"Build mode: pick a part, then click the plane to attach it      R / T — rotate 15°      X — mirror mode",
+	"Click a placed part to select it: drag the orange rings to rotate it (hold Shift for 1° steps),",
+	"or drag the blue arrows on a Body to resize it      Delete — remove      Ctrl+Z — undo",
+	"Paint mode: pick a colour and click parts      Decals mode: pick an image, colour and size, click to place, Delete removes",
 	"Right mouse drag — orbit      Mouse wheel — zoom",
 }, "\n")
 
@@ -23633,7 +25774,7 @@ return UI
 ]]></string>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="29">
+          <Item class="ModuleScript" referent="35">
             <Properties>
               <string name="Name">WorldStreamer</string>
               <string name="Source"><![CDATA[--!strict
@@ -23648,9 +25789,12 @@ local WorldMap = require(Shared.WorldMap)
 local Noise = require(Shared.Util.Noise)
 local Triangles = require(script.Parent.Triangles)
 local PartVisual = require(script.Parent.PartVisual)
+local Decorations = require(Shared.Data.Decorations)
 
 local WorldStreamer = {}
 WorldStreamer.__index = WorldStreamer
+-- Fraction of the original tree/rock density (Settings menu). 1 = same as the original game.
+WorldStreamer.TreeDensity = 1
 
 local CHUNK = WorldMap.ChunkSize
 local NEAR_RES = 20 -- cells per chunk side near the plane (50 m cells, colliding)
@@ -23786,7 +25930,117 @@ function WorldStreamer:buildChunk(cx: number, cz: number, res: number, collide: 
 		maybeYield()
 	end
 	model:SetAttribute("Res", res)
+	if collide and WorldStreamer.TreeDensity > 0 then
+		self:spawnDecorations(model, cx, cz, maybeYield)
+	end
 	return model
+end
+
+-- ------------------------------------------------------------------------------------------- trees and rocks (Chunk.SpawnSurfaceDecoration)
+local function decorationPiece(node: any, cf: CFrame, scale: number, parent: Instance, fallbackKind: string)
+	local source = PartVisual.findMesh(node.name)
+	local piece: BasePart
+	if source then
+		piece = source:Clone()
+		piece.Size = Vector3.new(node.size[1], node.size[2], node.size[3]) * scale
+	else
+		local p = Instance.new("Part")
+		p.Material = Enum.Material.SmoothPlastic
+		p.Color = Color3.new(node.color[1], node.color[2], node.color[3])
+		p.Size = Vector3.new(node.size[1], node.size[2], node.size[3]) * scale
+		piece = p
+	end
+	piece.CFrame = cf * CFrame.new(Vector3.new(node.center[1], node.center[2], node.center[3]) * scale)
+	piece.Anchored = true
+	piece.CanCollide = false
+	piece.CanTouch = false
+	piece.CanQuery = false
+	piece.CastShadow = true
+	piece.Parent = parent
+end
+
+function WorldStreamer:spawnDecorations(model: Model, cx: number, cz: number, maybeYield: () -> ())
+	local origin = Vector3.new(cx * CHUNK, 0, cz * CHUNK) -- Unity space
+	local continent = WorldMap.closestContinent(origin.X, origin.Z)
+	local decorations = Decorations.continents[continent.name] or {}
+	local airport = WorldMap.closestAirport(origin.X, origin.Z)
+	local rng = Random.new(bit32.bxor(math.floor(origin.X), math.floor(origin.Y)) + cx * 7919 + cz * 104729)
+	local folder = Instance.new("Folder")
+	folder.Name = "Decorations"
+	folder.Parent = model
+	local density = math.clamp(WorldStreamer.TreeDensity, 0.05, 1)
+	local function spawnOne(local2: Vector2, deco: any)
+		local maxOffset = deco.density + (deco.randomizationOffset or 0)
+		local lx = local2.X + rng:NextNumber(0, maxOffset)
+		local lz = local2.Y + rng:NextNumber(0, maxOffset)
+		if lx < -500 or lx > 500 or lz < -500 or lz > 500 then
+			return
+		end
+		local ux, uz = origin.X + lx, origin.Z + lz
+		if airport and airport.treeFootprint and WorldMap.distanceToRect(airport.treeFootprint, ux, uz) < rng:NextInteger(-10, 50) then
+			return
+		end
+		local h = WorldMap.height(ux, uz)
+		if h < -2 then
+			return
+		end
+		local hx, hz = WorldMap.height(ux + 13.3, uz), WorldMap.height(ux, uz + 13.3)
+		local normal = Vector3.new(h - hx, 13.3, h - hz).Unit
+		local slope = 1 - normal.Y
+		if slope < (deco.minSlope or 0) or slope > (deco.maxSlope or 1) then
+			return
+		end
+		if #deco.variants == 0 then
+			return
+		end
+		local variant = deco.variants[rng:NextInteger(1, #deco.variants)]
+		local pieces = Decorations.trees[variant]
+		if not pieces then
+			return
+		end
+		local scale = rng:NextNumber(deco.minSize, deco.maxSize)
+		-- Unity Euler(x, y, z) tilt; mirrored to Roblox space (negate the Y and Z angles)
+		local rx, ry, rz = math.rad(rng:NextInteger(-15, 15)), math.rad(rng:NextInteger(0, 360)), math.rad(rng:NextInteger(-10, 10))
+		local cf = CFrame.new(-ux, h, uz) * CFrame.Angles(0, -ry, 0) * CFrame.Angles(rx, 0, -rz)
+		local kind = if string.find(deco.name, "Rock") or string.find(deco.name, "Pebble") then "rock" else "tree"
+		for _, node in pieces do
+			decorationPiece(node, cf, scale, folder, kind)
+		end
+		-- Tree collider (the original's capsule) so planes can crash into trees.
+		if deco.height and deco.height > 0 and deco.radius and deco.radius > 0 then
+			local col = Instance.new("Part")
+			col.Name = "TreeCollider"
+			col.Shape = Enum.PartType.Cylinder
+			local height = deco.height * scale
+			local r = deco.radius * scale
+			col.Size = Vector3.new(height, r * 2, r * 2)
+			local base = if deco.center then cf.Position else cf.Position + cf.UpVector * (height / 2)
+			col.CFrame = CFrame.fromMatrix(base, cf.UpVector, cf.RightVector)
+			col.Transparency = 1
+			col.Anchored = true
+			col.CanCollide = true
+			col.CanQuery = true
+			col.Parent = folder
+		end
+	end
+	for _, deco in decorations do
+		local step = math.max(1, math.floor(deco.density / math.sqrt(density) + 0.5))
+		for i = -500, 499, step do
+			for j = -500, 499, step do
+				if deco.clustering then
+					local count = rng:NextInteger(1, math.max(1, deco.maxClusterSize - 1))
+					for _ = 1, count do
+						local a = rng:NextNumber() * math.pi * 2
+						local r = math.sqrt(rng:NextNumber()) * 50
+						spawnOne(Vector2.new(math.clamp(i + math.cos(a) * r, -500, 500), math.clamp(j + math.sin(a) * r, -500, 500)), deco)
+					end
+				else
+					spawnOne(Vector2.new(i, j), deco)
+				end
+			end
+			maybeYield()
+		end
+	end
 end
 
 function WorldStreamer:wantedChunks(focus: Vector3)
@@ -23990,7 +26244,7 @@ return WorldStreamer
             </Properties>
           </Item>
         </Item>
-        <Item class="LocalScript" referent="30">
+        <Item class="LocalScript" referent="36">
           <Properties>
             <string name="Name">Main</string>
             <string name="Source"><![CDATA[-- Aviassembly for Roblox: game flow (GameManager), flight loop, camera (CameraController), saving (AutoSave).
@@ -24013,6 +26267,12 @@ local PartVisual = require(Game.PartVisual)
 local Hangar = require(Game.Hangar)
 local Flight = require(Game.Flight)
 local WorldStreamer = require(Game.WorldStreamer)
+local Audio = require(Game.Audio)
+local Sounds = require(Shared.Data.Sounds)
+
+UI.clickSound = function()
+	Audio.play("click")
+end
 
 local player = Players.LocalPlayer
 local camera = Workspace.CurrentCamera
@@ -24052,12 +26312,44 @@ local hud, airportPanel, mapView = nil, nil, nil
 local flightConnections = {}
 local mode = "menu"
 local saveData = nil
+local settings = { treeDensity = 1, music = 0.6, sound = 1 }
+local cutscenePlaying = false
+
+local function applySettings()
+	WorldStreamer.TreeDensity = settings.treeDensity
+	Audio.musicVolume = settings.music
+	Audio.masterVolume = settings.sound
+end
+
+-- QuestAdditionUI sounds
+do
+	local push = messages.push
+	messages.push = function(self, text, kind)
+		if kind == "Mystery" then
+			Audio.play("radioStatic", 0.6)
+			Audio.play("mystery")
+		elseif kind == "QuestCompleted" then
+			Audio.play("reward")
+		else
+			Audio.play("radioClick")
+		end
+		push(self, text, kind)
+	end
+end
+
+-- Ambience (FlyingAmbience): nature fades with height, earthquake rumble follows the shake.
+local natureLoop = Audio.loop(Sounds.ambience.nature)
+local quakeLoop = Audio.loop(Sounds.ambience.earthquake)
+local birdsLoop = Audio.loop(Sounds.ambience.birds)
 
 local function hookCampaign()
 	campaign.onMessage = function(text, kind)
 		messages:push(text, kind)
 	end
 	campaign.onReward = function(info)
+		if info.money > 0 then
+			Audio.play("cash")
+		end
 		if hud and (info.money ~= 0 or info.scrap ~= 0 or info.advancedScrap ~= 0) then
 			local parts = {}
 			if info.money ~= 0 then
@@ -24078,7 +26370,7 @@ local function save()
 	if not campaign or not Remotes then
 		return
 	end
-	local data = { campaign = campaign:serialize(), design = design:serialize(), designs = savedDesigns }
+	local data = { campaign = campaign:serialize(), design = design:serialize(), designs = savedDesigns, settings = settings }
 	task.spawn(function()
 		local ok, result = pcall(function()
 			return Remotes.SaveGame:InvokeServer(data)
@@ -24241,12 +26533,29 @@ local function readInput()
 		space = throttleUp,
 		retractPressed = false,
 		decouplePressed = false,
+		rotator = axis(Enum.KeyCode.H, Enum.KeyCode.J),
 		autoSteer = true,
 	}
 end
 
+-- BackgroundMusicManager / FlyingBackgroundMusic: continent music with story overrides.
+local function flightMusic(position)
+	local s = campaign.story
+	if cutscenePlaying then
+		return Sounds.music.finalSequence
+	end
+	if s.finalMessagePlayed and not s.playedEndCutscene then
+		return Sounds.music.postFinalMessage
+	end
+	if s.postEarthquake and not s.finalMessagePlayed and not s.playedEndCutscene then
+		return Sounds.music.postEarthquake
+	end
+	local continent = WorldMap.closestContinent(-position.X, position.Z)
+	return Sounds.music.continents[continent.name] or Sounds.music.continents.Spawn
+end
+
 -- ------------------------------------------------------------------------------------------- modes
-local enterHangar, startFlight, showMenu
+local enterHangar, startFlight, showMenu, playEndCutscene
 
 local function clearFlight()
 	for _, c in flightConnections do
@@ -24317,6 +26626,7 @@ function enterHangar()
 		hangar = nil
 	end
 	mode = "hangar"
+	Audio.nextBuildingTrack()
 	campaign.cargo = {}
 	campaign.cargoVolume = 0
 	local base = homeBase()
@@ -24473,7 +26783,7 @@ function startFlight(airport)
 	end))
 
 	table.insert(flightConnections, RunService.PreSimulation:Connect(function(dt)
-		if not flight or flight.exploded then
+		if not flight or flight.exploded or cutscenePlaying then
 			return
 		end
 		local input = readInput()
@@ -24488,14 +26798,19 @@ function startFlight(airport)
 
 	table.insert(flightConnections, RunService.RenderStepped:Connect(function(dt)
 		UserInputService.MouseBehavior = if cam.dragging then Enum.MouseBehavior.LockCurrentPosition else Enum.MouseBehavior.Default
-		updateFlightCamera(dt)
+		if not cutscenePlaying then
+			updateFlightCamera(dt)
+		end
 	end))
 
 	table.insert(flightConnections, RunService.Heartbeat:Connect(function(dt)
-		if not flight then
+		if not flight or cutscenePlaying then
 			return
 		end
 		local pos = flight.root.Position
+		Audio.music(flightMusic(pos), 0.8)
+		natureLoop:set(0.6 * (1 - math.clamp(pos.Y / 300, 0, 1)), 0.8)
+		birdsLoop:set(0)
 		streamer:setFocus(pos)
 		local t = flight:telemetry()
 		local ux, uz = -pos.X, pos.Z
@@ -24547,11 +26862,13 @@ function startFlight(airport)
 		-- story
 		local story = campaign:updateStory({ dt = dt, position = pos, heightAboveGround = t.height, atAirport = atAirport ~= nil, exploded = flight.exploded, messageOpen = messages:isOpen() })
 		cam.shake = story.shake
+		quakeLoop:set(story.shake)
 		if story.explode then
 			flight:explodePlane()
 		end
 		if story.finished then
 			save()
+			task.spawn(playEndCutscene)
 		end
 
 		-- out of fuel (GameOver)
@@ -24579,6 +26896,139 @@ function startFlight(airport)
 	messages:push(if campaign.creative then "Creative mode: unlimited money and every part unlocked." else "Fly to the airports, pick up cargo and deliver it. Land slowly on a runway, then press Enter for the airport menu.", "Misc")
 end
 
+-- ------------------------------------------------------------------------------------------- ending (EndCutscene)
+local ENDING = {
+	{ airport = "Explosion Site", text = "The radioactive materials are now securely stored in the bunker." },
+	{ airport = "Waste Storage", text = "You've contained the dangers and the islands are safe again." },
+	{ airport = "The Hospital", text = "Your mission is complete!" },
+}
+
+function playEndCutscene()
+	if cutscenePlaying or not flight then
+		return
+	end
+	cutscenePlaying = true
+	while messages:isOpen() do
+		task.wait(0.2)
+	end
+	flight.root.Anchored = true
+	for _, e in flight.engines do
+		if e.sound then
+			e.sound:set(0)
+		end
+	end
+	Audio.music(Sounds.music.finalSequence, 1)
+	local gui = UI.screen("Ending", 60)
+	local fader = UI.new("Frame", { BackgroundColor3 = Color3.new(0, 0, 0), BackgroundTransparency = 1, Size = UDim2.fromScale(1, 1), ZIndex = 5, Parent = gui })
+	local caption = UI.label("", 34, { Font = UI.FontBold, TextXAlignment = Enum.TextXAlignment.Center, AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -120), Size = UDim2.new(0.8, 0, 0, 90), TextStrokeTransparency = 0.4, Visible = false, ZIndex = 3, Parent = gui })
+	local band = UI.new("Frame", { BackgroundColor3 = Color3.new(0, 0, 0), BackgroundTransparency = 0.5, AnchorPoint = Vector2.new(0, 1), Position = UDim2.new(0, 0, 1, -100), Size = UDim2.new(1, 0, 0, 130), Visible = false, ZIndex = 2, Parent = gui })
+	local continue = false
+	local continueButton = UI.button("<b>Continue</b>", function()
+		continue = true
+	end, { AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -30), Size = UDim2.new(0, 220, 0, 46), BackgroundColor3 = C.accent, TextColor3 = C.text, Visible = false, ZIndex = 4, Parent = gui })
+	local function fade(target)
+		local t0 = fader.BackgroundTransparency
+		for i = 1, 30 do
+			fader.BackgroundTransparency = t0 + (target - t0) * (i / 30)
+			task.wait(1 / 30)
+		end
+	end
+	local drift = nil
+	for i, shot in ENDING do
+		fade(0)
+		local a = WorldMap.findAirport(shot.airport)
+		if a then
+			local target = Vector3.new(-a.position.X, WorldMap.airportHeight(a), a.position.Z)
+			-- airport.position + up * 40 + forward * 200, looking at the airport, then drifting back
+			local start = target + Vector3.new(0, 40, 200)
+			streamer:ensureNear(target)
+			local camCF = CFrame.lookAt(start, target)
+			camera.CFrame = camCF
+			if drift then
+				drift:Disconnect()
+			end
+			drift = RunService.RenderStepped:Connect(function(dt)
+				camCF = camCF - camCF.LookVector * dt * 10
+				camera.CFrame = camCF
+			end)
+		end
+		caption.Text = shot.text
+		caption.Visible, band.Visible = true, true
+		continueButton.Visible = i == #ENDING
+		task.wait(2)
+		fade(1)
+		if i < #ENDING then
+			task.wait(4)
+		end
+	end
+	while not continue do
+		task.wait(0.1)
+	end
+	fade(0)
+	if drift then
+		drift:Disconnect()
+	end
+	caption.Visible, band.Visible, continueButton.Visible = false, false, false
+	if flight then
+		flight.root.Anchored = false
+	end
+	cutscenePlaying = false
+	task.wait(2)
+	fade(1)
+	gui:Destroy()
+	if hud then
+		UI.toast(hud.gui, "Random quests unlocked — you can now get random quests at every airport", C.good)
+	end
+end
+
+-- ------------------------------------------------------------------------------------------- settings
+local function settingsMenu()
+	local gui = UI.screen("Settings", 55)
+	local frame = UI.panel({ Size = UDim2.new(0, 460, 0, 0), AutomaticSize = Enum.AutomaticSize.Y, AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, 0.5, 0), Parent = gui })
+	UI.padding(16).Parent = frame
+	UI.list(nil, 10).Parent = frame
+	UI.label("SETTINGS", 20, { Font = UI.FontBold, Parent = frame })
+	local function row(label, options, get, set)
+		local r = UI.new("Frame", { BackgroundTransparency = 1, Size = UDim2.new(1, 0, 0, 34), Parent = frame })
+		UI.label(label, 15, { Size = UDim2.new(0, 150, 1, 0), Parent = r })
+		for i, o in options do
+			local b = UI.button(o[1], function()
+				set(o[2])
+				applySettings()
+				gui:Destroy()
+				settingsMenu()
+			end, { Size = UDim2.new(0, 66, 0, 30), Position = UDim2.new(0, 150 + (i - 1) * 70, 0, 2), Parent = r })
+			if get() == o[2] then
+				b.BackgroundColor3 = C.accent
+				b.TextColor3 = C.text
+			end
+		end
+	end
+	row("Trees & rocks", { { "Off", 0 }, { "Low", 0.25 }, { "Half", 0.5 }, { "Full", 1 } }, function()
+		return settings.treeDensity
+	end, function(v)
+		settings.treeDensity = v
+	end)
+	row("Music", { { "Off", 0 }, { "Low", 0.3 }, { "Med", 0.6 }, { "High", 1 } }, function()
+		return settings.music
+	end, function(v)
+		settings.music = v
+	end)
+	row("Sound", { { "Off", 0 }, { "Low", 0.4 }, { "Med", 0.7 }, { "High", 1 } }, function()
+		return settings.sound
+	end, function(v)
+		settings.sound = v
+	end)
+	UI.label("Tree changes apply to newly loaded areas. \"Full\" matches the original density; lower it if the game runs slowly.", 13, { TextColor3 = C.muted, AutomaticSize = Enum.AutomaticSize.Y, Size = UDim2.new(1, 0, 0, 0), Parent = frame })
+	if not Audio.available() then
+		UI.label('<font color="#E0A040">Sounds not imported yet — see the README (Importing sounds).</font>', 13, { AutomaticSize = Enum.AutomaticSize.Y, Size = UDim2.new(1, 0, 0, 0), Parent = frame })
+	end
+	UI.button("Close", function()
+		gui:Destroy()
+		save()
+	end, { Parent = frame })
+end
+
 -- ------------------------------------------------------------------------------------------- menu
 function showMenu()
 	if hangar then
@@ -24587,6 +27037,9 @@ function showMenu()
 	end
 	clearFlight()
 	mode = "menu"
+	Audio.music(Sounds.music.menu, 0.65)
+	birdsLoop:set(0.2)
+	natureLoop:set(0)
 	local gui = UI.screen("Menu", 50)
 	local back = UI.new("Frame", { BackgroundColor3 = Color3.fromRGB(20, 40, 60), BackgroundTransparency = 0.25, Size = UDim2.new(1, 0, 1, 0), Parent = gui })
 	local box = UI.new("Frame", { BackgroundTransparency = 1, Size = UDim2.new(0, 420, 0, 520), AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, 0.5, 0), Parent = back })
@@ -24625,6 +27078,7 @@ function showMenu()
 	UI.button("Controls", function()
 		UI.modal("Controls", UI.ControlsText)
 	end, { Size = UDim2.new(0, 300, 0, 40), Parent = box })
+	UI.button("Settings", settingsMenu, { Size = UDim2.new(0, 300, 0, 40), Parent = box })
 	if not PartVisual.hasImportedMeshes() then
 		UI.label('<font color="#E0A040">3D models not imported yet — parts show as coloured blocks. See the README to import the .glb files.</font>', 14, { TextXAlignment = Enum.TextXAlignment.Center, AutomaticSize = Enum.AutomaticSize.Y, Size = UDim2.new(1, 0, 0, 0), Parent = box })
 	end
@@ -24633,6 +27087,12 @@ end
 
 -- ------------------------------------------------------------------------------------------- boot
 saveData = load()
+if saveData and type(saveData.settings) == "table" then
+	for k, v in saveData.settings do
+		settings[k] = v
+	end
+end
+applySettings()
 showMenu()
 ]]></string>
           </Properties>
@@ -24640,7 +27100,7 @@ showMenu()
       </Item>
     </Item>
   </Item>
-  <Item class="Workspace" referent="31">
+  <Item class="Workspace" referent="37">
     <Properties>
       <string name="Name">Workspace</string>
       <float name="Gravity">25.5</float>

@@ -739,9 +739,7 @@ function Campaign:updateStory(ctx: StoryContext)
 	-- End of the campaign: all waste storage jobs done.
 	if self.storage and self:allQuestsCompleted(self.storage) and not s.playedEndCutscene and not ctx.messageOpen then
 		s.playedEndCutscene = true
-		self.onMessage("You did it! The radioactive waste is safely stored and the islands are saved. Thank you, pilot!", "Mystery")
-		self.onMessage("Airports will keep offering delivery jobs. Keep flying!", "Misc")
-		result.finished = true
+		result.finished = true -- the client plays the ending cutscene (EndCutscene)
 	end
 
 	-- Mysterious radio messages.

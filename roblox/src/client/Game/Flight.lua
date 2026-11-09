@@ -16,6 +16,9 @@ local MathUtil = require(Shared.Util.MathUtil)
 local Frames = require(script.Parent.Frames)
 local PartVisual = require(script.Parent.PartVisual)
 local PlaneDesign = require(script.Parent.PlaneDesign)
+local Decals = require(script.Parent.Decals)
+local Audio = require(script.Parent.Audio)
+local Sounds = require(Shared.Data.Sounds)
 
 local PC = Constants.PlaneContainer
 local CTRL = Constants.PlaneController
@@ -58,6 +61,7 @@ export type Input = {
 	space: boolean,
 	retractPressed: boolean,
 	decouplePressed: boolean,
+	rotator: number?, -- H / J
 	autoSteer: boolean,
 }
 
@@ -110,6 +114,14 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 		comSum += center * stats.weight
 	end
 	local com = if totalWeight > 0 then comSum / totalWeight else spawnCFrame.Position
+	-- Decals ride on their parts.
+	for _, d in design.decals or {} do
+		for _, p in self.parts do
+			if p.entry.id == d.part then
+				Decals.create(d, Decals.cframe(d, p.cf, p.entry.flip), p.built.model)
+			end
+		end
+	end
 
 	-- Root at the centre of mass, oriented like the design frame.
 	local root = Instance.new("Part")
@@ -177,10 +189,82 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 			spinning[s.part] = { p = p, axis = s.axis }
 		end
 	end
+	-- Rotation joints (Rotator): the joint part and everything attached to it turn around the joint's axis;
+	-- the joint's base stays put. Pieces they move are attached with Welds whose offsets are animated.
+	self.rotators = {}
+	local byId = {}
+	for _, p in self.parts do
+		byId[p.entry.id] = p
+	end
+	for _, p in self.parts do
+		for _, comp in Parts[p.entry.name].components do
+			if comp.type == "Rotator" then
+				local axis = p.cf.ZVector * (if p.entry.flip then -1 else 1)
+				table.insert(self.rotators, { part = p, angle = 0, speed = comp.data.speed or 80, returnToStart = comp.data.returnToStart == 1, basePath = comp.data.rotatorBase, pivotWorld = p.cf.Position, axisWorld = axis })
+			end
+		end
+	end
+	local moving = {} -- BasePart -> list of rotators (outermost first) moving it
+	local function ancestorsRotators(p)
+		local chain = {}
+		local cur = p
+		while cur do
+			for _, r in self.rotators do
+				if r.part == cur and cur ~= p then
+					table.insert(chain, 1, r)
+				end
+			end
+			cur = cur.entry.parent and byId[cur.entry.parent] or nil
+		end
+		return chain
+	end
+	for _, p in self.parts do
+		local chain = ancestorsRotators(p)
+		-- the joint part itself turns too, except its base
+		for _, r in self.rotators do
+			if r.part == p then
+				table.insert(chain, r)
+			end
+		end
+		p.rotatorChain = chain
+		if #chain > 0 then
+			for _, d in p.built.model:GetDescendants() do
+				if d:IsA("BasePart") then
+					local isBase = false
+					local own = chain[#chain]
+					if own.part == p and own.basePath then
+						local node = nil
+						for _, n in Parts[p.entry.name].nodes do
+							if n.name == d.Name then
+								node = n
+							end
+						end
+						if node and node.path and string.sub(node.path, 1, #own.basePath) == own.basePath then
+							isBase = true
+						end
+					end
+					if not isBase then
+						moving[d] = chain
+					elseif #chain > 1 then
+						moving[d] = { table.unpack(chain, 1, #chain - 1) }
+					end
+				end
+			end
+		end
+	end
+	self.movingWelds = {}
 	for _, d in model:GetDescendants() do
 		if d:IsA("BasePart") and d ~= root then
 			local spin = spinning[d]
-			if spin then
+			local chain = moving[d]
+			if chain and not spin then
+				local w = Instance.new("Weld")
+				w.Part0 = root
+				w.Part1 = d
+				w.C0 = root.CFrame:Inverse() * d.CFrame
+				w.Parent = d
+				table.insert(self.movingWelds, { weld = w, baseC0 = w.C0, chain = chain })
+			elseif spin then
 				-- propellers use a Weld whose offset is animated
 				local w = Instance.new("Weld")
 				w.Part0 = root
@@ -203,6 +287,10 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 
 	-- Physics components in root-local Roblox space.
 	local rootInv = root.CFrame:Inverse()
+	for _, r in self.rotators do
+		r.pivot = rootInv * r.pivotWorld
+		r.axis = rootInv:VectorToWorldSpace(r.axisWorld).Unit
+	end
 	self.wings, self.engines, self.wheels, self.balloons, self.drags, self.turbines, self.decouplers = {}, {}, {}, {}, {}, {}, {}
 	self.fuelCapacity = 1
 	self.batteryCapacity = 0.05
@@ -231,16 +319,27 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 				local scaleSign = if comp.path == "" and e.flip then -1 else 1
 				local d = comp.data
 				local c = { part = p, data = d, pos = lp, right = dir(f.right), up = dir(f.up), forward = dir(f.forward), scaleSign = scaleSign }
+				c.base = { pos = c.pos, right = c.right, up = c.up, forward = c.forward }
 				if comp.type == "Wing" then
 					local o = d.orientation
 					c.oPos = rootInv * Frames.worldPoint(p.cf, e.flip, Frames.v(o.pos))
 					c.oRight, c.oUp, c.oForward = dir(o.right), dir(o.up), dir(o.forward)
 					c.area = d.area[1] * d.area[2]
+					c.base.oPos, c.base.oRight, c.base.oUp, c.base.oForward = c.oPos, c.oRight, c.oUp, c.oForward
 					table.insert(self.wings, c)
 					self.fuelCapacity += math.abs(d.fuel or 0)
 				elseif comp.type == "Engine" then
 					c.throttle = 0
 					c.maxPower = 1
+					local file = Sounds.engines[e.name]
+					if file then
+						c.sound = Audio.loop(file)
+						c.pitchModulation = math.random() * 0.2
+					end
+					local ab = Sounds.afterburners[e.name]
+					if ab then
+						c.afterburnerSound = Audio.loop(ab)
+					end
 					table.insert(self.engines, c)
 				elseif comp.type == "Wheel" then
 					c.prevHit = d.suspentionLength
@@ -308,6 +407,13 @@ function Flight.new(design: any, spawnCFrame: CFrame, options: any)
 		self.helicopter = 1
 	end
 
+	self.allComps = {}
+	for _, list in { self.wings, self.engines, self.wheels, self.balloons, self.drags, self.turbines, self.decouplers } do
+		for _, c in list do
+			table.insert(self.allComps, c)
+		end
+	end
+	self.windSound = Audio.loop(Sounds.ambience.wind)
 	self:classifyWings()
 	self:updateControllability()
 	self:updateMass()
@@ -850,6 +956,7 @@ function Flight:explodeAt(position: Vector3, size: number)
 	ex.ExplosionType = Enum.ExplosionType.NoCraters
 	ex.Position = position
 	ex.Parent = Workspace
+	Audio.play("explosion")
 end
 
 -- PartExploder.ExplodePart: the part and everything attached to it break off.
@@ -903,6 +1010,7 @@ function Flight:explodePlane()
 		return
 	end
 	self.exploded = true
+	self:updateAudio()
 	self:explodeAt(self.root.Position, self.planeLength * 0.2)
 	for _, p in self.parts do
 		if p.alive then
@@ -948,6 +1056,7 @@ function Flight:step(dt: number, input: Input)
 		end
 	end
 
+	self:updateRotators(input.rotator or 0, dt)
 	local grounded = self:isGrounded()
 
 	-- PlaneController.FixedUpdate
@@ -1064,6 +1173,72 @@ function Flight:step(dt: number, input: Input)
 		end
 	end
 	self.prevVelocity = self.root.AssemblyLinearVelocity
+	self:updateAudio()
+end
+
+-- Rotator.UpdatePart: H / J turn every rotation joint.
+function Flight:updateRotators(inputValue: number, dt: number)
+	if #self.rotators == 0 then
+		return
+	end
+	local changed = false
+	for _, r in self.rotators do
+		if r.part.alive then
+			local delta = MathUtil.snapToIncrement(dt * inputValue * r.speed, 0.1)
+			if inputValue == 0 and r.returnToStart then
+				delta = -r.angle * dt * 10
+			end
+			local newAngle = math.clamp(r.angle + delta, -180, 180)
+			if newAngle ~= r.angle then
+				r.angle = newAngle
+				changed = true
+			end
+		end
+	end
+	if not changed then
+		return
+	end
+	local function motion(chain): CFrame
+		local m = CFrame.identity
+		for _, r in chain do
+			local pivot = CFrame.new(r.pivot)
+			m = m * pivot * CFrame.fromAxisAngle(r.axis, math.rad(r.angle)) * pivot:Inverse()
+		end
+		return m
+	end
+	for _, w in self.movingWelds do
+		if w.weld.Parent then
+			w.weld.C0 = motion(w.chain) * w.baseC0
+		end
+	end
+	-- move the physics points/directions of the parts that turn
+	for _, c in self.allComps do
+		local chain = c.part.rotatorChain
+		if chain and #chain > 0 and c.base then
+			local m = motion(chain)
+			c.pos, c.right, c.up, c.forward = m * c.base.pos, m:VectorToWorldSpace(c.base.right), m:VectorToWorldSpace(c.base.up), m:VectorToWorldSpace(c.base.forward)
+			if c.base.oPos then
+				c.oPos, c.oRight, c.oUp, c.oForward = m * c.base.oPos, m:VectorToWorldSpace(c.base.oRight), m:VectorToWorldSpace(c.base.oUp), m:VectorToWorldSpace(c.base.oForward)
+			end
+		end
+	end
+end
+
+function Flight:updateAudio()
+	local speed = self.root.AssemblyLinearVelocity.Magnitude
+	for _, e in self.engines do
+		local thr = if e.part.alive and not self.exploded then math.abs(e.effective or 0) else 0
+		if e.sound then
+			e.sound:set(thr, 0.5 + thr * 0.5 - (e.pitchModulation or 0))
+		end
+		if e.afterburnerSound then
+			local ab = math.clamp(thr - 0.8, 0, 1) * 5
+			e.afterburnerSound:set(ab, 0.5 + ab * 0.5 - (e.pitchModulation or 0))
+		end
+	end
+	if self.windSound then
+		self.windSound:set(if self.exploded then 0 else math.clamp(speed / 200, 0, 1), 0.8)
+	end
 end
 
 -- Values the HUD shows.
@@ -1102,6 +1277,17 @@ end
 
 function Flight:destroy()
 	self.exploded = true
+	for _, e in self.engines or {} do
+		if e.sound then
+			e.sound:stop()
+		end
+		if e.afterburnerSound then
+			e.afterburnerSound:stop()
+		end
+	end
+	if self.windSound then
+		self.windSound:stop()
+	end
 	if self.model then
 		self.model:Destroy()
 	end

@@ -40,6 +40,9 @@ def collect_geometry(p, prefix):
     """returns list of nodes: name, tid path, mesh world-space (root space) geometry per material"""
     nodes=[]
     for i,(tid,mesh,mats,gid) in enumerate(p.renderers()):
+        paint_index=None
+        for cname,ck,cv in p.comps.get(gid,[]):
+            if cname=='PaintableRenderer': paint_index=cv.get('paintableMaterialIndex',0)
         m=p.world(tid)
         nt=M.mat_inv_t3(m); flip=M.mat_det(m)<0
         for si,sub in enumerate(mesh['subs']):
@@ -52,7 +55,7 @@ def collect_geometry(p, prefix):
             uv=[mesh['uv'][v][:2] for v in used] if mesh['uv'] else None
             tris=[remap[x] for x in sub['indices']]
             if flip: tris=[x for k in range(0,len(tris),3) for x in (tris[k],tris[k+2],tris[k+1])]
-            nodes.append(dict(name=f"{prefix}__{len(nodes)}",go=p.go_name(gid),path=p.path_name(tid),material=mat,pos=pos,nrm=nrm,uv=uv,tris=tris))
+            nodes.append(dict(name=f"{prefix}__{len(nodes)}",go=p.go_name(gid),path=p.path_name(tid),material=mat,pos=pos,nrm=nrm,uv=uv,tris=tris,paintable=(paint_index==si)))
     return nodes
 
 def bounds(nodes):
@@ -127,7 +130,7 @@ def extract(name):
                     upper=p.path_name(p.ref_tr(v.get('upperSuspension'))) if p.ref_tr(v.get('upperSuspension')) else None)
             if cls=='ProceduralFuselage': part['procedural']=True
     nodes=collect_geometry(p,name)
-    part['nodes']=[dict(name=n['name'],go=n['go'],path=n['path'],material=n['material'] and {k:n['material'][k] for k in ('name','color','textureOpacity','transparent')}) for n in nodes]
+    part['nodes']=[dict(name=n['name'],go=n['go'],path=n['path'],paintable=n['paintable'],material=n['material'] and {k:n['material'][k] for k in ('name','color','textureOpacity','transparent')}) for n in nodes]
     part['bounds']=bounds(nodes)
     part['colliders']=[x for x in (dict(collider_box(p,c) or {},go=c['go'],active=c['active']) for c in p.colliders()) if x.get('shape')]
     return part,nodes

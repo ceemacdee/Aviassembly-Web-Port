@@ -48,7 +48,7 @@ for p in parts['parts']:
     for n in p['nodes']:
         nm=n['name']
         if nm in man['manifest']:
-            m=man['manifest'][nm]; nodes.append(dict(name=nm,file=m['file'],center=m['center'],size=m['size'],color=m['color'],alpha=m['alpha'],textured=m['textured'],go=m['go'],path=m['path']))
+            m=man['manifest'][nm]; nodes.append(dict(name=nm,file=m['file'],center=m['center'],size=m['size'],color=m['color'],alpha=m['alpha'],textured=m['textured'],go=m['go'],path=m['path'],paintable=m.get('paintable'),mirror=(nm+'_M') if (nm+'_M') in man['manifest'] else None))
         k=1
         while nm+f'_{k}' in man['manifest']:
             m=man['manifest'][nm+f'_{k}']; nodes.append(dict(name=nm+f'_{k}',file=m['file'],center=m['center'],size=m['size'],color=m['color'],alpha=m['alpha'],textured=m['textured'],go=m['go'],path=m['path'])); k+=1
@@ -81,5 +81,19 @@ comp=json.load(open('components.json'))
 consts={k:{a:b for a,b in v[1].items() if not isinstance(b,dict) or a in ('graphicsSettings',)} for k,v in comp.items() if k in ('PlaneContainer','PlaneController','StoryManager','MoneyManager','CargoInventory','CameraController','AutoSave','FogOfWar','ScrapSpawner')}
 consts['DragSimulator']=dict(defaultDrag=0.07,dragMultiplier=1.2,calculateDragWeight=0.6)
 consts['Terrain']=dict(resolution=75,noiseScale=0.2,octaves=7,chunkSize=1000,defaultMinHeight=-82.5,defaultMaxHeight=167.5)
+write('Decorations',dict(decals=man['decals'],trees=man['trees'],continents=man['decorations']),'Decal images (60) and the trees/rocks scattered on each continent (SurfaceDecoration).')
+sounds=dict(
+    ui=dict(click='ButtonClick02',clickLight='BrightButton01',clickHeavy='ButtonClick03',clickSelection='ButtonHeavy',clickReward='BrightButton02',hover='BightButtonHover01',
+            placement='Placement',remove='Removal',paint='PaintSplash',addItem='AddItem',reward='Reward',cash='CashRegister',warning='Notification',writing='Writing',
+            explosion='Explosion',glass='GlassBreaking',mystery='MysterySound',radioClick='RadioClick',radioStatic='RadioStatic',stopwatch='Stopwatch'),
+    volumes=dict(remove=0.5,explosion=0.5,writing=0.8,addItem=0.8,reward=0.8,hover=0.5,cash=0.8,paint=0.8,glass=0.5,mystery=0.8,radioClick=0.5),
+    engines=dict(Engine='PropellerEngine',HugePropEngine='PropellerEngine',SmallPropEngine='PropellerEngine',TurboProp='PropellerEngine',WoodEngine='PropellerEngine',
+            JetEngine='JetEngine',SmallJetEngine='JetEngine',PropfanEngine='JetEngine',BigElectricEngine='JetEngine',FighterJetEngine='JetEngine',RamJet='JetEngine',
+            RocketEngine='RocketEngine',HelicopterEngine='Helisound 1',HelicopterEngineSmall='Helisound 1'),
+    afterburners=dict(FighterJetEngine='RocketEngine',RamJet='RocketEngine'),
+    ambience=dict(wind='Wind',nature='Nature',birds='Birds',airTraffic='AirTrafficControlLoop',earthquake='EarthQuacke'),
+    music=dict(menu='Ambiment',building=['Hard Boiled','On the Ground','Vibe Ace'],continents=dict(Spawn='Floating Cities',Desert='Desert City'),
+               postEarthquake='Gothamlicious',postFinalMessage='Constancy Part Two',finalSequence='Evening Melodrama'))
+write('Sounds',sounds,'Which audio file the original played for each event (names match the .ogg files in sounds/).')
 write('Constants',consts,'Tuning values copied from the Unity scenes (PlaneContainer, PlaneController, StoryManager, ...).')
 print('ok', len(P),'parts')

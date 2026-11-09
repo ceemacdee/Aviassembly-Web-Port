@@ -94,3 +94,13 @@ for _, c in far:GetDescendants() do if c.ClassName == "WedgePart" then w2 += 1 e
 print(("far chunk: %d wedges in %.2fs"):format(w2, os.clock() - t0))
 local ap = fake:spawnAirport(require(shared_node("src/shared/WorldMap")).Airports[2])
 print("airport model children:", #ap:GetChildren())
+local trees, colliders = 0, 0
+for _, c in model:GetDescendants() do
+	if c.Name == "TreeCollider" then colliders += 1 elseif c.Parent and c.Parent.Name == "Decorations" then trees += 1 end
+end
+print(("near chunk decorations: %d pieces, %d tree colliders"):format(trees, colliders))
+WorldStreamer.TreeDensity = 0.25
+local m2 = fake:buildChunk(0, 3, 20, true)
+local t2 = 0
+for _, c in m2:GetDescendants() do if c.Parent and c.Parent.Name == "Decorations" then t2 += 1 end end
+print("at 25% density:", t2)

@@ -47,8 +47,8 @@ local function color(t: { number }?): Color3
 end
 
 -- Creates a visual for one exported mesh piece (part node or airport chunk).
-function PartVisual.meshPiece(node: any, worldCFrame: CFrame, parent: Instance): BasePart
-	local source = PartVisual.findMesh(node.name)
+function PartVisual.meshPiece(node: any, worldCFrame: CFrame, parent: Instance, meshName: string?): BasePart
+	local source = PartVisual.findMesh(meshName or node.name)
 	local piece: BasePart
 	if source then
 		local m = source:Clone()
@@ -144,9 +144,21 @@ function PartVisual.create(partName: string, cf: CFrame, flip: boolean, fuselage
 			spinAxis = if comp.data.helicopterRotor == 1 then Frames.v(f.up) else Frames.v(f.right)
 		end
 	end
+	local paint = opts and opts.color
 	for _, node in data.nodes do
 		local center = Frames.localPoint(Frames.v(node.center), flip)
-		local piece = PartVisual.meshPiece(node, cf * CFrame.new(center), model)
+		-- Mirrored copies use the top-to-bottom flipped mesh exported for them (Unity used a negative scale).
+		local meshName = nil
+		if flip and node.mirror and PartVisual.findMesh(node.mirror) then
+			meshName = node.mirror
+		end
+		local piece = PartVisual.meshPiece(node, cf * CFrame.new(center), model, meshName)
+		if node.paintable then
+			piece:SetAttribute("Paintable", true)
+			if paint then
+				piece.Color = paint
+			end
+		end
 		table.insert(built.visuals, piece)
 		if spinPath and node.path and (node.path == spinPath or string.sub(node.path, 1, #spinPath + 1) == spinPath .. "/") then
 			table.insert(built.spinners, { part = piece, axis = spinAxis })
@@ -188,12 +200,40 @@ function PartVisual.create(partName: string, cf: CFrame, flip: boolean, fuselage
 	return built
 end
 
+-- PartPainter: only the paintable surfaces (and the procedural body) change colour.
 function PartVisual.setColor(built: Built, color: Color3)
 	for _, v in built.visuals do
-		if not v:IsA("MeshPart") or v.TextureID == "" then
+		if v:GetAttribute("Paintable") or v:IsA("WedgePart") then
 			v.Color = color
 		end
 	end
+end
+
+-- Default paint colour of a part (its first paintable surface), for the colour picker.
+function PartVisual.defaultColor(partName: string): Color3
+	local data = Parts[partName]
+	if data.procedural then
+		return BODY_COLOR
+	end
+	for _, node in data.nodes do
+		if node.paintable then
+			return color(node.color)
+		end
+	end
+	return BODY_COLOR
+end
+
+function PartVisual.isPaintable(partName: string): boolean
+	local data = Parts[partName]
+	if data.procedural then
+		return true
+	end
+	for _, node in data.nodes do
+		if node.paintable then
+			return true
+		end
+	end
+	return false
 end
 
 return PartVisual

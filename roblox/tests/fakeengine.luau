@@ -24,7 +24,7 @@ local function newInstance(class)
 	end
 	return self
 end
-local EVENTS = { Activated = true, InputBegan = true, InputEnded = true, InputChanged = true, RenderStepped = true, Heartbeat = true, PreSimulation = true, MouseButton1Click = true, Changed = true }
+local EVENTS = { MouseButton1Down = true, MouseButton1Up = true, MouseDrag = true, Ended = true, Activated = true, InputBegan = true, InputEnded = true, InputChanged = true, RenderStepped = true, Heartbeat = true, PreSimulation = true, MouseButton1Click = true, Changed = true }
 local function signal()
 	return { Connect = function(_, f) return { Disconnect = function() end } end }
 end
@@ -252,7 +252,7 @@ function UIS:GetMouseLocation() return Vector2.new(0, 0) end
 function UIS:IsKeyDown() return false end
 local Tween = service("TweenService")
 function Tween:Create() return { Play = function() end } end
-FE.services = { Workspace = Workspace, Lighting = service("Lighting"), Players = Players, UserInputService = UIS, TweenService = Tween, ReplicatedStorage = RS, RunService = service("RunService") }
+FE.services = { Workspace = Workspace, SoundService = service("SoundService"), Lighting = service("Lighting"), Players = Players, UserInputService = UIS, TweenService = Tween, ReplicatedStorage = RS, RunService = service("RunService") }
 game = { GetService = function(_, n) return FE.services[n] end }
 workspace = Workspace
 Instance = { new = function(class) local o = newInstance(class); if class == "Part" then end return o end }

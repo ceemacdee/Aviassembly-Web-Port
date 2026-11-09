@@ -9,6 +9,9 @@
       },
       "AviassemblyMeshes": {
         "$className": "Folder"
+      },
+      "AviassemblySounds": {
+        "$className": "Folder"
       }
     },
     "ServerScriptService": {
@@ -52,6 +55,9 @@
         "FogStart": 300,
         "ClockTime": 13
       }
+    },
+    "SoundService": {
+      "$className": "SoundService"
     }
   }
 }

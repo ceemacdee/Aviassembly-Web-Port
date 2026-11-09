@@ -43,9 +43,19 @@ def split(pos,nrm,uv,tris):
         sub=tris[s:s+MAXTRI*3]; used=sorted(set(sub)); rm={v:i for i,v in enumerate(used)}
         yield [pos[v] for v in used],([nrm[v] for v in used] if nrm else None),([uv[v] for v in used] if uv else None),[rm[x] for x in sub]
 
+def average_color(mat):
+    png=baked_png(mat)
+    if not png: return mat['color'][:3]
+    import numpy as np
+    a=np.asarray(Image.open(io.BytesIO(png[1])).convert('RGB')).astype('float32')/255.0
+    return [float(x) for x in a.reshape(-1,3).mean(axis=0)]
+
 def add_nodes(g,nodes,manifest,prefix_meta):
     for node in nodes:
         mat=node['material'] or dict(name='default',color=[0.8,0.8,0.8,1],textureOpacity=0,transparent=False)
+        if node.get('paintable'):
+            # Paintable surfaces are exported without a texture so MeshPart.Color can be painted in Roblox.
+            mat=dict(mat,color=average_color(mat)+[mat['color'][3]],textureOpacity=0,texture=None)
         pos,nrm,uv,tris=to_roblox(node)
         for ci,(cp,cn,cu,ct) in enumerate(split(pos,nrm,uv,tris)):
             name=node['name']+(f"_{ci}" if ci else "")
@@ -56,7 +66,7 @@ def add_nodes(g,nodes,manifest,prefix_meta):
             g.add_mesh(name,cp,cn,cu if tex is not None else None,ct,mi)
             mn=[min(p[i] for p in cp) for i in range(3)]; mx=[max(p[i] for p in cp) for i in range(3)]
             manifest[name]=dict(prefix_meta,center=[round((mn[i]+mx[i])/2,4) for i in range(3)],size=[round(max(mx[i]-mn[i],0.002),4) for i in range(3)],
-                color=[round(c,4) for c in mat['color'][:3]],alpha=round(alpha,3),textured=tex is not None,go=node.get('go'),path=node.get('path'),tris=len(ct)//3)
+                color=[round(c,4) for c in mat['color'][:3]],alpha=round(alpha,3),textured=tex is not None,go=node.get('go'),path=node.get('path'),tris=len(ct)//3,paintable=bool(node.get('paintable')))
 
 def merged_env_nodes(p,prefix):
     """merge static environment renderers by material (keeps file small and part count low)"""

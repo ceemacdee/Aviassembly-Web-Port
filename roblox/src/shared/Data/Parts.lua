@@ -69,11 +69,12 @@ return {
 				file = "Parts_Wheels",
 				center = {0.0008, 0.0001, -0.0049},
 				size = {0.0112, 0.0039, 0.0042},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.8992, 0.8992, 0.8992},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Cube.001",
 				path = "AreoWheel/Cube.001",
+				paintable = true,
 			},
 			{
 				name = "AeroWheel__1",
@@ -85,6 +86,7 @@ return {
 				textured = true,
 				go = "Cube.001",
 				path = "AreoWheel/Cube.001",
+				paintable = false,
 			},
 			{
 				name = "AeroWheel__2",
@@ -96,6 +98,7 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "AreoWheel/Cylinder",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -175,6 +178,8 @@ return {
 				textured = false,
 				go = "Cube.002",
 				path = "AreoWheeLong/Cube.002",
+				paintable = true,
+				mirror = "AeroWheelLong__0_M",
 			},
 			{
 				name = "AeroWheelLong__1",
@@ -186,6 +191,8 @@ return {
 				textured = true,
 				go = "Cube.002",
 				path = "AreoWheeLong/Cube.002",
+				paintable = false,
+				mirror = "AeroWheelLong__1_M",
 			},
 			{
 				name = "AeroWheelLong__2",
@@ -197,6 +204,8 @@ return {
 				textured = true,
 				go = "Cylinder.001",
 				path = "AreoWheeLong/Cylinder.001",
+				paintable = false,
+				mirror = "AeroWheelLong__2_M",
 			},
 		},
 		bounds = {
@@ -277,6 +286,7 @@ return {
 				textured = false,
 				go = "AirIntake",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "AirIntake__1",
@@ -288,6 +298,7 @@ return {
 				textured = true,
 				go = "AirIntake",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -368,6 +379,7 @@ return {
 				textured = false,
 				go = "AirIntake2",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "AirIntake2__1",
@@ -379,6 +391,7 @@ return {
 				textured = true,
 				go = "AirIntake2",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -459,6 +472,7 @@ return {
 				textured = false,
 				go = "AirOutlet",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "AirOutlet__1",
@@ -470,6 +484,7 @@ return {
 				textured = true,
 				go = "AirOutlet",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -543,6 +558,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "Rotor",
+				paintable = false,
+				mirror = "AirTurbine__0_M",
 			},
 			{
 				name = "AirTurbine__1",
@@ -554,6 +571,8 @@ return {
 				textured = true,
 				go = "Cylinder.002",
 				path = "Cylinder.002",
+				paintable = false,
+				mirror = "AirTurbine__1_M",
 			},
 		},
 		bounds = {
@@ -626,6 +645,8 @@ return {
 				textured = true,
 				go = "Cube.001",
 				path = "Airbreak/Cube.001",
+				paintable = false,
+				mirror = "Airbreak__0_M",
 			},
 			{
 				name = "Airbreak__1",
@@ -637,6 +658,7 @@ return {
 				textured = true,
 				go = "Cube.002",
 				path = "Airbreak/Cube.002",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -710,6 +732,8 @@ return {
 				textured = false,
 				go = "AreoDynamicCockpit",
 				path = "",
+				paintable = true,
+				mirror = "AreoDynamicCockpit__0_M",
 			},
 			{
 				name = "AreoDynamicCockpit__1",
@@ -721,6 +745,8 @@ return {
 				textured = false,
 				go = "AreoDynamicCockpit",
 				path = "",
+				paintable = false,
+				mirror = "AreoDynamicCockpit__1_M",
 			},
 			{
 				name = "AreoDynamicCockpit__2",
@@ -732,6 +758,8 @@ return {
 				textured = false,
 				go = "AreoDynamicCockpit",
 				path = "",
+				paintable = false,
+				mirror = "AreoDynamicCockpit__2_M",
 			},
 			{
 				name = "AreoDynamicCockpit__3",
@@ -743,6 +771,7 @@ return {
 				textured = false,
 				go = "AreoDynamicCockpit",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -815,6 +844,8 @@ return {
 				textured = true,
 				go = "BigBalloon",
 				path = "",
+				paintable = false,
+				mirror = "BigBalloon__0_M",
 			},
 		},
 		bounds = {
@@ -887,6 +918,7 @@ return {
 				textured = true,
 				go = "BigBatteries",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -960,17 +992,21 @@ return {
 				textured = false,
 				go = "BigCockpit",
 				path = "",
+				paintable = false,
+				mirror = "BigCockpit__0_M",
 			},
 			{
 				name = "BigCockpit__1",
 				file = "Parts_Cockpits",
 				center = {0.0, 0.0, 0.1525},
 				size = {1.6, 1.6, 1.9232},
-				color = {0.9057, 0.9057, 0.9057},
+				color = {0.852, 0.8521, 0.852},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BigCockpit",
 				path = "",
+				paintable = true,
+				mirror = "BigCockpit__1_M",
 			},
 		},
 		bounds = {
@@ -1060,6 +1096,7 @@ return {
 				textured = true,
 				go = "BigElectricEngine",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "BigElectricEngine__1",
@@ -1071,6 +1108,7 @@ return {
 				textured = false,
 				go = "BigElectricEngine",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "BigElectricEngine__2",
@@ -1082,6 +1120,8 @@ return {
 				textured = true,
 				go = "Cube.009",
 				path = "Cube.009",
+				paintable = false,
+				mirror = "BigElectricEngine__2_M",
 			},
 		},
 		propeller = {
@@ -1153,11 +1193,12 @@ return {
 				file = "Parts_Utility",
 				center = {-0.0019, -0.0, 0.0},
 				size = {0.004, 0.0079, 0.0174},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.4261, 0.4136, 0.384},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BigExternalFuelTank",
 				path = "",
+				paintable = true,
 			},
 		},
 		bounds = {
@@ -1246,6 +1287,7 @@ return {
 				textured = true,
 				go = "UpperSuspension",
 				path = "BigOldWheel/UpperSuspension",
+				paintable = false,
 			},
 			{
 				name = "BigOldWheel__1",
@@ -1257,6 +1299,7 @@ return {
 				textured = true,
 				go = "LowerSuspension",
 				path = "BigOldWheel/UpperSuspension/LowerSuspension",
+				paintable = false,
 			},
 			{
 				name = "BigOldWheel__2",
@@ -1268,6 +1311,7 @@ return {
 				textured = true,
 				go = "Wheel",
 				path = "BigOldWheel/UpperSuspension/LowerSuspension/Wheel",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -1356,6 +1400,8 @@ return {
 				textured = true,
 				go = "Wheel strut 2",
 				path = "Struts/WheelStrut1/Wheel strut 2",
+				paintable = false,
+				mirror = "BigRetractableGear__0_M",
 			},
 			{
 				name = "BigRetractableGear__1",
@@ -1367,6 +1413,8 @@ return {
 				textured = true,
 				go = "Strut1",
 				path = "Struts/p1/Strut1",
+				paintable = false,
+				mirror = "BigRetractableGear__1_M",
 			},
 			{
 				name = "BigRetractableGear__2",
@@ -1378,6 +1426,8 @@ return {
 				textured = true,
 				go = "Strut2",
 				path = "Struts/p2/Strut2",
+				paintable = false,
+				mirror = "BigRetractableGear__2_M",
 			},
 			{
 				name = "BigRetractableGear__3",
@@ -1389,6 +1439,8 @@ return {
 				textured = true,
 				go = "Case",
 				path = "Case",
+				paintable = false,
+				mirror = "BigRetractableGear__3_M",
 			},
 			{
 				name = "BigRetractableGear__4",
@@ -1400,6 +1452,7 @@ return {
 				textured = true,
 				go = "Lower Suspension",
 				path = "UpperSuspension/Lower Suspension/Lower Suspension",
+				paintable = false,
 			},
 			{
 				name = "BigRetractableGear__5",
@@ -1411,6 +1464,7 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel/Wheels",
+				paintable = false,
 			},
 			{
 				name = "BigRetractableGear__6",
@@ -1422,6 +1476,7 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel (1)/Wheels",
+				paintable = false,
 			},
 			{
 				name = "BigRetractableGear__7",
@@ -1433,6 +1488,7 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "UpperSuspension/Mesh",
+				paintable = false,
 			},
 		},
 		retractable = {
@@ -1520,11 +1576,13 @@ return {
 				file = "Parts_Wings",
 				center = {0.2712, 0.3455, -1.2284},
 				size = {3.6507, 1.2471, 5.9072},
-				color = {0.95, 0.95, 0.95},
+				color = {0.9141, 0.9138, 0.9141},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BigWing",
 				path = "",
+				paintable = true,
+				mirror = "BigWing__0_M",
 			},
 			{
 				name = "BigWing__1",
@@ -1536,6 +1594,8 @@ return {
 				textured = false,
 				go = "BigWing",
 				path = "",
+				paintable = false,
+				mirror = "BigWing__1_M",
 			},
 			{
 				name = "BigWing__2",
@@ -1547,6 +1607,8 @@ return {
 				textured = false,
 				go = "JetWing02Aileron",
 				path = "ConrolSurface/JetWing02Aileron",
+				paintable = false,
+				mirror = "BigWing__2_M",
 			},
 		},
 		bounds = {
@@ -1677,6 +1739,8 @@ return {
 				textured = true,
 				go = "Cube",
 				path = "Bikewheel/Cube",
+				paintable = false,
+				mirror = "BikeWheel__0_M",
 			},
 			{
 				name = "BikeWheel__1",
@@ -1688,6 +1752,7 @@ return {
 				textured = true,
 				go = "Cylinder.011",
 				path = "Bikewheel/Cylinder.011",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -1773,11 +1838,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {-0.0, -0.0, 1.0},
 				size = {1.0, 1.0, 2.0},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.591, 0.5478, 0.4952},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BiplaneCockpit",
 				path = "",
+				paintable = true,
+				mirror = "BiplaneCockpit__0_M",
 			},
 			{
 				name = "BiplaneCockpit__1",
@@ -1789,6 +1856,8 @@ return {
 				textured = true,
 				go = "BiplaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "BiplaneCockpit__1_M",
 			},
 			{
 				name = "BiplaneCockpit__2",
@@ -1800,6 +1869,8 @@ return {
 				textured = false,
 				go = "BiplaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "BiplaneCockpit__2_M",
 			},
 			{
 				name = "BiplaneCockpit__3",
@@ -1811,6 +1882,8 @@ return {
 				textured = true,
 				go = "PilotHead",
 				path = "PilotHead",
+				paintable = false,
+				mirror = "BiplaneCockpit__3_M",
 			},
 			{
 				name = "BiplaneCockpit__4",
@@ -1822,6 +1895,8 @@ return {
 				textured = false,
 				go = "PilotHead",
 				path = "PilotHead",
+				paintable = false,
+				mirror = "BiplaneCockpit__4_M",
 			},
 			{
 				name = "BiplaneCockpit__5",
@@ -1833,6 +1908,8 @@ return {
 				textured = false,
 				go = "PilotHead",
 				path = "PilotHead",
+				paintable = false,
+				mirror = "BiplaneCockpit__5_M",
 			},
 			{
 				name = "BiplaneCockpit__6",
@@ -1844,6 +1921,8 @@ return {
 				textured = false,
 				go = "PilotHead",
 				path = "PilotHead",
+				paintable = false,
+				mirror = "BiplaneCockpit__6_M",
 			},
 		},
 		bounds = {
@@ -1930,17 +2009,21 @@ return {
 				textured = true,
 				go = "BiplaneWing",
 				path = "",
+				paintable = false,
+				mirror = "BiplaneWing__0_M",
 			},
 			{
 				name = "BiplaneWing__1",
 				file = "Parts_Wings",
 				center = {0.0075, -0.0174, -0.0287},
 				size = {1.3644, 0.1388, 3.005},
-				color = {0.9137, 0.9137, 0.9137},
+				color = {0.8613, 0.8603, 0.86},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "BiplaneWing",
 				path = "",
+				paintable = true,
+				mirror = "BiplaneWing__1_M",
 			},
 		},
 		bounds = {
@@ -2086,6 +2169,8 @@ return {
 				textured = true,
 				go = "Camera",
 				path = "",
+				paintable = false,
+				mirror = "Camera__0_M",
 			},
 			{
 				name = "Camera__1",
@@ -2097,6 +2182,7 @@ return {
 				textured = false,
 				go = "Camera",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -2173,11 +2259,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {0.0, 0.1998, 1.0},
 				size = {1.0, 1.3995, 2.0},
-				color = {0.9057, 0.9057, 0.9057},
+				color = {0.852, 0.8521, 0.852},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Cockpit",
 				path = "",
+				paintable = true,
+				mirror = "Cockpit__0_M",
 			},
 			{
 				name = "Cockpit__1",
@@ -2189,6 +2277,8 @@ return {
 				textured = false,
 				go = "Cockpit",
 				path = "",
+				paintable = false,
+				mirror = "Cockpit__1_M",
 			},
 		},
 		bounds = {
@@ -2270,6 +2360,8 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "Mesh",
+				paintable = false,
+				mirror = "Connector__0_M",
 			},
 		},
 		bounds = {
@@ -2341,6 +2433,7 @@ return {
 				textured = true,
 				go = "Base",
 				path = "Base",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -2427,17 +2520,21 @@ return {
 				textured = false,
 				go = "DeltaWing01",
 				path = "",
+				paintable = false,
+				mirror = "DeltaWing01__0_M",
 			},
 			{
 				name = "DeltaWing01__1",
 				file = "Parts_Wings",
 				center = {-0.246, 0.008, -0.2058},
 				size = {2.5786, 0.2238, 2.2905},
-				color = {0.9, 0.9, 0.9},
+				color = {0.8536, 0.854, 0.8536},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "DeltaWing01",
 				path = "",
+				paintable = true,
+				mirror = "DeltaWing01__1_M",
 			},
 			{
 				name = "DeltaWing01__2",
@@ -2449,6 +2546,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "DeltaWing01__2_M",
 			},
 		},
 		bounds = {
@@ -2535,17 +2634,21 @@ return {
 				textured = false,
 				go = "DeltaWing02",
 				path = "",
+				paintable = false,
+				mirror = "DeltaWing02__0_M",
 			},
 			{
 				name = "DeltaWing02__1",
 				file = "Parts_Wings",
 				center = {0.6872, -0.0013, -1.6823},
 				size = {3.9049, 0.3763, 3.0296},
-				color = {1, 1, 1},
+				color = {0.9394, 0.9403, 0.9394},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "DeltaWing02",
 				path = "",
+				paintable = true,
+				mirror = "DeltaWing02__1_M",
 			},
 			{
 				name = "DeltaWing02__2",
@@ -2557,6 +2660,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "DeltaWing02__2_M",
 			},
 		},
 		bounds = {
@@ -2664,6 +2769,7 @@ return {
 				textured = false,
 				go = "Body",
 				path = "Body",
+				paintable = true,
 			},
 			{
 				name = "ElectricEngine__1",
@@ -2675,6 +2781,7 @@ return {
 				textured = false,
 				go = "BodyEnd",
 				path = "BodyEnd",
+				paintable = true,
 			},
 			{
 				name = "ElectricEngine__2",
@@ -2686,6 +2793,8 @@ return {
 				textured = true,
 				go = "PropellerBase",
 				path = "PropellerBase/PropellerBase",
+				paintable = false,
+				mirror = "ElectricEngine__2_M",
 			},
 			{
 				name = "ElectricEngine__3",
@@ -2697,6 +2806,8 @@ return {
 				textured = true,
 				go = "1",
 				path = "PropellerBase/1",
+				paintable = false,
+				mirror = "ElectricEngine__3_M",
 			},
 			{
 				name = "ElectricEngine__4",
@@ -2708,6 +2819,8 @@ return {
 				textured = true,
 				go = "1 (1)",
 				path = "PropellerBase/1 (1)",
+				paintable = false,
+				mirror = "ElectricEngine__4_M",
 			},
 			{
 				name = "ElectricEngine__5",
@@ -2719,6 +2832,8 @@ return {
 				textured = true,
 				go = "1 (2)",
 				path = "PropellerBase/1 (2)",
+				paintable = false,
+				mirror = "ElectricEngine__5_M",
 			},
 			{
 				name = "ElectricEngine__6",
@@ -2730,6 +2845,8 @@ return {
 				textured = true,
 				go = "1 (3)",
 				path = "PropellerBase/1 (3)",
+				paintable = false,
+				mirror = "ElectricEngine__6_M",
 			},
 			{
 				name = "ElectricEngine__7",
@@ -2741,6 +2858,8 @@ return {
 				textured = true,
 				go = "1 (4)",
 				path = "PropellerBase/1 (4)",
+				paintable = false,
+				mirror = "ElectricEngine__7_M",
 			},
 			{
 				name = "ElectricEngine__8",
@@ -2752,6 +2871,8 @@ return {
 				textured = true,
 				go = "1 (5)",
 				path = "PropellerBase/1 (5)",
+				paintable = false,
+				mirror = "ElectricEngine__8_M",
 			},
 			{
 				name = "ElectricEngine__9",
@@ -2763,6 +2884,8 @@ return {
 				textured = true,
 				go = "1 (6)",
 				path = "PropellerBase/1 (6)",
+				paintable = false,
+				mirror = "ElectricEngine__9_M",
 			},
 			{
 				name = "ElectricEngine__10",
@@ -2774,6 +2897,8 @@ return {
 				textured = true,
 				go = "1 (7)",
 				path = "PropellerBase/1 (7)",
+				paintable = false,
+				mirror = "ElectricEngine__10_M",
 			},
 		},
 		propeller = {
@@ -2864,17 +2989,21 @@ return {
 				textured = false,
 				go = "ElectronWing",
 				path = "",
+				paintable = false,
+				mirror = "ElectronWing__0_M",
 			},
 			{
 				name = "ElectronWing__1",
 				file = "Parts_Wings",
 				center = {-0.0821, -0.0358, -0.2458},
 				size = {2.0735, 0.6883, 4.8025},
-				color = {0.96, 0.96, 0.96},
+				color = {0.9198, 0.9209, 0.9198},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "ElectronWing",
 				path = "",
+				paintable = true,
+				mirror = "ElectronWing__1_M",
 			},
 			{
 				name = "ElectronWing__2",
@@ -2886,6 +3015,8 @@ return {
 				textured = true,
 				go = "Cube.003",
 				path = "Aileron/Cube.003",
+				paintable = false,
+				mirror = "ElectronWing__2_M",
 			},
 		},
 		bounds = {
@@ -2993,6 +3124,8 @@ return {
 				textured = true,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = false,
+				mirror = "Engine__0_M",
 			},
 			{
 				name = "Engine__1",
@@ -3004,6 +3137,8 @@ return {
 				textured = false,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = true,
+				mirror = "Engine__1_M",
 			},
 			{
 				name = "Engine__2",
@@ -3015,6 +3150,8 @@ return {
 				textured = true,
 				go = "Propeller",
 				path = "Propeller",
+				paintable = false,
+				mirror = "Engine__2_M",
 			},
 			{
 				name = "Engine__3",
@@ -3026,6 +3163,8 @@ return {
 				textured = true,
 				go = "1",
 				path = "Propeller/1",
+				paintable = false,
+				mirror = "Engine__3_M",
 			},
 			{
 				name = "Engine__4",
@@ -3037,6 +3176,8 @@ return {
 				textured = true,
 				go = "2",
 				path = "Propeller/2",
+				paintable = false,
+				mirror = "Engine__4_M",
 			},
 			{
 				name = "Engine__5",
@@ -3048,6 +3189,8 @@ return {
 				textured = true,
 				go = "3",
 				path = "Propeller/3",
+				paintable = false,
+				mirror = "Engine__5_M",
 			},
 			{
 				name = "Engine__6",
@@ -3059,6 +3202,7 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
 			},
 		},
 		propeller = {
@@ -3130,11 +3274,12 @@ return {
 				file = "Parts_Utility",
 				center = {-0.0027, -0.0, 0.0},
 				size = {0.007, 0.006, 0.0121},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.4261, 0.4136, 0.384},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "ExternalFuelTank",
 				path = "",
+				paintable = true,
 			},
 		},
 		bounds = {
@@ -3220,17 +3365,21 @@ return {
 				textured = true,
 				go = "FighterJetEngine",
 				path = "",
+				paintable = false,
+				mirror = "FighterJetEngine__0_M",
 			},
 			{
 				name = "FighterJetEngine__1",
 				file = "Parts_Engines",
 				center = {0.0073, -0.0, -0.0},
 				size = {0.0256, 0.0059, 0.006},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.591, 0.5478, 0.4952},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "FighterJetEngine",
 				path = "",
+				paintable = true,
+				mirror = "FighterJetEngine__1_M",
 			},
 		},
 		bounds = {
@@ -3303,6 +3452,8 @@ return {
 				textured = false,
 				go = "FuelTank",
 				path = "",
+				paintable = true,
+				mirror = "FuelTank__0_M",
 			},
 		},
 		bounds = {
@@ -3371,11 +3522,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {0.0, 0.0002, 0.0268},
 				size = {0.018, 0.019, 0.0537},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.591, 0.5478, 0.4952},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "GliderCockpit",
 				path = "",
+				paintable = true,
+				mirror = "GliderCockpit__0_M",
 			},
 			{
 				name = "GliderCockpit__1",
@@ -3387,6 +3540,8 @@ return {
 				textured = false,
 				go = "GliderCockpit",
 				path = "",
+				paintable = false,
+				mirror = "GliderCockpit__1_M",
 			},
 		},
 		bounds = {
@@ -3482,6 +3637,8 @@ return {
 				textured = true,
 				go = "GliderWing",
 				path = "",
+				paintable = false,
+				mirror = "GliderWing__0_M",
 			},
 			{
 				name = "GliderWing__1",
@@ -3493,6 +3650,8 @@ return {
 				textured = false,
 				go = "GliderWing",
 				path = "",
+				paintable = true,
+				mirror = "GliderWing__1_M",
 			},
 			{
 				name = "GliderWing__2",
@@ -3504,6 +3663,8 @@ return {
 				textured = true,
 				go = "Cube",
 				path = "GameObject/Cube",
+				paintable = false,
+				mirror = "GliderWing__2_M",
 			},
 		},
 		bounds = {
@@ -3577,6 +3738,8 @@ return {
 				textured = false,
 				go = "HelicopterCockpit",
 				path = "",
+				paintable = false,
+				mirror = "HelicopterCockpit__0_M",
 			},
 			{
 				name = "HelicopterCockpit__1",
@@ -3588,6 +3751,8 @@ return {
 				textured = false,
 				go = "HelicopterCockpit",
 				path = "",
+				paintable = true,
+				mirror = "HelicopterCockpit__1_M",
 			},
 			{
 				name = "HelicopterCockpit__2",
@@ -3599,6 +3764,8 @@ return {
 				textured = true,
 				go = "HelicopterCockpit",
 				path = "",
+				paintable = false,
+				mirror = "HelicopterCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -3688,6 +3855,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__0_M",
 			},
 			{
 				name = "HelicopterEngine__1",
@@ -3699,6 +3868,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__1_M",
 			},
 			{
 				name = "HelicopterEngine__2",
@@ -3710,6 +3881,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__2_M",
 			},
 			{
 				name = "HelicopterEngine__3",
@@ -3721,6 +3894,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__3_M",
 			},
 			{
 				name = "HelicopterEngine__4",
@@ -3732,6 +3907,8 @@ return {
 				textured = true,
 				go = "Cylinder.001",
 				path = "HelicopterRotor/Rotor/Cylinder.001",
+				paintable = false,
+				mirror = "HelicopterEngine__4_M",
 			},
 			{
 				name = "HelicopterEngine__5",
@@ -3743,6 +3920,7 @@ return {
 				textured = true,
 				go = "Cylinder.002",
 				path = "HelicopterRotor/Rotor/Cylinder.002",
+				paintable = false,
 			},
 			{
 				name = "HelicopterEngine__6",
@@ -3754,6 +3932,8 @@ return {
 				textured = true,
 				go = "Rotor",
 				path = "HelicopterRotor/Rotor/Cylinder.002/Rotor",
+				paintable = false,
+				mirror = "HelicopterEngine__6_M",
 			},
 			{
 				name = "HelicopterEngine__7",
@@ -3765,6 +3945,8 @@ return {
 				textured = true,
 				go = "Body",
 				path = "HelicopterRotor/Body",
+				paintable = false,
+				mirror = "HelicopterEngine__7_M",
 			},
 			{
 				name = "HelicopterEngine__8",
@@ -3776,6 +3958,8 @@ return {
 				textured = false,
 				go = "Body",
 				path = "HelicopterRotor/Body",
+				paintable = true,
+				mirror = "HelicopterEngine__8_M",
 			},
 		},
 		propeller = {
@@ -3869,6 +4053,8 @@ return {
 				textured = true,
 				go = "Cylinder.001",
 				path = "HelicopterRotor/GameObject/Cylinder.001",
+				paintable = false,
+				mirror = "HelicopterEngineSmall__0_M",
 			},
 			{
 				name = "HelicopterEngineSmall__1",
@@ -3880,6 +4066,8 @@ return {
 				textured = true,
 				go = "Cylinder.002",
 				path = "HelicopterRotor/GameObject/Cylinder.002",
+				paintable = false,
+				mirror = "HelicopterEngineSmall__1_M",
 			},
 			{
 				name = "HelicopterEngineSmall__2",
@@ -3891,6 +4079,8 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "HelicopterRotor/GameObject/Cylinder",
+				paintable = false,
+				mirror = "HelicopterEngineSmall__2_M",
 			},
 			{
 				name = "HelicopterEngineSmall__3",
@@ -3902,6 +4092,8 @@ return {
 				textured = false,
 				go = "Cube.002",
 				path = "HelicopterRotor/Cube.002",
+				paintable = false,
+				mirror = "HelicopterEngineSmall__3_M",
 			},
 		},
 		propeller = {
@@ -4073,6 +4265,8 @@ return {
 				textured = true,
 				go = "HelicopterLandingGear",
 				path = "",
+				paintable = false,
+				mirror = "HelicopterLandingGear__0_M",
 			},
 		},
 		bounds = {
@@ -4146,6 +4340,8 @@ return {
 				textured = false,
 				go = "HugeCockpit",
 				path = "",
+				paintable = true,
+				mirror = "HugeCockpit__0_M",
 			},
 			{
 				name = "HugeCockpit__1",
@@ -4157,6 +4353,8 @@ return {
 				textured = true,
 				go = "HugeCockpit",
 				path = "",
+				paintable = false,
+				mirror = "HugeCockpit__1_M",
 			},
 			{
 				name = "HugeCockpit__2",
@@ -4168,6 +4366,8 @@ return {
 				textured = false,
 				go = "HugeCockpit",
 				path = "",
+				paintable = false,
+				mirror = "HugeCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -4266,6 +4466,8 @@ return {
 				textured = true,
 				go = "Propeller (1)",
 				path = "Propeller/Propeller (1)",
+				paintable = false,
+				mirror = "HugePropEngine__0_M",
 			},
 			{
 				name = "HugePropEngine__1",
@@ -4277,6 +4479,8 @@ return {
 				textured = true,
 				go = "Propeller (3)",
 				path = "Propeller/Propeller (3)",
+				paintable = false,
+				mirror = "HugePropEngine__1_M",
 			},
 			{
 				name = "HugePropEngine__2",
@@ -4288,6 +4492,8 @@ return {
 				textured = true,
 				go = "Propeller (2)",
 				path = "Propeller/Propeller (2)",
+				paintable = false,
+				mirror = "HugePropEngine__2_M",
 			},
 			{
 				name = "HugePropEngine__3",
@@ -4299,6 +4505,7 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "Propeller/Cylinder",
+				paintable = false,
 			},
 			{
 				name = "HugePropEngine__4",
@@ -4310,6 +4517,8 @@ return {
 				textured = false,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = true,
+				mirror = "HugePropEngine__4_M",
 			},
 			{
 				name = "HugePropEngine__5",
@@ -4321,6 +4530,8 @@ return {
 				textured = true,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = false,
+				mirror = "HugePropEngine__5_M",
 			},
 		},
 		propeller = {
@@ -4401,11 +4612,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {0.0, 0.0022, 0.9994},
 				size = {0.9994, 1.0037, 1.9987},
-				color = {0.9057, 0.9057, 0.9057},
+				color = {0.852, 0.8521, 0.852},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "JetCockpit",
 				path = "",
+				paintable = true,
+				mirror = "JetCockpit__0_M",
 			},
 			{
 				name = "JetCockpit__1",
@@ -4417,6 +4630,8 @@ return {
 				textured = false,
 				go = "JetCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetCockpit__1_M",
 			},
 			{
 				name = "JetCockpit__2",
@@ -4428,6 +4643,8 @@ return {
 				textured = false,
 				go = "JetCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -4501,6 +4718,8 @@ return {
 				textured = false,
 				go = "JetCockpit02",
 				path = "",
+				paintable = true,
+				mirror = "JetCockpit02__0_M",
 			},
 			{
 				name = "JetCockpit02__1",
@@ -4512,6 +4731,8 @@ return {
 				textured = false,
 				go = "JetCockpit02",
 				path = "",
+				paintable = false,
+				mirror = "JetCockpit02__1_M",
 			},
 			{
 				name = "JetCockpit02__2",
@@ -4523,6 +4744,8 @@ return {
 				textured = false,
 				go = "JetCockpit02",
 				path = "",
+				paintable = false,
+				mirror = "JetCockpit02__2_M",
 			},
 		},
 		bounds = {
@@ -4608,6 +4831,7 @@ return {
 				textured = true,
 				go = "JetEngine",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "JetEngine__1",
@@ -4619,6 +4843,7 @@ return {
 				textured = false,
 				go = "JetEngine",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "JetEngine__2",
@@ -4630,6 +4855,8 @@ return {
 				textured = true,
 				go = "Cube.009",
 				path = "Cube.009",
+				paintable = false,
+				mirror = "JetEngine__2_M",
 			},
 		},
 		propeller = {
@@ -4707,6 +4934,8 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetlineCockpit__0_M",
 			},
 			{
 				name = "JetlineCockpit__1",
@@ -4718,6 +4947,7 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "JetlineCockpit__2",
@@ -4729,6 +4959,8 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = true,
+				mirror = "JetlineCockpit__2_M",
 			},
 			{
 				name = "JetlineCockpit__3",
@@ -4740,6 +4972,8 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetlineCockpit__3_M",
 			},
 			{
 				name = "JetlineCockpit__4",
@@ -4751,6 +4985,8 @@ return {
 				textured = false,
 				go = "JetlineCockpit",
 				path = "",
+				paintable = false,
+				mirror = "JetlineCockpit__4_M",
 			},
 		},
 		bounds = {
@@ -4840,6 +5076,7 @@ return {
 				textured = false,
 				go = "LargeBody",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "LargeBody__1",
@@ -4851,6 +5088,8 @@ return {
 				textured = false,
 				go = "Windows (1)",
 				path = "Windows (1)",
+				paintable = false,
+				mirror = "LargeBody__1_M",
 			},
 			{
 				name = "LargeBody__2",
@@ -4862,6 +5101,8 @@ return {
 				textured = false,
 				go = "Windows (1)",
 				path = "Windows (1)",
+				paintable = false,
+				mirror = "LargeBody__2_M",
 			},
 			{
 				name = "LargeBody__3",
@@ -4873,6 +5114,8 @@ return {
 				textured = false,
 				go = "Windows (2)",
 				path = "Windows (2)",
+				paintable = false,
+				mirror = "LargeBody__3_M",
 			},
 			{
 				name = "LargeBody__4",
@@ -4884,6 +5127,8 @@ return {
 				textured = false,
 				go = "Windows (2)",
 				path = "Windows (2)",
+				paintable = false,
+				mirror = "LargeBody__4_M",
 			},
 			{
 				name = "LargeBody__5",
@@ -4895,6 +5140,8 @@ return {
 				textured = false,
 				go = "Windows (3)",
 				path = "Windows (3)",
+				paintable = false,
+				mirror = "LargeBody__5_M",
 			},
 			{
 				name = "LargeBody__6",
@@ -4906,6 +5153,8 @@ return {
 				textured = false,
 				go = "Windows (3)",
 				path = "Windows (3)",
+				paintable = false,
+				mirror = "LargeBody__6_M",
 			},
 			{
 				name = "LargeBody__7",
@@ -4917,6 +5166,8 @@ return {
 				textured = false,
 				go = "Windows (4)",
 				path = "Windows (4)",
+				paintable = false,
+				mirror = "LargeBody__7_M",
 			},
 			{
 				name = "LargeBody__8",
@@ -4928,6 +5179,8 @@ return {
 				textured = false,
 				go = "Windows (4)",
 				path = "Windows (4)",
+				paintable = false,
+				mirror = "LargeBody__8_M",
 			},
 			{
 				name = "LargeBody__9",
@@ -4939,6 +5192,8 @@ return {
 				textured = false,
 				go = "Windows (5)",
 				path = "Windows (5)",
+				paintable = false,
+				mirror = "LargeBody__9_M",
 			},
 			{
 				name = "LargeBody__10",
@@ -4950,6 +5205,8 @@ return {
 				textured = false,
 				go = "Windows (5)",
 				path = "Windows (5)",
+				paintable = false,
+				mirror = "LargeBody__10_M",
 			},
 			{
 				name = "LargeBody__11",
@@ -4961,6 +5218,8 @@ return {
 				textured = false,
 				go = "Windows (6)",
 				path = "Windows (6)",
+				paintable = false,
+				mirror = "LargeBody__11_M",
 			},
 			{
 				name = "LargeBody__12",
@@ -4972,6 +5231,8 @@ return {
 				textured = false,
 				go = "Windows (6)",
 				path = "Windows (6)",
+				paintable = false,
+				mirror = "LargeBody__12_M",
 			},
 			{
 				name = "LargeBody__13",
@@ -4983,6 +5244,8 @@ return {
 				textured = false,
 				go = "Windows (7)",
 				path = "Windows (7)",
+				paintable = false,
+				mirror = "LargeBody__13_M",
 			},
 			{
 				name = "LargeBody__14",
@@ -4994,6 +5257,8 @@ return {
 				textured = false,
 				go = "Windows (7)",
 				path = "Windows (7)",
+				paintable = false,
+				mirror = "LargeBody__14_M",
 			},
 			{
 				name = "LargeBody__15",
@@ -5005,6 +5270,8 @@ return {
 				textured = false,
 				go = "Windows (8)",
 				path = "Windows (8)",
+				paintable = false,
+				mirror = "LargeBody__15_M",
 			},
 			{
 				name = "LargeBody__16",
@@ -5016,6 +5283,8 @@ return {
 				textured = false,
 				go = "Windows (8)",
 				path = "Windows (8)",
+				paintable = false,
+				mirror = "LargeBody__16_M",
 			},
 		},
 		bounds = {
@@ -5089,6 +5358,7 @@ return {
 				textured = false,
 				go = "Nose",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -5219,6 +5489,7 @@ return {
 				textured = true,
 				go = "Cube",
 				path = "Bikewheel/Cube",
+				paintable = false,
 			},
 			{
 				name = "OldSteelWheel__1",
@@ -5230,6 +5501,7 @@ return {
 				textured = true,
 				go = "Cylinder.011",
 				path = "Bikewheel/Cylinder.011",
+				paintable = false,
 			},
 			{
 				name = "OldSteelWheel__2",
@@ -5241,6 +5513,7 @@ return {
 				textured = true,
 				go = "Cylinder.011",
 				path = "Bikewheel/Cylinder.011",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -5313,6 +5586,8 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "Parachute/Cylinder",
+				paintable = false,
+				mirror = "Parachute__0_M",
 			},
 			{
 				name = "Parachute__1",
@@ -5324,6 +5599,8 @@ return {
 				textured = true,
 				go = "Cylinder.003",
 				path = "Parachute/Cylinder.003",
+				paintable = false,
+				mirror = "Parachute__1_M",
 			},
 		},
 		bounds = {
@@ -5392,11 +5669,13 @@ return {
 				file = "Parts_Cockpits",
 				center = {0.0, -0.0, 0.1818},
 				size = {1.4, 1.4, 2.1751},
-				color = {0.9057, 0.9057, 0.9057},
+				color = {0.852, 0.8521, 0.852},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "PrivateJetCockpit",
 				path = "",
+				paintable = true,
+				mirror = "PrivateJetCockpit__0_M",
 			},
 			{
 				name = "PrivateJetCockpit__1",
@@ -5408,6 +5687,8 @@ return {
 				textured = false,
 				go = "PrivateJetCockpit",
 				path = "",
+				paintable = false,
+				mirror = "PrivateJetCockpit__1_M",
 			},
 			{
 				name = "PrivateJetCockpit__2",
@@ -5419,6 +5700,8 @@ return {
 				textured = false,
 				go = "PrivateJetCockpit",
 				path = "",
+				paintable = false,
+				mirror = "PrivateJetCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -5504,6 +5787,7 @@ return {
 				textured = false,
 				go = "PropfanEngine",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "PropfanEngine__1",
@@ -5515,6 +5799,7 @@ return {
 				textured = true,
 				go = "PropfanEngine",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "PropfanEngine__2",
@@ -5526,6 +5811,8 @@ return {
 				textured = true,
 				go = "Cylinder.003",
 				path = "Cylinder.003",
+				paintable = false,
+				mirror = "PropfanEngine__2_M",
 			},
 			{
 				name = "PropfanEngine__3",
@@ -5537,6 +5824,8 @@ return {
 				textured = true,
 				go = "Cylinder.005",
 				path = "Cylinder.003/Cylinder.005",
+				paintable = false,
+				mirror = "PropfanEngine__3_M",
 			},
 		},
 		propeller = {
@@ -5626,6 +5915,7 @@ return {
 				textured = true,
 				go = "RamJet",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "RamJet__1",
@@ -5637,6 +5927,7 @@ return {
 				textured = false,
 				go = "RamJet",
 				path = "",
+				paintable = true,
 			},
 		},
 		bounds = {
@@ -5716,6 +6007,7 @@ return {
 				textured = true,
 				go = "RearWheel",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "RearWheel__1",
@@ -5727,6 +6019,7 @@ return {
 				textured = false,
 				go = "RearWheel",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "RearWheel__2",
@@ -5738,6 +6031,7 @@ return {
 				textured = true,
 				go = "Wheel",
 				path = "GameObject/Wheel",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -5841,6 +6135,8 @@ return {
 				textured = true,
 				go = "RocketEngine",
 				path = "RocketEngine",
+				paintable = false,
+				mirror = "RocketEngine__0_M",
 			},
 			{
 				name = "RocketEngine__1",
@@ -5852,6 +6148,7 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
 			},
 		},
 		propeller = {
@@ -5930,6 +6227,7 @@ return {
 				textured = true,
 				go = "Base",
 				path = "Base",
+				paintable = false,
 			},
 			{
 				name = "RotationJoint__1",
@@ -5941,6 +6239,8 @@ return {
 				textured = true,
 				go = "Rotator",
 				path = "Rotator",
+				paintable = false,
+				mirror = "RotationJoint__1_M",
 			},
 		},
 		bounds = {
@@ -6014,6 +6314,7 @@ return {
 				textured = false,
 				go = "SharpNose",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -6086,6 +6387,8 @@ return {
 				textured = true,
 				go = "SmallBalloon",
 				path = "",
+				paintable = false,
+				mirror = "SmallBalloon__0_M",
 			},
 		},
 		bounds = {
@@ -6158,6 +6461,7 @@ return {
 				textured = true,
 				go = "SmallBatteries",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -6244,17 +6548,21 @@ return {
 				textured = false,
 				go = "SmallCanard",
 				path = "",
+				paintable = false,
+				mirror = "SmallCanard__0_M",
 			},
 			{
 				name = "SmallCanard__1",
 				file = "Parts_Wings",
 				center = {0.0344, 0.0001, -0.1109},
 				size = {0.8695, 0.0908, 0.8321},
-				color = {1, 1, 1},
+				color = {0.9413, 0.9429, 0.9413},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "SmallCanard",
 				path = "",
+				paintable = true,
+				mirror = "SmallCanard__1_M",
 			},
 		},
 		bounds = {
@@ -6327,6 +6635,7 @@ return {
 				textured = false,
 				go = "SmallFuelTank",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "SmallFuelTank__1",
@@ -6338,6 +6647,7 @@ return {
 				textured = false,
 				go = "SmallFuelTank",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "SmallFuelTank__2",
@@ -6349,6 +6659,7 @@ return {
 				textured = false,
 				go = "SmallFuelTank",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -6422,6 +6733,8 @@ return {
 				textured = false,
 				go = "SmallHelicopterCockpit",
 				path = "",
+				paintable = true,
+				mirror = "SmallHelicopterCockpit__0_M",
 			},
 			{
 				name = "SmallHelicopterCockpit__1",
@@ -6433,6 +6746,8 @@ return {
 				textured = true,
 				go = "SmallHelicopterCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallHelicopterCockpit__1_M",
 			},
 			{
 				name = "SmallHelicopterCockpit__2",
@@ -6444,6 +6759,8 @@ return {
 				textured = false,
 				go = "SmallHelicopterCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallHelicopterCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -6529,6 +6846,8 @@ return {
 				textured = true,
 				go = "SmallJetEngine",
 				path = "",
+				paintable = false,
+				mirror = "SmallJetEngine__0_M",
 			},
 			{
 				name = "SmallJetEngine__1",
@@ -6540,6 +6859,7 @@ return {
 				textured = false,
 				go = "SmallJetEngine",
 				path = "",
+				paintable = true,
 			},
 		},
 		bounds = {
@@ -6626,17 +6946,21 @@ return {
 				textured = false,
 				go = "SmallJetWing",
 				path = "",
+				paintable = false,
+				mirror = "SmallJetWing__0_M",
 			},
 			{
 				name = "SmallJetWing__1",
 				file = "Parts_Wings",
 				center = {-0.243, 0.2095, -0.3469},
 				size = {3.8999, 1.3874, 4.688},
-				color = {0.96, 0.96, 0.96},
+				color = {0.9238, 0.9241, 0.9238},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "SmallJetWing",
 				path = "",
+				paintable = true,
+				mirror = "SmallJetWing__1_M",
 			},
 			{
 				name = "SmallJetWing__2",
@@ -6648,6 +6972,8 @@ return {
 				textured = false,
 				go = "Cube.001",
 				path = "GameObject/Cube.001",
+				paintable = false,
+				mirror = "SmallJetWing__2_M",
 			},
 		},
 		bounds = {
@@ -6729,6 +7055,8 @@ return {
 				textured = false,
 				go = "SmallLargeCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallLargeCockpit__0_M",
 			},
 			{
 				name = "SmallLargeCockpit__1",
@@ -6740,6 +7068,8 @@ return {
 				textured = false,
 				go = "SmallLargeCockpit",
 				path = "",
+				paintable = true,
+				mirror = "SmallLargeCockpit__1_M",
 			},
 			{
 				name = "SmallLargeCockpit__2",
@@ -6751,6 +7081,8 @@ return {
 				textured = false,
 				go = "SmallLargeCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallLargeCockpit__2_M",
 			},
 		},
 		bounds = {
@@ -6832,6 +7164,8 @@ return {
 				textured = false,
 				go = "SmallPlaneCockpit",
 				path = "",
+				paintable = true,
+				mirror = "SmallPlaneCockpit__0_M",
 			},
 			{
 				name = "SmallPlaneCockpit__1",
@@ -6843,6 +7177,8 @@ return {
 				textured = false,
 				go = "SmallPlaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallPlaneCockpit__1_M",
 			},
 			{
 				name = "SmallPlaneCockpit__2",
@@ -6854,6 +7190,8 @@ return {
 				textured = false,
 				go = "SmallPlaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallPlaneCockpit__2_M",
 			},
 			{
 				name = "SmallPlaneCockpit__3",
@@ -6865,6 +7203,8 @@ return {
 				textured = false,
 				go = "SmallPlaneCockpit",
 				path = "",
+				paintable = false,
+				mirror = "SmallPlaneCockpit__3_M",
 			},
 		},
 		bounds = {
@@ -6967,11 +7307,13 @@ return {
 				file = "Parts_Engines",
 				center = {0.053, 0.0016, -0.0},
 				size = {1.0897, 0.9204, 0.9557},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.591, 0.5478, 0.4952},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Cube.003",
 				path = "TurboPropSmall/Cube.003",
+				paintable = true,
+				mirror = "SmallPropEngine__0_M",
 			},
 			{
 				name = "SmallPropEngine__1",
@@ -6983,6 +7325,8 @@ return {
 				textured = true,
 				go = "Cylinder.003",
 				path = "Propeller/Cylinder.003",
+				paintable = false,
+				mirror = "SmallPropEngine__1_M",
 			},
 			{
 				name = "SmallPropEngine__2",
@@ -6994,6 +7338,8 @@ return {
 				textured = true,
 				go = "Propeller1",
 				path = "Propeller/Propeller1",
+				paintable = false,
+				mirror = "SmallPropEngine__2_M",
 			},
 			{
 				name = "SmallPropEngine__3",
@@ -7005,6 +7351,8 @@ return {
 				textured = true,
 				go = "Propeller1 (1)",
 				path = "Propeller/Propeller1 (1)",
+				paintable = false,
+				mirror = "SmallPropEngine__3_M",
 			},
 			{
 				name = "SmallPropEngine__4",
@@ -7016,6 +7364,8 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
+				mirror = "SmallPropEngine__4_M",
 			},
 		},
 		propeller = {
@@ -7099,6 +7449,7 @@ return {
 				textured = false,
 				go = "SmallRearWheel",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "SmallRearWheel__1",
@@ -7110,6 +7461,7 @@ return {
 				textured = true,
 				go = "SmallRearWheel",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "SmallRearWheel__2",
@@ -7121,6 +7473,7 @@ return {
 				textured = true,
 				go = "Wheel",
 				path = "GameObject/Wheel",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -7207,17 +7560,21 @@ return {
 				textured = false,
 				go = "SmallRecreationalWing",
 				path = "",
+				paintable = false,
+				mirror = "SmallRecreationalWing__0_M",
 			},
 			{
 				name = "SmallRecreationalWing__1",
 				file = "Parts_Wings",
 				center = {0.0014, 0.0, -0.0394},
 				size = {1.2689, 0.198, 3.8893},
-				color = {0.96, 0.96, 0.96},
+				color = {0.9188, 0.9189, 0.9188},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "SmallRecreationalWing",
 				path = "",
+				paintable = true,
+				mirror = "SmallRecreationalWing__1_M",
 			},
 			{
 				name = "SmallRecreationalWing__2",
@@ -7229,6 +7586,7 @@ return {
 				textured = true,
 				go = "Cube.003",
 				path = "Aileron/Cube.003",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -7317,6 +7675,8 @@ return {
 				textured = true,
 				go = "Case",
 				path = "Case",
+				paintable = false,
+				mirror = "SmallRetractableGear__0_M",
 			},
 			{
 				name = "SmallRetractableGear__1",
@@ -7328,6 +7688,8 @@ return {
 				textured = true,
 				go = "Lower Suspension",
 				path = "UpperSuspension/Lower Suspension/Lower Suspension",
+				paintable = false,
+				mirror = "SmallRetractableGear__1_M",
 			},
 			{
 				name = "SmallRetractableGear__2",
@@ -7339,6 +7701,8 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel/Wheels",
+				paintable = false,
+				mirror = "SmallRetractableGear__2_M",
 			},
 			{
 				name = "SmallRetractableGear__3",
@@ -7350,6 +7714,7 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "UpperSuspension/Mesh",
+				paintable = false,
 			},
 		},
 		retractable = {
@@ -7410,6 +7775,7 @@ return {
 				textured = true,
 				go = "SolarPanel",
 				path = "",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -7496,17 +7862,21 @@ return {
 				textured = false,
 				go = "StraightWing",
 				path = "",
+				paintable = false,
+				mirror = "StraightWing__0_M",
 			},
 			{
 				name = "StraightWing__1",
 				file = "Parts_Wings",
 				center = {0.2151, 0.2823, -0.1781},
 				size = {2.0034, 0.7231, 5.6905},
-				color = {0.934, 0.934, 0.934},
+				color = {0.9047, 0.9046, 0.9047},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "StraightWing",
 				path = "",
+				paintable = true,
+				mirror = "StraightWing__1_M",
 			},
 			{
 				name = "StraightWing__2",
@@ -7518,6 +7888,8 @@ return {
 				textured = false,
 				go = "Cube.003",
 				path = "Aileron/Cube.003",
+				paintable = false,
+				mirror = "StraightWing__2_M",
 			},
 		},
 		bounds = {
@@ -7591,6 +7963,8 @@ return {
 				textured = true,
 				go = "Tail",
 				path = "",
+				paintable = false,
+				mirror = "Tail__0_M",
 			},
 		},
 		bounds = {
@@ -7672,11 +8046,12 @@ return {
 				file = "Parts_Wings",
 				center = {0.0066, 0.0, -0.6678},
 				size = {1.1119, 0.1198, 1.3355},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.8908, 0.8908, 0.8908},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "TailWing",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "TailWing__1",
@@ -7688,6 +8063,8 @@ return {
 				textured = false,
 				go = "Cube",
 				path = "Cube",
+				paintable = false,
+				mirror = "TailWing__1_M",
 			},
 		},
 		bounds = {
@@ -7769,11 +8146,12 @@ return {
 				file = "Parts_Wings",
 				center = {0.0588, 0.0, -1.0695},
 				size = {1.898, 0.1718, 2.2774},
-				color = {1, 1, 1},
+				color = {0.9042, 0.9028, 0.9026},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Tailwing02",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "Tailwing02__1",
@@ -7785,6 +8163,8 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "Tailwing02__1_M",
 			},
 		},
 		bounds = {
@@ -7871,17 +8251,21 @@ return {
 				textured = false,
 				go = "Tailwing03",
 				path = "",
+				paintable = false,
+				mirror = "Tailwing03__0_M",
 			},
 			{
 				name = "Tailwing03__1",
 				file = "Parts_Wings",
 				center = {-0.0576, -0.0188, -0.0726},
 				size = {1.2999, 0.1586, 1.8535},
-				color = {1, 1, 1},
+				color = {0.9505, 0.9509, 0.9505},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Tailwing03",
 				path = "",
+				paintable = true,
+				mirror = "Tailwing03__1_M",
 			},
 			{
 				name = "Tailwing03__2",
@@ -7893,6 +8277,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "Tailwing03__2_M",
 			},
 		},
 		bounds = {
@@ -7979,17 +8365,19 @@ return {
 				textured = false,
 				go = "Tailwing04",
 				path = "",
+				paintable = false,
 			},
 			{
 				name = "Tailwing04__1",
 				file = "Parts_Wings",
 				center = {0.0942, 0.0, -0.7878},
 				size = {1.0852, 0.1639, 1.6541},
-				color = {1, 1, 1},
+				color = {0.9413, 0.9429, 0.9413},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Tailwing04",
 				path = "",
+				paintable = true,
 			},
 			{
 				name = "Tailwing04__2",
@@ -8001,6 +8389,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "ControlSurface/Mesh",
+				paintable = false,
+				mirror = "Tailwing04__2_M",
 			},
 		},
 		bounds = {
@@ -8072,6 +8462,8 @@ return {
 				textured = true,
 				go = "Cube.002",
 				path = "TempratureFan/Cube.002",
+				paintable = false,
+				mirror = "TempratureFan__0_M",
 			},
 			{
 				name = "TempratureFan__1",
@@ -8083,6 +8475,8 @@ return {
 				textured = true,
 				go = "Cylinder",
 				path = "TempratureFan/Cylinder",
+				paintable = false,
+				mirror = "TempratureFan__1_M",
 			},
 		},
 		bounds = {
@@ -8171,6 +8565,8 @@ return {
 				textured = true,
 				go = "Case",
 				path = "Case",
+				paintable = false,
+				mirror = "TinyRetractableGear__0_M",
 			},
 			{
 				name = "TinyRetractableGear__1",
@@ -8182,6 +8578,8 @@ return {
 				textured = true,
 				go = "Lower Suspension",
 				path = "UpperSuspension/Lower Suspension/Lower Suspension",
+				paintable = false,
+				mirror = "TinyRetractableGear__1_M",
 			},
 			{
 				name = "TinyRetractableGear__2",
@@ -8193,6 +8591,8 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel/Wheels",
+				paintable = false,
+				mirror = "TinyRetractableGear__2_M",
 			},
 			{
 				name = "TinyRetractableGear__3",
@@ -8204,6 +8604,7 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "UpperSuspension/Mesh",
+				paintable = false,
 			},
 		},
 		retractable = {
@@ -8312,11 +8713,13 @@ return {
 				file = "Parts_Engines",
 				center = {-0.4485, -0.0, 0.0},
 				size = {0.9017, 0.9971, 0.9971},
-				color = {0.9151, 0.9151, 0.9151},
+				color = {0.9096, 0.9094, 0.9096},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = true,
+				mirror = "TurboProp__0_M",
 			},
 			{
 				name = "TurboProp__1",
@@ -8328,6 +8731,8 @@ return {
 				textured = true,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = false,
+				mirror = "TurboProp__1_M",
 			},
 			{
 				name = "TurboProp__2",
@@ -8339,6 +8744,8 @@ return {
 				textured = false,
 				go = "Propeller",
 				path = "Propeller",
+				paintable = false,
+				mirror = "TurboProp__2_M",
 			},
 			{
 				name = "TurboProp__3",
@@ -8350,6 +8757,8 @@ return {
 				textured = true,
 				go = "Propeller",
 				path = "Propeller",
+				paintable = false,
+				mirror = "TurboProp__3_M",
 			},
 			{
 				name = "TurboProp__4",
@@ -8361,6 +8770,8 @@ return {
 				textured = true,
 				go = "1",
 				path = "Propeller/1",
+				paintable = false,
+				mirror = "TurboProp__4_M",
 			},
 			{
 				name = "TurboProp__5",
@@ -8372,6 +8783,8 @@ return {
 				textured = true,
 				go = "2",
 				path = "Propeller/2",
+				paintable = false,
+				mirror = "TurboProp__5_M",
 			},
 			{
 				name = "TurboProp__6",
@@ -8383,6 +8796,8 @@ return {
 				textured = true,
 				go = "3",
 				path = "Propeller/3",
+				paintable = false,
+				mirror = "TurboProp__6_M",
 			},
 			{
 				name = "TurboProp__7",
@@ -8394,6 +8809,8 @@ return {
 				textured = true,
 				go = "4",
 				path = "Propeller/4",
+				paintable = false,
+				mirror = "TurboProp__7_M",
 			},
 			{
 				name = "TurboProp__8",
@@ -8405,6 +8822,7 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
 			},
 		},
 		propeller = {
@@ -8497,6 +8915,7 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "Top Suspension/Mesh",
+				paintable = false,
 			},
 			{
 				name = "Wheel01__1",
@@ -8508,6 +8927,7 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "Top Suspension/BottomSuspension/Mesh",
+				paintable = false,
 			},
 			{
 				name = "Wheel01__2",
@@ -8519,6 +8939,8 @@ return {
 				textured = false,
 				go = "Mesh",
 				path = "Top Suspension/BottomSuspension/Mesh",
+				paintable = false,
+				mirror = "Wheel01__2_M",
 			},
 			{
 				name = "Wheel01__3",
@@ -8530,6 +8952,8 @@ return {
 				textured = false,
 				go = "Wheel",
 				path = "Top Suspension/BottomSuspension/Wheel",
+				paintable = false,
+				mirror = "Wheel01__3_M",
 			},
 			{
 				name = "Wheel01__4",
@@ -8541,6 +8965,8 @@ return {
 				textured = false,
 				go = "Wheel",
 				path = "Top Suspension/BottomSuspension/Wheel",
+				paintable = false,
+				mirror = "Wheel01__4_M",
 			},
 			{
 				name = "Wheel01__5",
@@ -8552,6 +8978,7 @@ return {
 				textured = false,
 				go = "Wheel",
 				path = "Top Suspension/BottomSuspension/Wheel",
+				paintable = false,
 			},
 			{
 				name = "Wheel01__6",
@@ -8563,6 +8990,7 @@ return {
 				textured = false,
 				go = "Wheel",
 				path = "Top Suspension/BottomSuspension/Wheel",
+				paintable = false,
 			},
 		},
 		bounds = {
@@ -8651,6 +9079,8 @@ return {
 				textured = true,
 				go = "Wheel strut 2",
 				path = "Struts/WheelStrut1/Wheel strut 2",
+				paintable = false,
+				mirror = "Wheel03__0_M",
 			},
 			{
 				name = "Wheel03__1",
@@ -8662,6 +9092,8 @@ return {
 				textured = true,
 				go = "WheelStrut1",
 				path = "Struts/WheelStrut2/WheelStrut1",
+				paintable = false,
+				mirror = "Wheel03__1_M",
 			},
 			{
 				name = "Wheel03__2",
@@ -8673,6 +9105,8 @@ return {
 				textured = true,
 				go = "Strut1",
 				path = "Struts/p1/Strut1",
+				paintable = false,
+				mirror = "Wheel03__2_M",
 			},
 			{
 				name = "Wheel03__3",
@@ -8684,6 +9118,8 @@ return {
 				textured = true,
 				go = "Strut2",
 				path = "Struts/p2/Strut2",
+				paintable = false,
+				mirror = "Wheel03__3_M",
 			},
 			{
 				name = "Wheel03__4",
@@ -8695,6 +9131,8 @@ return {
 				textured = true,
 				go = "Case",
 				path = "Case",
+				paintable = false,
+				mirror = "Wheel03__4_M",
 			},
 			{
 				name = "Wheel03__5",
@@ -8706,6 +9144,7 @@ return {
 				textured = true,
 				go = "Lower Suspension",
 				path = "UpperSuspension/Lower Suspension/Lower Suspension",
+				paintable = false,
 			},
 			{
 				name = "Wheel03__6",
@@ -8717,6 +9156,7 @@ return {
 				textured = true,
 				go = "Wheels",
 				path = "UpperSuspension/Lower Suspension/Wheel/Wheels",
+				paintable = false,
 			},
 			{
 				name = "Wheel03__7",
@@ -8728,6 +9168,7 @@ return {
 				textured = true,
 				go = "Mesh",
 				path = "UpperSuspension/Mesh",
+				paintable = false,
 			},
 		},
 		retractable = {
@@ -8815,11 +9256,13 @@ return {
 				file = "Parts_Wings",
 				center = {0.0895, -0.0016, 0.1447},
 				size = {1.9356, 0.2564, 3.736},
-				color = {0.8868, 0.8868, 0.8868},
+				color = {0.8771, 0.8769, 0.8771},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "Wing",
 				path = "",
+				paintable = true,
+				mirror = "Wing__0_M",
 			},
 			{
 				name = "Wing__1",
@@ -8831,6 +9274,8 @@ return {
 				textured = false,
 				go = "Aileron ",
 				path = "Aileron ",
+				paintable = false,
+				mirror = "Wing__1_M",
 			},
 		},
 		bounds = {
@@ -8902,6 +9347,8 @@ return {
 				textured = true,
 				go = "WoodConnection",
 				path = "",
+				paintable = false,
+				mirror = "WoodConnection__0_M",
 			},
 			{
 				name = "WoodConnection__1",
@@ -8913,17 +9360,21 @@ return {
 				textured = true,
 				go = "WoodConnection",
 				path = "",
+				paintable = false,
+				mirror = "WoodConnection__1_M",
 			},
 			{
 				name = "WoodConnection__2",
 				file = "Parts_Utility",
 				center = {-0.0, 0.0112, 0.0009},
 				size = {0.0245, 0.002, 0.0236},
-				color = {0.9137, 0.9137, 0.9137},
+				color = {0.8613, 0.8603, 0.86},
 				alpha = 1.0,
-				textured = true,
+				textured = false,
 				go = "WoodConnection",
 				path = "",
+				paintable = true,
+				mirror = "WoodConnection__2_M",
 			},
 		},
 		bounds = {
@@ -9031,6 +9482,8 @@ return {
 				textured = true,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = false,
+				mirror = "WoodEngine__0_M",
 			},
 			{
 				name = "WoodEngine__1",
@@ -9042,6 +9495,8 @@ return {
 				textured = false,
 				go = "EngineBody",
 				path = "EngineBody",
+				paintable = true,
+				mirror = "WoodEngine__1_M",
 			},
 			{
 				name = "WoodEngine__2",
@@ -9053,6 +9508,8 @@ return {
 				textured = true,
 				go = "Prop",
 				path = "Prop",
+				paintable = false,
+				mirror = "WoodEngine__2_M",
 			},
 			{
 				name = "WoodEngine__3",
@@ -9064,6 +9521,7 @@ return {
 				textured = false,
 				go = "Backside",
 				path = "Backside",
+				paintable = true,
 			},
 		},
 		propeller = {
@@ -9139,6 +9597,8 @@ return {
 				textured = true,
 				go = "WoodStrut",
 				path = "",
+				paintable = false,
+				mirror = "WoodStrut__0_M",
 			},
 		},
 		bounds = {
@@ -9225,6 +9685,8 @@ return {
 				textured = true,
 				go = "WoodWing",
 				path = "",
+				paintable = false,
+				mirror = "WoodWing__0_M",
 			},
 		},
 		bounds = {

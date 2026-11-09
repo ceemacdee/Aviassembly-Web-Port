@@ -33,6 +33,7 @@ export type Airport = {
 	isBase: boolean,
 	rotation: number, -- yaw in degrees (Unity)
 	flatness: Rect,
+	treeFootprint: Rect?,
 	cargoTypes: { string },
 }
 
@@ -341,6 +342,8 @@ for _, airport in WorldMap.Airports do
 		blending = 200
 	end
 	airport.flatness = newRect(size, Vector2.new(airport.position.X, airport.position.Z), rotation)
+	local tf = Vector2.new(data.treeFootprint and data.treeFootprint[1] or 0, data.treeFootprint and data.treeFootprint[2] or 0)
+	airport.treeFootprint = newRect(if tf.Magnitude < 10 then size else tf, Vector2.new(airport.position.X, airport.position.Z), rotation)
 	if not data.offshore then
 		table.insert(flatObjects, {
 			rect = airport.flatness,

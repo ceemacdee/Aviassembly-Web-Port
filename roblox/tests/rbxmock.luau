@@ -145,3 +145,21 @@ function shared_node(path) return node(path) end
 UDim2 = { new = function(...) return { ... } end, fromScale = function(...) return { ... } end, fromOffset = function(...) return { ... } end }
 UDim = { new = function(...) return { ... } end }
 TweenInfo = { new = function(...) return { ... } end }
+CFrame.lookAt = function(pos, target, up)
+	up = up or Vector3.new(0, 1, 0)
+	local look = (target - pos).Unit
+	local right = look:Cross(up)
+	if right.Magnitude < 1e-6 then right = look:Cross(Vector3.new(1, 0, 0)) end
+	right = right.Unit
+	local u = right:Cross(look)
+	return CFrame.fromMatrix(pos, right, u, -look)
+end
+do
+	local mt = getmetatable(CFrame.new())
+	mt.__sub = function(a, b) return CFrame.fromMatrix(a.Position - b, a.R[1], a.R[2], a.R[3]) end
+	local idx = mt.__index
+	mt.__index = function(t, k)
+		if k == "ToObjectSpace" then return function(a, b) return a:Inverse() * b end end
+		return idx(t, k)
+	end
+end

@@ -50,7 +50,7 @@ def airport(ref):
     return dict(id=a['m_Name'],name=a.get('airportName') or a['m_Name'],prefab=os.path.basename(prefab).replace('.prefab',''),
         lockedCargo=bool(a.get('lockedCargo')),refuel=bool(a.get('refuelAvailable')),cargoTypes=[cargo_full(c) for c in (a.get('cargoTypes') or []) if cargo_full(c)],
         baseAirport=bool(a.get('baseAirport')),initialSpawn=bool(a.get('initialSpawnAirport')),rotationOverride=bool(a.get('rotationOverride')),rotation=a.get('rotation',0),
-        footprint=[a['footprint']['x'],a['footprint']['y']],blendingDistance=a.get('blendingDistance',0),offshore=bool(a.get('offshoreAirport')),
+        footprint=[a['footprint']['x'],a['footprint']['y']],treeFootprint=[(a.get('treeSpawningFootprint') or {}).get('x',0),(a.get('treeSpawningFootprint') or {}).get('y',0)],blendingDistance=a.get('blendingDistance',0),offshore=bool(a.get('offshoreAirport')),
         position=[ew.get('x',0)*10,0,-ew.get('y',0)*10],landingMessage=a.get('landingMessage') or '',
         quests=[x for x in (quest(q) for q in (a.get('quests') or [])) if x],baseQuests=[x for x in (quest(q) for q in (a.get('baseQuests') or [])) if x])
 
@@ -61,22 +61,24 @@ def material_colors(ref):
     fl=m.get('m_SavedProperties',{}).get('m_Floats',{}) or {}
     return dict(grass=color(cols.get('_GrassColor')),sand=color(cols.get('_SandColor')),dirt=color(cols.get('_DirtColor')),rock=color(cols.get('_RockColor')),noise=fl.get('_NoiceStrength'),shade=fl.get('_Shade'))
 
-world=u.load(u.ROOT+'/MonoBehaviour/HelicopterUpdate.asset'); w=list(world.values())[0][2]
-continents=[]
-for cref in w['continents']:
-    c=deref(cref)
-    fog=deref(c.get('fogProfile'))
-    decos=[]
-    for s in c.get('surfaceDecorations') or []:
-        sd=deref(s)
-        if sd: decos.append({k:v for k,v in sd.items() if not k.startswith('m_') and not k.startswith('__') and not isinstance(v,dict)}|{'name':sd['m_Name']})
-    continents.append(dict(id=c['m_Name'],name=c.get('continentName'),angle=c.get('angleFromOrigin'),distance=c.get('distanceFromOrigin'),radius=c.get('radius'),
-        minHeight=c.get('minHeight'),maxHeight=c.get('maxHeight'),surfaceColor=color(c.get('surfaceColor')),temperature=c.get('temprature'),scrapAmount=c.get('scrapAmount'),
-        hintDistance=c.get('hintDistance'),terrain=material_colors(c.get('terrainMaterial')),decorations=decos,
-        fog=dict(fogColor=color(fog.get('fogColor')),skyColor=color(fog.get('skyColor')),exponent=fog.get('exponent')) if fog else None,
-        airports=[airport(a) for a in c.get('airports') or []]))
-for cref in w['cargoTypes']: cargo_full(cref)
-out=dict(continents=continents,cargoTypes=list(cargo_types.values()))
-json.dump(out,open(sys.argv[1],'w'),indent=1)
-print(len(continents),'continents',sum(len(c['airports']) for c in continents),'airports',len(cargo_types),'cargo')
-for c in continents: print(c['name'],c['radius'],[a['name'] for a in c['airports']])
+if __name__=='__main__':
+    world=u.load(u.ROOT+'/MonoBehaviour/HelicopterUpdate.asset'); w=list(world.values())[0][2]
+    continents=[]
+    for cref in w['continents']:
+        c=deref(cref)
+        fog=deref(c.get('fogProfile'))
+        decos=[]
+        for s in c.get('surfaceDecorations') or []:
+            sd=deref(s)
+            if sd: decos.append({k:v for k,v in sd.items() if not k.startswith('m_') and not k.startswith('__') and not isinstance(v,dict)}|{'name':sd['m_Name']})
+        continents.append(dict(id=c['m_Name'],name=c.get('continentName'),angle=c.get('angleFromOrigin'),distance=c.get('distanceFromOrigin'),radius=c.get('radius'),
+            minHeight=c.get('minHeight'),maxHeight=c.get('maxHeight'),surfaceColor=color(c.get('surfaceColor')),temperature=c.get('temprature'),scrapAmount=c.get('scrapAmount'),
+            hintDistance=c.get('hintDistance'),terrain=material_colors(c.get('terrainMaterial')),decorations=decos,
+            fog=dict(fogColor=color(fog.get('fogColor')),skyColor=color(fog.get('skyColor')),exponent=fog.get('exponent')) if fog else None,
+            airports=[airport(a) for a in c.get('airports') or []]))
+    for cref in w['cargoTypes']: cargo_full(cref)
+    out=dict(continents=continents,cargoTypes=list(cargo_types.values()))
+    json.dump(out,open(sys.argv[1],'w'),indent=1)
+    print(len(continents),'continents',sum(len(c['airports']) for c in continents),'airports',len(cargo_types),'cargo')
+    for c in continents: print(c['name'],c['radius'],[a['name'] for a in c['airports']])
+

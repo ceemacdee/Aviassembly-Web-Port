@@ -1,7 +1,8 @@
 --!strict
--- Terrain noise, ported from NoiceGenerator.cs. Unity's Mathf.PerlinNoise is closed source, so this is
--- classic improved Perlin noise remapped to Unity's [0, 1] range; terrain has the same character and scale
--- as the original but not identical hills.
+-- Terrain noise, ported from NoiceGenerator.cs.
+-- Mathf.PerlinNoise is implemented in Unity's native engine. Community analysis says it is Ken Perlin's
+-- "improved noise" (reference permutation and gradients) evaluated at z = 0, rescaled to roughly 0..1 with
+-- value = noise / 1.483 + 0.46527309. That reconstruction is used here.
 local Noise = {}
 
 local perm: { number } = {}
@@ -28,32 +29,37 @@ local function fade(t: number): number
 	return t * t * t * (t * (t * 6 - 15) + 10)
 end
 
+-- Ken Perlin's reference grad(hash, x, y, z) with z = 0.
 local function grad(hash: number, x: number, y: number): number
-	local h = hash % 8
-	local u = if h < 4 then x else y
-	local v = if h < 4 then y else x
-	return (if h % 2 == 0 then u else -u) + (if math.floor(h / 2) % 2 == 0 then 2 * v else -2 * v)
+	local h = hash % 16
+	local u = if h < 8 then x else y
+	local v = if h < 4 then y elseif h == 12 or h == 14 then x else 0
+	return (if h % 2 == 0 then u else -u) + (if math.floor(h / 2) % 2 == 0 then v else -v)
 end
 
--- 2D Perlin noise in [0, 1] (Unity convention).
+local function lerp(t: number, a: number, b: number): number
+	return a + t * (b - a)
+end
+
+-- Improved noise at z = 0, in [-1, 1].
+function Noise.improved(x: number, y: number): number
+	local X = math.floor(x)
+	local Y = math.floor(y)
+	x -= X
+	y -= Y
+	X %= 256
+	Y %= 256
+	local u, v = fade(x), fade(y)
+	local A = perm[X] + Y
+	local AA, AB = perm[A], perm[A + 1]
+	local B = perm[X + 1] + Y
+	local BA, BB = perm[B], perm[B + 1]
+	return lerp(v, lerp(u, grad(perm[AA], x, y), grad(perm[BA], x - 1, y)), lerp(u, grad(perm[AB], x, y - 1), grad(perm[BB], x - 1, y - 1)))
+end
+
+-- Mathf.PerlinNoise
 function Noise.perlin(x: number, y: number): number
-	local xi = math.floor(x)
-	local yi = math.floor(y)
-	local xf = x - xi
-	local yf = y - yi
-	xi = xi % 256
-	yi = yi % 256
-	local u = fade(xf)
-	local v = fade(yf)
-	local aa = perm[perm[xi] + yi]
-	local ab = perm[perm[xi] + yi + 1]
-	local ba = perm[perm[xi + 1] + yi]
-	local bb = perm[perm[xi + 1] + yi + 1]
-	local x1 = grad(aa, xf, yf) + (grad(ba, xf - 1, yf) - grad(aa, xf, yf)) * u
-	local x2 = grad(ab, xf, yf - 1) + (grad(bb, xf - 1, yf - 1) - grad(ab, xf, yf - 1)) * u
-	local n = x1 + (x2 - x1) * v
-	-- grad() output spans roughly [-2.2, 2.2]; scale into Unity's 0..1 with mean 0.5.
-	return math.clamp(0.5 + n * 0.25, -0.1, 1.1)
+	return Noise.improved(x, y) / 1.483 + 0.46527309
 end
 
 local function perlinOffset(x: number, y: number): number

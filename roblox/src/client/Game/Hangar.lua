@@ -14,12 +14,23 @@ local Frames = require(script.Parent.Frames)
 local PartVisual = require(script.Parent.PartVisual)
 local PlaneDesign = require(script.Parent.PlaneDesign)
 local UI = require(script.Parent.UI)
+local Audio = require(script.Parent.Audio)
+local Decals = require(script.Parent.Decals)
 
 local C = UI.Colors
 local Hangar = {}
 Hangar.__index = Hangar
 
 local SNAP_DISTANCE = 0.75
+local ROTATION_STEP = 15
+-- Paint colours (ColorPickerUI presets + the original part colours)
+local SWATCHES = {
+	{ 0.915, 0.915, 0.915 }, { 0.6, 0.6, 0.6 }, { 0.3, 0.3, 0.32 }, { 0.12, 0.12, 0.13 },
+	{ 0.86, 0.29, 0.17 }, { 0.92, 0.37, 0.24 }, { 0.78, 0.48, 0.17 }, { 0.91, 0.76, 0.27 },
+	{ 0.95, 0.88, 0.55 }, { 0.52, 0.62, 0.3 }, { 0.32, 0.42, 0.35 }, { 0.2, 0.5, 0.35 },
+	{ 0.25, 0.62, 0.86 }, { 0.3, 0.43, 0.6 }, { 0.18, 0.25, 0.5 }, { 0.55, 0.35, 0.7 },
+	{ 0.85, 0.45, 0.6 }, { 0.48, 0.35, 0.18 }, { 0.61, 0.52, 0.46 }, { 1, 1, 1 },
+}
 local CATEGORIES = { "Cockpits", "Engines", "Wings", "Wheels", "Utility", "Electric" }
 local CATEGORY_TITLES = { Cockpits = "Body", Engines = "Engines", Wings = "Wings", Wheels = "Wheels", Utility = "Misc", Electric = "Electric" }
 -- Part order inside each category, from the original PartBars.
@@ -35,6 +46,8 @@ local ORDER = {
 local function v(t: any): Vector3
 	return Frames.v(t)
 end
+
+local collisionPointFor: (string, any?) -> any?
 
 function Hangar.new(campaign: any, design: any, originCFrame: CFrame, callbacks: any)
 	local self = setmetatable({}, Hangar)
@@ -52,6 +65,13 @@ function Hangar.new(campaign: any, design: any, originCFrame: CFrame, callbacks:
 	self.undo = {} :: { any }
 	self.category = "Cockpits"
 	self.connections = {}
+	self.mode = "build" -- build | paint | decal
+	self.paintColor = SWATCHES[5]
+	self.decalImage = Decals.List[1] and Decals.List[1].id or "Circle_0"
+	self.decalColor = { Decals.DefaultColor.R, Decals.DefaultColor.G, Decals.DefaultColor.B }
+	self.decalSize = Decals.DefaultSize
+	self.decalRotation = 0
+	self.decalVisuals = {} :: { BasePart }
 	self.camYaw, self.camPitch, self.camDistance = math.rad(140), math.rad(20), 14
 
 	self.folder = Instance.new("Model")
@@ -93,6 +113,8 @@ function Hangar.new(campaign: any, design: any, originCFrame: CFrame, callbacks:
 	for _, e in design.parts do
 		self:buildEntry(e)
 	end
+	self:renderDecals()
+	self:buildHandles()
 	self:buildUI()
 	self:bindInput()
 	self:refresh()
@@ -118,6 +140,299 @@ end
 function Hangar:rebuildEntry(e: any)
 	self:removeVisual(e.id)
 	self:buildEntry(e)
+	self:renderDecals()
+end
+
+-- ------------------------------------------------------------------------------------------- decals
+function Hangar:renderDecals()
+	for _, d in self.decalVisuals do
+		d:Destroy()
+	end
+	self.decalVisuals = {}
+	for index, d in self.design.decals do
+		local e = self.design:get(d.part)
+		if e then
+			local holder = Decals.create(d, Decals.cframe(d, self.origin * e.cf, e.flip), self.folder)
+			holder:SetAttribute("DecalIndex", index)
+			table.insert(self.decalVisuals, holder)
+		end
+	end
+end
+
+-- Surface under the mouse on the plane: world hit, entry id.
+function Hangar:decalPlacement(): (any?, CFrame?)
+	local hit, id = self:hitPlane()
+	if not hit or not id then
+		return nil, nil
+	end
+	local e = self.design:get(id)
+	if not e then
+		return nil, nil
+	end
+	local partCF = self.origin * e.cf
+	local normalW = hit.Normal
+	-- image "up": world up projected on the surface (DecalPlacer.OrientProjectionVolume), then the user rotation
+	local up = Vector3.yAxis - normalW * Vector3.yAxis:Dot(normalW)
+	if up.Magnitude < 0.05 then
+		up = (self.origin:VectorToWorldSpace(Vector3.zAxis) - normalW * self.origin:VectorToWorldSpace(Vector3.zAxis):Dot(normalW))
+	end
+	up = CFrame.fromAxisAngle(normalW, math.rad(self.decalRotation)):VectorToWorldSpace(up.Unit)
+	local function toLocal(v: Vector3, isPoint: boolean): { number }
+		local l = if isPoint then partCF:PointToObjectSpace(v) else partCF:VectorToObjectSpace(v)
+		if e.flip then
+			l = Vector3.new(l.X, -l.Y, l.Z)
+		end
+		return { l.X, l.Y, l.Z }
+	end
+	local d = { part = id, pos = toLocal(hit.Position, true), normal = toLocal(normalW, false), up = toLocal(up, false), size = self.decalSize, color = table.clone(self.decalColor), image = self.decalImage }
+	return d, Decals.cframe(d, partCF, e.flip)
+end
+
+function Hangar:placeDecal()
+	local d = self:decalPlacement()
+	if not d then
+		UI.toast(self.gui, "Point at the plane to place a decal", C.bad)
+		return
+	end
+	table.insert(self.design.decals, d)
+	-- mirror copy (DecalPlacer.MakeMirrorCopy)
+	local e = self.design:get(d.part)
+	if self.mirrorMode and e and e.mirror and self.design:get(e.mirror) then
+		local m = self.design:get(e.mirror)
+		local worldCF = Decals.cframe(d, self.origin * e.cf, e.flip)
+		local local0 = self.origin:ToObjectSpace(worldCF)
+		local center, n = self:symmetryPlane()
+		local pos = local0.Position - n * (2 * (local0.Position - center):Dot(n))
+		local look = Frames.reflect(local0.LookVector, n)
+		local upv = Frames.reflect(local0.UpVector, n)
+		local mcf = self.origin * CFrame.lookAt(pos, pos + look, upv)
+		local partCF = self.origin * m.cf
+		local function toLocal(v: Vector3, isPoint: boolean): { number }
+			local l = if isPoint then partCF:PointToObjectSpace(v) else partCF:VectorToObjectSpace(v)
+			if m.flip then
+				l = Vector3.new(l.X, -l.Y, l.Z)
+			end
+			return { l.X, l.Y, l.Z }
+		end
+		table.insert(self.design.decals, { part = m.id, pos = toLocal(mcf.Position - mcf.LookVector * 0.012, true), normal = toLocal(mcf.LookVector, false), up = toLocal(mcf.UpVector, false), size = d.size, color = table.clone(d.color), image = d.image })
+	end
+	Audio.play("paint")
+	self:renderDecals()
+end
+
+function Hangar:removeDecalUnderMouse(): boolean
+	local origin, dir = self:designRay()
+	local params = RaycastParams.new()
+	params.FilterType = Enum.RaycastFilterType.Include
+	params.FilterDescendantsInstances = self.decalVisuals
+	local hit = Workspace:Raycast(origin, dir * 500, params)
+	local index = hit and hit.Instance:GetAttribute("DecalIndex")
+	if not index then
+		return false
+	end
+	table.remove(self.design.decals, index)
+	Audio.play("remove")
+	self:renderDecals()
+	return true
+end
+
+-- ------------------------------------------------------------------------------------------- paint (PartPainter)
+function Hangar:paintUnderMouse()
+	local _, id = self:hitPlane()
+	local e = id and self.design:get(id)
+	if not e then
+		return
+	end
+	if not PartVisual.isPaintable(e.name) then
+		UI.toast(self.gui, "This part can't be painted", C.bad)
+		return
+	end
+	local targets = { e }
+	if self.mirrorMode and e.mirror and self.design:get(e.mirror) then
+		table.insert(targets, self.design:get(e.mirror))
+	end
+	for _, t in targets do
+		t.color = table.clone(self.paintColor)
+		local b = self.built[t.id]
+		if b then
+			PartVisual.setColor(b, Color3.new(t.color[1], t.color[2], t.color[3]))
+		end
+	end
+	Audio.play("paint")
+end
+
+-- ------------------------------------------------------------------------------------------- rotate / resize handles
+function Hangar:buildHandles()
+	local proxy = Instance.new("Part")
+	proxy.Name = "HandleProxy"
+	proxy.Anchored = true
+	proxy.CanCollide = false
+	proxy.CanQuery = false
+	proxy.Transparency = 1
+	proxy.Size = Vector3.new(1, 1, 1)
+	proxy.Parent = self.folder
+	self.handleProxy = proxy
+	local playerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
+	local arcs = Instance.new("ArcHandles")
+	arcs.Color3 = C.accent
+	arcs.Visible = false
+	arcs.Parent = playerGui
+	self.arcHandles = arcs
+	local sizer = Instance.new("Handles")
+	sizer.Style = Enum.HandlesStyle.Resize
+	sizer.Color3 = Color3.fromRGB(90, 170, 230)
+	sizer.Visible = false
+	sizer.Parent = playerGui
+	self.sizeHandles = sizer
+
+	-- RotationGizmo: rotate the selected part (and everything attached to it) around its attach point.
+	local dragStart = nil
+	table.insert(self.connections, arcs.MouseButton1Down:Connect(function()
+		local e = self.selected and self.design:get(self.selected)
+		if not e then
+			return
+		end
+		local snapshot = {}
+		local function collect(entry)
+			snapshot[entry.id] = entry.cf
+			for _, c in self.design:children(entry.id) do
+				collect(c)
+			end
+		end
+		collect(e)
+		if self.mirrorMode and e.mirror and self.design:get(e.mirror) then
+			collect(self.design:get(e.mirror))
+		end
+		dragStart = { pivot = self.handleProxy.CFrame, snapshot = snapshot }
+	end))
+	table.insert(self.connections, arcs.MouseDrag:Connect(function(axis, angle)
+		local e = self.selected and self.design:get(self.selected)
+		if not e or not dragStart then
+			return
+		end
+		local step = if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then 1 else ROTATION_STEP
+		local snapped = math.rad(math.floor(math.deg(angle) / step + 0.5) * step)
+		local axisVector = ({ [Enum.Axis.X] = Vector3.xAxis, [Enum.Axis.Y] = Vector3.yAxis, [Enum.Axis.Z] = Vector3.zAxis })[axis]
+		local pivotLocal = self.origin:ToObjectSpace(dragStart.pivot)
+		local rot = pivotLocal * CFrame.fromAxisAngle(axisVector, snapped) * pivotLocal:Inverse()
+		local mirrorId = e.mirror
+		local function apply(entry)
+			local start = dragStart.snapshot[entry.id]
+			if start then
+				entry.cf = rot * start
+				local b = self.built[entry.id]
+				if b then
+					b.model:PivotTo(self.origin * entry.cf)
+				end
+			end
+			for _, c in self.design:children(entry.id) do
+				apply(c)
+			end
+		end
+		apply(e)
+		if self.mirrorMode and mirrorId and self.design:get(mirrorId) then
+			local function mirrorApply(entry)
+				if entry.mirror then
+					local twin = self.design:get(entry.mirror)
+					if twin and dragStart.snapshot[entry.id] then
+						local mcf = self:mirrorOf(entry.cf, entry.flip)
+						twin.cf = mcf
+						local b = self.built[twin.id]
+						if b then
+							b.model:PivotTo(self.origin * twin.cf)
+						end
+					end
+				end
+				for _, c in self.design:children(entry.id) do
+					mirrorApply(c)
+				end
+			end
+			mirrorApply(e)
+		end
+	end))
+	table.insert(self.connections, arcs.MouseButton1Up:Connect(function()
+		dragStart = nil
+		self:renderDecals()
+		self:placeHandles()
+	end))
+
+	-- ProceduralSizeGizmo: drag the faces of a Body to resize it.
+	local sizeStart = nil
+	table.insert(self.connections, sizer.MouseButton1Down:Connect(function()
+		local e = self.selected and self.design:get(self.selected)
+		if e and e.fuselage then
+			sizeStart = { settings = Fuselage.copy(e.fuselage), last = 0 }
+		end
+	end))
+	table.insert(self.connections, sizer.MouseDrag:Connect(function(face, distance)
+		local e = self.selected and self.design:get(self.selected)
+		if not e or not sizeStart then
+			return
+		end
+		local d = math.floor(distance / 0.05 + 0.5) * 0.05
+		if d == sizeStart.last then
+			return
+		end
+		sizeStart.last = d
+		local start = sizeStart.settings
+		self:resizeBody(e.id, function(s)
+			local function copyFrom(src)
+				s.side1.radius, s.side2.radius = src.side1.radius, src.side2.radius
+				s.side1.lengthOffset, s.side2.lengthOffset = src.side1.lengthOffset, src.side2.lengthOffset
+			end
+			copyFrom(start)
+			if face == Enum.NormalId.Back then
+				s.side1.lengthOffset += Vector3.new(0, 0, d)
+			elseif face == Enum.NormalId.Front then
+				s.side2.lengthOffset += Vector3.new(0, 0, d)
+			elseif face == Enum.NormalId.Left or face == Enum.NormalId.Right then
+				s.side1.radius += Vector2.new(d / 2, 0)
+				s.side2.radius += Vector2.new(d / 2, 0)
+			else
+				s.side1.radius += Vector2.new(0, d / 2)
+				s.side2.radius += Vector2.new(0, d / 2)
+			end
+		end, true)
+	end))
+	table.insert(self.connections, sizer.MouseButton1Up:Connect(function()
+		sizeStart = nil
+		self:placeHandles()
+	end))
+end
+
+-- Put the handles on the selected part (rotation around its attach point; resize box around a Body).
+function Hangar:placeHandles()
+	local e = self.mode == "build" and self.selected and self.design:get(self.selected)
+	if not e or not self.arcHandles then
+		if self.arcHandles then
+			self.arcHandles.Visible = false
+			self.sizeHandles.Visible = false
+		end
+		return
+	end
+	local cp = collisionPointFor(e.name, e.fuselage)
+	local pivotLocal = if cp then Frames.localPoint(cp.pos, e.flip) else Vector3.zero
+	local proxy = self.handleProxy
+	local data = Parts[e.name]
+	if data.procedural and e.fuselage then
+		local s = e.fuselage
+		local p1, p2 = Fuselage.endPoints(s)
+		local w = math.max(s.side1.radius.X, s.side2.radius.X) * 2
+		local h = math.max(s.side1.radius.Y, s.side2.radius.Y) * 2
+		local len = math.abs(p1.Z - p2.Z)
+		local mid = (p1 + p2) / 2
+		proxy.Size = Vector3.new(w, h, len)
+		proxy.CFrame = self.origin * e.cf * CFrame.new(Frames.localPoint(Vector3.new(-mid.X, mid.Y, mid.Z), e.flip))
+		self.sizeHandles.Adornee = proxy
+		self.sizeHandles.Visible = true
+		self.arcHandles.Visible = false
+		return
+	end
+	self.sizeHandles.Visible = false
+	proxy.Size = Vector3.one * 0.6
+	proxy.CFrame = self.origin * e.cf * CFrame.new(pivotLocal)
+	self.arcHandles.Adornee = proxy
+	self.arcHandles.Visible = e.parent ~= nil
 end
 
 -- Snap points of a placed (or candidate) part in design space: { pos, forward, owner }
@@ -138,7 +453,7 @@ local function snapPointsFor(name: string, cf: CFrame, flip: boolean, fus: any?)
 	return out
 end
 
-local function collisionPointFor(name: string, fus: any?): any?
+function collisionPointFor(name: string, fus: any?): any?
 	local data = Parts[name]
 	if data.procedural then
 		local s = fus or Fuselage.default()
@@ -471,6 +786,7 @@ function Hangar:place()
 		end
 	end
 	table.insert(self.undo, { kind = "place", ids = { e.id, added[2] and added[2].id or nil }, price = price })
+	Audio.play("placement")
 	self:refresh()
 end
 
@@ -488,6 +804,8 @@ function Hangar:deleteSelected()
 	self.campaign:changeMoney(refund)
 	table.insert(self.undo, { kind = "remove", entries = removed, price = refund })
 	self.selected = nil
+	Audio.play("remove")
+	self:renderDecals()
 	self:refresh()
 end
 
@@ -522,7 +840,7 @@ function Hangar:undoLast()
 end
 
 -- Body resizing (ProceduralFuselage gizmos), with the price difference charged or refunded.
-function Hangar:resizeBody(id: number, change: (any) -> ())
+function Hangar:resizeBody(id: number, change: (any) -> (), quiet: boolean?)
 	local e = self.design:get(id)
 	if not e or not Parts[e.name].procedural then
 		return
@@ -550,7 +868,9 @@ function Hangar:resizeBody(id: number, change: (any) -> ())
 		after += PlaneDesign.partStats({ name = x.name, fuselage = new }).price
 	end
 	if after > before and not self.campaign:hasMoney(after - before) then
-		UI.toast(self.gui, "Not enough money", C.bad)
+		if not quiet then
+			UI.toast(self.gui, "Not enough money", C.bad)
+		end
 		return
 	end
 	self.campaign:changeMoney(before - after)
@@ -573,9 +893,10 @@ function Hangar:buildUI()
 	self.scrapLabel = UI.label("", 18, { AutomaticSize = Enum.AutomaticSize.X, Size = UDim2.new(0, 0, 1, 0), Parent = top })
 
 	-- part palette (bottom)
-	local palette = UI.panel({ Size = UDim2.new(1, -420, 0, 170), AnchorPoint = Vector2.new(0, 1), Position = UDim2.new(0, 16, 1, -16), Parent = gui })
+	local palette = UI.panel({ Size = UDim2.new(1, -420, 0, 204), AnchorPoint = Vector2.new(0, 1), Position = UDim2.new(0, 16, 1, -16), Parent = gui })
 	UI.padding(10).Parent = palette
 	local tabs = UI.new("Frame", { BackgroundTransparency = 1, Size = UDim2.new(1, 0, 0, 32), Parent = palette })
+	self.tabs = tabs
 	UI.list(Enum.FillDirection.Horizontal, 6).Parent = tabs
 	self.tabButtons = {}
 	for i, cat in CATEGORIES do
@@ -608,7 +929,7 @@ function Hangar:buildUI()
 	UI.list(nil, 6).Parent = self.selPanel
 
 	-- toolbar (bottom right)
-	local bar = UI.panel({ Size = UDim2.new(0, 380, 0, 170), AnchorPoint = Vector2.new(1, 1), Position = UDim2.new(1, -16, 1, -16), Parent = gui })
+	local bar = UI.panel({ Size = UDim2.new(0, 380, 0, 204), AnchorPoint = Vector2.new(1, 1), Position = UDim2.new(1, -16, 1, -16), Parent = gui })
 	UI.padding(10).Parent = bar
 	local grid = UI.new("UIGridLayout", { CellSize = UDim2.new(0, 112, 0, 40), CellPadding = UDim2.new(0, 6, 0, 6), SortOrder = Enum.SortOrder.LayoutOrder, Parent = bar })
 	local _ = grid
@@ -616,9 +937,12 @@ function Hangar:buildUI()
 		self.mirrorMode = not self.mirrorMode
 		self:refresh()
 	end, { LayoutOrder = 1, Parent = bar })
-	UI.button("Rotate (R)", function()
-		self.rotation = (self.rotation + 45) % 360
-	end, { LayoutOrder = 2, Parent = bar })
+	self.modeButtons = {}
+	for i, m in { { "build", "Build" }, { "paint", "Paint" }, { "decal", "Decals" } } do
+		self.modeButtons[m[1]] = UI.button(m[2], function()
+			self:setMode(m[1])
+		end, { LayoutOrder = -10 + i, Parent = bar })
+	end
 	UI.button("Undo", function()
 		self:undoLast()
 	end, { LayoutOrder = 3, Parent = bar })
@@ -637,6 +961,29 @@ function Hangar:buildUI()
 	UI.button("Menu", function()
 		self.callbacks.menu()
 	end, { LayoutOrder = 8, Parent = bar })
+end
+
+function Hangar:setMode(mode: string)
+	self.mode = mode
+	if mode ~= "build" then
+		self:setTool(nil)
+		self.selected = nil
+	end
+	Audio.play("click")
+	self:refresh()
+end
+
+function Hangar:swatches(order: number, current: { number }, onPick: ({ number }) -> ())
+	for i, c in SWATCHES do
+		local selected = math.abs(c[1] - current[1]) + math.abs(c[2] - current[2]) + math.abs(c[3] - current[3]) < 0.01
+		local b = UI.button("", function()
+			onPick(c)
+			self:refresh()
+		end, { Size = UDim2.new(0, 44, 0, 44), BackgroundColor3 = Color3.new(c[1], c[2], c[3]), LayoutOrder = order + i, Parent = self.partList })
+		if selected then
+			UI.new("UIStroke", { Color = C.accent, Thickness = 3, Parent = b })
+		end
+	end
 end
 
 function Hangar:partButton(name: string, order: number)
@@ -686,10 +1033,44 @@ function Hangar:refresh()
 			c:Destroy()
 		end
 	end
-	for i, name in ORDER[self.category] do
-		if Parts[name] then
-			self:partButton(name, i)
+	self.tabs.Visible = self.mode == "build"
+	for m, b in self.modeButtons do
+		b.BackgroundColor3 = if m == self.mode then C.accent else C.panelLight
+		b.TextColor3 = if m == self.mode then C.text else C.textDark
+	end
+	if self.mode == "build" then
+		for i, name in ORDER[self.category] do
+			if Parts[name] then
+				self:partButton(name, i)
+			end
 		end
+	elseif self.mode == "paint" then
+		UI.label("Pick a colour, then click a part to paint it" .. (if self.mirrorMode then " (and its mirror)" else "") .. ".", 14, { Size = UDim2.new(0, 230, 0, 120), LayoutOrder = 0, Parent = self.partList })
+		self:swatches(0, self.paintColor, function(c)
+			self.paintColor = c
+		end)
+	else
+		UI.label(string.format("Click the plane to place.\nDelete removes the decal under the mouse.\nSize %.1f  ·  Rotation %d°", self.decalSize, self.decalRotation), 13, { Size = UDim2.new(0, 210, 0, 120), LayoutOrder = 0, Parent = self.partList })
+		for i, spec in { { "−", -0.1, 0 }, { "+", 0.1, 0 }, { "⟲", 0, -15 }, { "⟳", 0, 15 } } do
+			UI.button(spec[1], function()
+				self.decalSize = math.clamp(self.decalSize + spec[2], 0.1, 4)
+				self.decalRotation = (self.decalRotation + spec[3]) % 360
+				self:refresh()
+			end, { Size = UDim2.new(0, 44, 0, 44), LayoutOrder = i, Parent = self.partList })
+		end
+		for i, d in Decals.List do
+			local texture = Decals.textureFor(d.id)
+			local b = UI.button(if texture then "" else d.id, function()
+				self.decalImage = d.id
+				self:refresh()
+			end, { Size = UDim2.new(0, 56, 0, 56), TextSize = 12, LayoutOrder = 10 + i, BackgroundColor3 = if self.decalImage == d.id then C.accent else C.panelLight, Parent = self.partList })
+			if texture then
+				UI.new("ImageLabel", { BackgroundTransparency = 1, Image = texture, Size = UDim2.fromScale(0.8, 0.8), Position = UDim2.fromScale(0.1, 0.1), ImageColor3 = Color3.new(0.1, 0.1, 0.1), Parent = b })
+			end
+		end
+		self:swatches(200, self.decalColor, function(c)
+			self.decalColor = c
+		end)
 	end
 	self.mirrorButton.Text = "Mirror: " .. (if self.mirrorMode then "on" else "off")
 
@@ -729,6 +1110,7 @@ function Hangar:refreshSelection()
 		end
 	end
 	local e = self.selected and self.design:get(self.selected)
+	self:placeHandles()
 	if not e then
 		self.highlight.Adornee = nil
 		return
@@ -853,22 +1235,33 @@ function Hangar:bindInput()
 			return
 		end
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
-			if self.tool then
+			if self.mode == "paint" then
+				self:paintUnderMouse()
+			elseif self.mode == "decal" then
+				self:placeDecal()
+			elseif self.tool then
 				self:place()
 			else
 				local _, id = self:hitPlane()
 				self.selected = id
+				if id then
+					Audio.play("clickSelection")
+				end
 				self:refresh()
 			end
 		elseif input.KeyCode == Enum.KeyCode.R then
-			self.rotation = (self.rotation + 45) % 360
+			self.rotation = (self.rotation + ROTATION_STEP) % 360
 		elseif input.KeyCode == Enum.KeyCode.T then
-			self.rotation = (self.rotation - 45) % 360
+			self.rotation = (self.rotation - ROTATION_STEP) % 360
 		elseif input.KeyCode == Enum.KeyCode.X then
 			self.mirrorMode = not self.mirrorMode
 			self:refresh()
 		elseif input.KeyCode == Enum.KeyCode.Delete or input.KeyCode == Enum.KeyCode.Backspace then
-			self:deleteSelected()
+			if self.mode == "decal" then
+				self:removeDecalUnderMouse()
+			else
+				self:deleteSelected()
+			end
 		elseif input.KeyCode == Enum.KeyCode.Z and (UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) or UserInputService:IsKeyDown(Enum.KeyCode.RightControl)) then
 			self:undoLast()
 		elseif input.KeyCode == Enum.KeyCode.Escape then
@@ -907,6 +1300,20 @@ function Hangar:bindInput()
 		local offset = CFrame.Angles(0, self.camYaw, 0) * CFrame.Angles(-self.camPitch, 0, 0) * Vector3.new(0, 0, self.camDistance)
 		camera.CFrame = CFrame.lookAt(focus + offset, focus)
 		self:updateGhost()
+		if self.mode == "decal" then
+			local d, cf = self:decalPlacement()
+			if self.decalGhost then
+				self.decalGhost:Destroy()
+				self.decalGhost = nil
+			end
+			if d and cf then
+				self.decalGhost = Decals.create(d, cf, Workspace)
+				self.decalGhost.CanQuery = false
+			end
+		elseif self.decalGhost then
+			self.decalGhost:Destroy()
+			self.decalGhost = nil
+		end
 	end))
 end
 
@@ -920,6 +1327,13 @@ function Hangar:destroy()
 	end
 	self.gui:Destroy()
 	self.highlight:Destroy()
+	if self.arcHandles then
+		self.arcHandles:Destroy()
+		self.sizeHandles:Destroy()
+	end
+	if self.decalGhost then
+		self.decalGhost:Destroy()
+	end
 	self.folder:Destroy()
 	UserInputService.MouseBehavior = Enum.MouseBehavior.Default
 end

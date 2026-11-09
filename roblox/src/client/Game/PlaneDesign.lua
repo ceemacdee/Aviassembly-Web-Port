@@ -24,6 +24,7 @@ export type Entry = {
 function PlaneDesign.new()
 	local self = setmetatable({}, PlaneDesign)
 	self.parts = {} :: { Entry }
+	self.decals = {} :: { any }
 	self.nextId = 1
 	return self
 end
@@ -74,6 +75,19 @@ function PlaneDesign:remove(id: number, withMirror: boolean?): { Entry }
 	end
 	local mirror = e.mirror
 	rec(id)
+	-- decals on removed parts go too
+	for i = #self.decals, 1, -1 do
+		local d = self.decals[i]
+		local gone = true
+		for _, p in self.parts do
+			if p.id == d.part then
+				gone = false
+			end
+		end
+		if gone then
+			table.remove(self.decals, i)
+		end
+	end
 	if withMirror and mirror and self:get(mirror) then
 		for _, r in self:remove(mirror, false) do
 			table.insert(removed, r)
@@ -146,7 +160,10 @@ end
 
 -- ---------------------------------------------------------------------------------------------- serialisation
 function PlaneDesign:serialize(): any
-	local out = { v = 1, parts = {} }
+	local out = { v = 1, parts = {}, decals = {} }
+	for _, d in self.decals do
+		table.insert(out.decals, { p = d.part, x = d.pos, n = d.normal, u = d.up, s = d.size, c = d.color, i = d.image })
+	end
 	for _, e in self.parts do
 		table.insert(out.parts, {
 			i = e.id,
@@ -180,6 +197,11 @@ function PlaneDesign.deserialize(data: any)
 				color = p.col,
 			})
 			self.nextId = math.max(self.nextId, p.i + 1)
+		end
+	end
+	for _, d in data.decals or {} do
+		if self:get(d.p) then
+			table.insert(self.decals, { part = d.p, pos = d.x, normal = d.n, up = d.u, size = d.s, color = d.c, image = d.i })
 		end
 	end
 	return self

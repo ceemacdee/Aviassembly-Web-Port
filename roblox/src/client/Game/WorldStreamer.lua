@@ -10,9 +10,12 @@ local WorldMap = require(Shared.WorldMap)
 local Noise = require(Shared.Util.Noise)
 local Triangles = require(script.Parent.Triangles)
 local PartVisual = require(script.Parent.PartVisual)
+local Decorations = require(Shared.Data.Decorations)
 
 local WorldStreamer = {}
 WorldStreamer.__index = WorldStreamer
+-- Fraction of the original tree/rock density (Settings menu). 1 = same as the original game.
+WorldStreamer.TreeDensity = 1
 
 local CHUNK = WorldMap.ChunkSize
 local NEAR_RES = 20 -- cells per chunk side near the plane (50 m cells, colliding)
@@ -148,7 +151,117 @@ function WorldStreamer:buildChunk(cx: number, cz: number, res: number, collide: 
 		maybeYield()
 	end
 	model:SetAttribute("Res", res)
+	if collide and WorldStreamer.TreeDensity > 0 then
+		self:spawnDecorations(model, cx, cz, maybeYield)
+	end
 	return model
+end
+
+-- ------------------------------------------------------------------------------------------- trees and rocks (Chunk.SpawnSurfaceDecoration)
+local function decorationPiece(node: any, cf: CFrame, scale: number, parent: Instance, fallbackKind: string)
+	local source = PartVisual.findMesh(node.name)
+	local piece: BasePart
+	if source then
+		piece = source:Clone()
+		piece.Size = Vector3.new(node.size[1], node.size[2], node.size[3]) * scale
+	else
+		local p = Instance.new("Part")
+		p.Material = Enum.Material.SmoothPlastic
+		p.Color = Color3.new(node.color[1], node.color[2], node.color[3])
+		p.Size = Vector3.new(node.size[1], node.size[2], node.size[3]) * scale
+		piece = p
+	end
+	piece.CFrame = cf * CFrame.new(Vector3.new(node.center[1], node.center[2], node.center[3]) * scale)
+	piece.Anchored = true
+	piece.CanCollide = false
+	piece.CanTouch = false
+	piece.CanQuery = false
+	piece.CastShadow = true
+	piece.Parent = parent
+end
+
+function WorldStreamer:spawnDecorations(model: Model, cx: number, cz: number, maybeYield: () -> ())
+	local origin = Vector3.new(cx * CHUNK, 0, cz * CHUNK) -- Unity space
+	local continent = WorldMap.closestContinent(origin.X, origin.Z)
+	local decorations = Decorations.continents[continent.name] or {}
+	local airport = WorldMap.closestAirport(origin.X, origin.Z)
+	local rng = Random.new(bit32.bxor(math.floor(origin.X), math.floor(origin.Y)) + cx * 7919 + cz * 104729)
+	local folder = Instance.new("Folder")
+	folder.Name = "Decorations"
+	folder.Parent = model
+	local density = math.clamp(WorldStreamer.TreeDensity, 0.05, 1)
+	local function spawnOne(local2: Vector2, deco: any)
+		local maxOffset = deco.density + (deco.randomizationOffset or 0)
+		local lx = local2.X + rng:NextNumber(0, maxOffset)
+		local lz = local2.Y + rng:NextNumber(0, maxOffset)
+		if lx < -500 or lx > 500 or lz < -500 or lz > 500 then
+			return
+		end
+		local ux, uz = origin.X + lx, origin.Z + lz
+		if airport and airport.treeFootprint and WorldMap.distanceToRect(airport.treeFootprint, ux, uz) < rng:NextInteger(-10, 50) then
+			return
+		end
+		local h = WorldMap.height(ux, uz)
+		if h < -2 then
+			return
+		end
+		local hx, hz = WorldMap.height(ux + 13.3, uz), WorldMap.height(ux, uz + 13.3)
+		local normal = Vector3.new(h - hx, 13.3, h - hz).Unit
+		local slope = 1 - normal.Y
+		if slope < (deco.minSlope or 0) or slope > (deco.maxSlope or 1) then
+			return
+		end
+		if #deco.variants == 0 then
+			return
+		end
+		local variant = deco.variants[rng:NextInteger(1, #deco.variants)]
+		local pieces = Decorations.trees[variant]
+		if not pieces then
+			return
+		end
+		local scale = rng:NextNumber(deco.minSize, deco.maxSize)
+		-- Unity Euler(x, y, z) tilt; mirrored to Roblox space (negate the Y and Z angles)
+		local rx, ry, rz = math.rad(rng:NextInteger(-15, 15)), math.rad(rng:NextInteger(0, 360)), math.rad(rng:NextInteger(-10, 10))
+		local cf = CFrame.new(-ux, h, uz) * CFrame.Angles(0, -ry, 0) * CFrame.Angles(rx, 0, -rz)
+		local kind = if string.find(deco.name, "Rock") or string.find(deco.name, "Pebble") then "rock" else "tree"
+		for _, node in pieces do
+			decorationPiece(node, cf, scale, folder, kind)
+		end
+		-- Tree collider (the original's capsule) so planes can crash into trees.
+		if deco.height and deco.height > 0 and deco.radius and deco.radius > 0 then
+			local col = Instance.new("Part")
+			col.Name = "TreeCollider"
+			col.Shape = Enum.PartType.Cylinder
+			local height = deco.height * scale
+			local r = deco.radius * scale
+			col.Size = Vector3.new(height, r * 2, r * 2)
+			local base = if deco.center then cf.Position else cf.Position + cf.UpVector * (height / 2)
+			col.CFrame = CFrame.fromMatrix(base, cf.UpVector, cf.RightVector)
+			col.Transparency = 1
+			col.Anchored = true
+			col.CanCollide = true
+			col.CanQuery = true
+			col.Parent = folder
+		end
+	end
+	for _, deco in decorations do
+		local step = math.max(1, math.floor(deco.density / math.sqrt(density) + 0.5))
+		for i = -500, 499, step do
+			for j = -500, 499, step do
+				if deco.clustering then
+					local count = rng:NextInteger(1, math.max(1, deco.maxClusterSize - 1))
+					for _ = 1, count do
+						local a = rng:NextNumber() * math.pi * 2
+						local r = math.sqrt(rng:NextNumber()) * 50
+						spawnOne(Vector2.new(math.clamp(i + math.cos(a) * r, -500, 500), math.clamp(j + math.sin(a) * r, -500, 500)), deco)
+					end
+				else
+					spawnOne(Vector2.new(i, j), deco)
+				end
+			end
+			maybeYield()
+		end
+	end
 end
 
 function WorldStreamer:wantedChunks(focus: Vector3)

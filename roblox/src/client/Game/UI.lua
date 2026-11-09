@@ -27,6 +27,9 @@ local C = UI.Colors
 UI.Font = Enum.Font.GothamMedium
 UI.FontBold = Enum.Font.GothamBold
 
+-- set by Main once Audio is loaded (ButtonAudio)
+function UI.clickSound() end
+
 function UI.new(class: string, props: { [string]: any }?, children: { Instance }?): any
 	local inst = Instance.new(class)
 	for k, v in props or {} do
@@ -98,7 +101,10 @@ function UI.button(text: string, onClick: () -> (), props: { [string]: any }?): 
 		(b :: any)[k] = v
 	end
 	UI.corner(8).Parent = b
-	b.Activated:Connect(onClick)
+	b.Activated:Connect(function()
+		UI.clickSound()
+		onClick()
+	end)
 	return b
 end
 
@@ -521,12 +527,14 @@ UI.ControlsText = table.concat({
 	"<b>Flying</b>",
 	"W / S — pitch down / up      A / D — roll      Q / E — yaw (rudder)",
 	"Space — throttle up (hold near the ground to help take-off)      Ctrl or Shift — throttle down / brake / reverse",
-	"G — retract landing gear      F — decouple      M — map      Enter — airport menu when landed",
+	"G — retract landing gear      F — decouple      H / J — turn rotation joints      M — map      Enter — airport menu when landed",
 	"Right mouse drag — look around      Mouse wheel — zoom      C — cockpit camera",
 	"",
 	"<b>Building</b>",
-	"Click a part, then click on the plane to attach it      R / T — rotate      X — mirror mode",
-	"Click a placed part to select it      Delete — remove it      Ctrl+Z — undo",
+	"Build mode: pick a part, then click the plane to attach it      R / T — rotate 15°      X — mirror mode",
+	"Click a placed part to select it: drag the orange rings to rotate it (hold Shift for 1° steps),",
+	"or drag the blue arrows on a Body to resize it      Delete — remove      Ctrl+Z — undo",
+	"Paint mode: pick a colour and click parts      Decals mode: pick an image, colour and size, click to place, Delete removes",
 	"Right mouse drag — orbit      Mouse wheel — zoom",
 }, "\n")
 

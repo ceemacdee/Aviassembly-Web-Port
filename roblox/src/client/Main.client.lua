@@ -18,6 +18,12 @@ local PartVisual = require(Game.PartVisual)
 local Hangar = require(Game.Hangar)
 local Flight = require(Game.Flight)
 local WorldStreamer = require(Game.WorldStreamer)
+local Audio = require(Game.Audio)
+local Sounds = require(Shared.Data.Sounds)
+
+UI.clickSound = function()
+	Audio.play("click")
+end
 
 local player = Players.LocalPlayer
 local camera = Workspace.CurrentCamera
@@ -57,12 +63,44 @@ local hud, airportPanel, mapView = nil, nil, nil
 local flightConnections = {}
 local mode = "menu"
 local saveData = nil
+local settings = { treeDensity = 1, music = 0.6, sound = 1 }
+local cutscenePlaying = false
+
+local function applySettings()
+	WorldStreamer.TreeDensity = settings.treeDensity
+	Audio.musicVolume = settings.music
+	Audio.masterVolume = settings.sound
+end
+
+-- QuestAdditionUI sounds
+do
+	local push = messages.push
+	messages.push = function(self, text, kind)
+		if kind == "Mystery" then
+			Audio.play("radioStatic", 0.6)
+			Audio.play("mystery")
+		elseif kind == "QuestCompleted" then
+			Audio.play("reward")
+		else
+			Audio.play("radioClick")
+		end
+		push(self, text, kind)
+	end
+end
+
+-- Ambience (FlyingAmbience): nature fades with height, earthquake rumble follows the shake.
+local natureLoop = Audio.loop(Sounds.ambience.nature)
+local quakeLoop = Audio.loop(Sounds.ambience.earthquake)
+local birdsLoop = Audio.loop(Sounds.ambience.birds)
 
 local function hookCampaign()
 	campaign.onMessage = function(text, kind)
 		messages:push(text, kind)
 	end
 	campaign.onReward = function(info)
+		if info.money > 0 then
+			Audio.play("cash")
+		end
 		if hud and (info.money ~= 0 or info.scrap ~= 0 or info.advancedScrap ~= 0) then
 			local parts = {}
 			if info.money ~= 0 then
@@ -83,7 +121,7 @@ local function save()
 	if not campaign or not Remotes then
 		return
 	end
-	local data = { campaign = campaign:serialize(), design = design:serialize(), designs = savedDesigns }
+	local data = { campaign = campaign:serialize(), design = design:serialize(), designs = savedDesigns, settings = settings }
 	task.spawn(function()
 		local ok, result = pcall(function()
 			return Remotes.SaveGame:InvokeServer(data)
@@ -246,12 +284,29 @@ local function readInput()
 		space = throttleUp,
 		retractPressed = false,
 		decouplePressed = false,
+		rotator = axis(Enum.KeyCode.H, Enum.KeyCode.J),
 		autoSteer = true,
 	}
 end
 
+-- BackgroundMusicManager / FlyingBackgroundMusic: continent music with story overrides.
+local function flightMusic(position)
+	local s = campaign.story
+	if cutscenePlaying then
+		return Sounds.music.finalSequence
+	end
+	if s.finalMessagePlayed and not s.playedEndCutscene then
+		return Sounds.music.postFinalMessage
+	end
+	if s.postEarthquake and not s.finalMessagePlayed and not s.playedEndCutscene then
+		return Sounds.music.postEarthquake
+	end
+	local continent = WorldMap.closestContinent(-position.X, position.Z)
+	return Sounds.music.continents[continent.name] or Sounds.music.continents.Spawn
+end
+
 -- ------------------------------------------------------------------------------------------- modes
-local enterHangar, startFlight, showMenu
+local enterHangar, startFlight, showMenu, playEndCutscene
 
 local function clearFlight()
 	for _, c in flightConnections do
@@ -322,6 +377,7 @@ function enterHangar()
 		hangar = nil
 	end
 	mode = "hangar"
+	Audio.nextBuildingTrack()
 	campaign.cargo = {}
 	campaign.cargoVolume = 0
 	local base = homeBase()
@@ -478,7 +534,7 @@ function startFlight(airport)
 	end))
 
 	table.insert(flightConnections, RunService.PreSimulation:Connect(function(dt)
-		if not flight or flight.exploded then
+		if not flight or flight.exploded or cutscenePlaying then
 			return
 		end
 		local input = readInput()
@@ -493,14 +549,19 @@ function startFlight(airport)
 
 	table.insert(flightConnections, RunService.RenderStepped:Connect(function(dt)
 		UserInputService.MouseBehavior = if cam.dragging then Enum.MouseBehavior.LockCurrentPosition else Enum.MouseBehavior.Default
-		updateFlightCamera(dt)
+		if not cutscenePlaying then
+			updateFlightCamera(dt)
+		end
 	end))
 
 	table.insert(flightConnections, RunService.Heartbeat:Connect(function(dt)
-		if not flight then
+		if not flight or cutscenePlaying then
 			return
 		end
 		local pos = flight.root.Position
+		Audio.music(flightMusic(pos), 0.8)
+		natureLoop:set(0.6 * (1 - math.clamp(pos.Y / 300, 0, 1)), 0.8)
+		birdsLoop:set(0)
 		streamer:setFocus(pos)
 		local t = flight:telemetry()
 		local ux, uz = -pos.X, pos.Z
@@ -552,11 +613,13 @@ function startFlight(airport)
 		-- story
 		local story = campaign:updateStory({ dt = dt, position = pos, heightAboveGround = t.height, atAirport = atAirport ~= nil, exploded = flight.exploded, messageOpen = messages:isOpen() })
 		cam.shake = story.shake
+		quakeLoop:set(story.shake)
 		if story.explode then
 			flight:explodePlane()
 		end
 		if story.finished then
 			save()
+			task.spawn(playEndCutscene)
 		end
 
 		-- out of fuel (GameOver)
@@ -584,6 +647,139 @@ function startFlight(airport)
 	messages:push(if campaign.creative then "Creative mode: unlimited money and every part unlocked." else "Fly to the airports, pick up cargo and deliver it. Land slowly on a runway, then press Enter for the airport menu.", "Misc")
 end
 
+-- ------------------------------------------------------------------------------------------- ending (EndCutscene)
+local ENDING = {
+	{ airport = "Explosion Site", text = "The radioactive materials are now securely stored in the bunker." },
+	{ airport = "Waste Storage", text = "You've contained the dangers and the islands are safe again." },
+	{ airport = "The Hospital", text = "Your mission is complete!" },
+}
+
+function playEndCutscene()
+	if cutscenePlaying or not flight then
+		return
+	end
+	cutscenePlaying = true
+	while messages:isOpen() do
+		task.wait(0.2)
+	end
+	flight.root.Anchored = true
+	for _, e in flight.engines do
+		if e.sound then
+			e.sound:set(0)
+		end
+	end
+	Audio.music(Sounds.music.finalSequence, 1)
+	local gui = UI.screen("Ending", 60)
+	local fader = UI.new("Frame", { BackgroundColor3 = Color3.new(0, 0, 0), BackgroundTransparency = 1, Size = UDim2.fromScale(1, 1), ZIndex = 5, Parent = gui })
+	local caption = UI.label("", 34, { Font = UI.FontBold, TextXAlignment = Enum.TextXAlignment.Center, AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -120), Size = UDim2.new(0.8, 0, 0, 90), TextStrokeTransparency = 0.4, Visible = false, ZIndex = 3, Parent = gui })
+	local band = UI.new("Frame", { BackgroundColor3 = Color3.new(0, 0, 0), BackgroundTransparency = 0.5, AnchorPoint = Vector2.new(0, 1), Position = UDim2.new(0, 0, 1, -100), Size = UDim2.new(1, 0, 0, 130), Visible = false, ZIndex = 2, Parent = gui })
+	local continue = false
+	local continueButton = UI.button("<b>Continue</b>", function()
+		continue = true
+	end, { AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -30), Size = UDim2.new(0, 220, 0, 46), BackgroundColor3 = C.accent, TextColor3 = C.text, Visible = false, ZIndex = 4, Parent = gui })
+	local function fade(target)
+		local t0 = fader.BackgroundTransparency
+		for i = 1, 30 do
+			fader.BackgroundTransparency = t0 + (target - t0) * (i / 30)
+			task.wait(1 / 30)
+		end
+	end
+	local drift = nil
+	for i, shot in ENDING do
+		fade(0)
+		local a = WorldMap.findAirport(shot.airport)
+		if a then
+			local target = Vector3.new(-a.position.X, WorldMap.airportHeight(a), a.position.Z)
+			-- airport.position + up * 40 + forward * 200, looking at the airport, then drifting back
+			local start = target + Vector3.new(0, 40, 200)
+			streamer:ensureNear(target)
+			local camCF = CFrame.lookAt(start, target)
+			camera.CFrame = camCF
+			if drift then
+				drift:Disconnect()
+			end
+			drift = RunService.RenderStepped:Connect(function(dt)
+				camCF = camCF - camCF.LookVector * dt * 10
+				camera.CFrame = camCF
+			end)
+		end
+		caption.Text = shot.text
+		caption.Visible, band.Visible = true, true
+		continueButton.Visible = i == #ENDING
+		task.wait(2)
+		fade(1)
+		if i < #ENDING then
+			task.wait(4)
+		end
+	end
+	while not continue do
+		task.wait(0.1)
+	end
+	fade(0)
+	if drift then
+		drift:Disconnect()
+	end
+	caption.Visible, band.Visible, continueButton.Visible = false, false, false
+	if flight then
+		flight.root.Anchored = false
+	end
+	cutscenePlaying = false
+	task.wait(2)
+	fade(1)
+	gui:Destroy()
+	if hud then
+		UI.toast(hud.gui, "Random quests unlocked — you can now get random quests at every airport", C.good)
+	end
+end
+
+-- ------------------------------------------------------------------------------------------- settings
+local function settingsMenu()
+	local gui = UI.screen("Settings", 55)
+	local frame = UI.panel({ Size = UDim2.new(0, 460, 0, 0), AutomaticSize = Enum.AutomaticSize.Y, AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, 0.5, 0), Parent = gui })
+	UI.padding(16).Parent = frame
+	UI.list(nil, 10).Parent = frame
+	UI.label("SETTINGS", 20, { Font = UI.FontBold, Parent = frame })
+	local function row(label, options, get, set)
+		local r = UI.new("Frame", { BackgroundTransparency = 1, Size = UDim2.new(1, 0, 0, 34), Parent = frame })
+		UI.label(label, 15, { Size = UDim2.new(0, 150, 1, 0), Parent = r })
+		for i, o in options do
+			local b = UI.button(o[1], function()
+				set(o[2])
+				applySettings()
+				gui:Destroy()
+				settingsMenu()
+			end, { Size = UDim2.new(0, 66, 0, 30), Position = UDim2.new(0, 150 + (i - 1) * 70, 0, 2), Parent = r })
+			if get() == o[2] then
+				b.BackgroundColor3 = C.accent
+				b.TextColor3 = C.text
+			end
+		end
+	end
+	row("Trees & rocks", { { "Off", 0 }, { "Low", 0.25 }, { "Half", 0.5 }, { "Full", 1 } }, function()
+		return settings.treeDensity
+	end, function(v)
+		settings.treeDensity = v
+	end)
+	row("Music", { { "Off", 0 }, { "Low", 0.3 }, { "Med", 0.6 }, { "High", 1 } }, function()
+		return settings.music
+	end, function(v)
+		settings.music = v
+	end)
+	row("Sound", { { "Off", 0 }, { "Low", 0.4 }, { "Med", 0.7 }, { "High", 1 } }, function()
+		return settings.sound
+	end, function(v)
+		settings.sound = v
+	end)
+	UI.label("Tree changes apply to newly loaded areas. \"Full\" matches the original density; lower it if the game runs slowly.", 13, { TextColor3 = C.muted, AutomaticSize = Enum.AutomaticSize.Y, Size = UDim2.new(1, 0, 0, 0), Parent = frame })
+	if not Audio.available() then
+		UI.label('<font color="#E0A040">Sounds not imported yet — see the README (Importing sounds).</font>', 13, { AutomaticSize = Enum.AutomaticSize.Y, Size = UDim2.new(1, 0, 0, 0), Parent = frame })
+	end
+	UI.button("Close", function()
+		gui:Destroy()
+		save()
+	end, { Parent = frame })
+end
+
 -- ------------------------------------------------------------------------------------------- menu
 function showMenu()
 	if hangar then
@@ -592,6 +788,9 @@ function showMenu()
 	end
 	clearFlight()
 	mode = "menu"
+	Audio.music(Sounds.music.menu, 0.65)
+	birdsLoop:set(0.2)
+	natureLoop:set(0)
 	local gui = UI.screen("Menu", 50)
 	local back = UI.new("Frame", { BackgroundColor3 = Color3.fromRGB(20, 40, 60), BackgroundTransparency = 0.25, Size = UDim2.new(1, 0, 1, 0), Parent = gui })
 	local box = UI.new("Frame", { BackgroundTransparency = 1, Size = UDim2.new(0, 420, 0, 520), AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, 0.5, 0), Parent = back })
@@ -630,6 +829,7 @@ function showMenu()
 	UI.button("Controls", function()
 		UI.modal("Controls", UI.ControlsText)
 	end, { Size = UDim2.new(0, 300, 0, 40), Parent = box })
+	UI.button("Settings", settingsMenu, { Size = UDim2.new(0, 300, 0, 40), Parent = box })
 	if not PartVisual.hasImportedMeshes() then
 		UI.label('<font color="#E0A040">3D models not imported yet — parts show as coloured blocks. See the README to import the .glb files.</font>', 14, { TextXAlignment = Enum.TextXAlignment.Center, AutomaticSize = Enum.AutomaticSize.Y, Size = UDim2.new(1, 0, 0, 0), Parent = box })
 	end
@@ -638,4 +838,10 @@ end
 
 -- ------------------------------------------------------------------------------------------- boot
 saveData = load()
+if saveData and type(saveData.settings) == "table" then
+	for k, v in saveData.settings do
+		settings[k] = v
+	end
+end
+applySettings()
 showMenu()
