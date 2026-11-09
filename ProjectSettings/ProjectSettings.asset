@@ -549,30 +549,30 @@ PlayerSettings:
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   blurSplashScreenBackground: 0
   spritePackerPolicy:
-  webGLMemorySize: 0
-  webGLExceptionSupport: 0
+  webGLMemorySize: 32
+  webGLExceptionSupport: 1
   webGLNameFilesAsHashes: 0
   webGLShowDiagnostics: 0
-  webGLDataCaching: 0
+  webGLDataCaching: 1
   webGLDebugSymbols: 0
   webGLEmscriptenArgs:
   webGLModulesDirectory:
-  webGLTemplate:
+  webGLTemplate: PROJECT:Aviassembly
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 0
+  webGLCompressionFormat: 1
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
-  webGLDecompressionFallback: 0
-  webGLInitialMemorySize: 0
-  webGLMaximumMemorySize: 0
-  webGLMemoryGrowthMode: 0
-  webGLMemoryLinearGrowthStep: 0
-  webGLMemoryGeometricGrowthStep: 0
-  webGLMemoryGeometricGrowthCap: 0
+  webGLDecompressionFallback: 1
+  webGLInitialMemorySize: 256
+  webGLMaximumMemorySize: 4096
+  webGLMemoryGrowthMode: 2
+  webGLMemoryLinearGrowthStep: 16
+  webGLMemoryGeometricGrowthStep: 0.2
+  webGLMemoryGeometricGrowthCap: 96
   webGLEnableWebGPU: 0
-  webGLPowerPreference: 0
+  webGLPowerPreference: 2
   webGLWebAssemblyTable: 0
   webGLWebAssemblyBigInt: 0
   webGLCloseOnQuit: 0
