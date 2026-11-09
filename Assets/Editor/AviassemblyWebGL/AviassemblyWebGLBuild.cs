@@ -71,6 +71,17 @@ public static class AviassemblyWebGLBuild
 		EditorApplication.Exit(ok ? 0 : 1);
 	}
 
+	// For Unity Build Automation: set "Pre-Export Method Name" to AviassemblyWebGLBuild.PreExport
+	// so cloud builds restore the post-processing shaders and use the WebGL settings.
+	public static void PreExport()
+	{
+		if (PostProcessingShaderRestorer.HasPlaceholderShaders() && !PostProcessingShaderRestorer.Restore(out string message))
+		{
+			Debug.LogError("Aviassembly: " + message);
+		}
+		ConfigurePlayerSettings();
+	}
+
 	public static bool Build(string outputPath, bool interactive)
 	{
 		if (PostProcessingShaderRestorer.HasPlaceholderShaders())
